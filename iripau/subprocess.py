@@ -27,19 +27,44 @@ from subprocess import CalledProcessError
 
 from time import time
 from typing import Union, Iterable
-from contextlib import contextmanager
+from tempfile import SpooledTemporaryFile
+from contextlib import contextmanager, nullcontext
 
+FILE = -4
 GLOBAL_ECHO = False
 GLOBAL_STDOUTS = set()
 GLOBAL_STDERRS = set()
 GLOBAL_PROMPTS = set()
 
 
+class PipeFile(SpooledTemporaryFile):
+    """ A file to be used as stdin, stdout and stderr in Popen to avoid dead lock
+        when the process output is too long using PIPE.
+
+        If used as stdin, the content should be written before spawning the process.
+    """
+
+    def __init__(self, content=None, encoding=None, errors=None, text=None):
+        super().__init__(
+            mode="w+t" if text else "w+b",
+            encoding=encoding,
+            errors=errors
+        )
+
+        if content:
+            self.write(content)
+            self.seek(0)
+
+    def read_all(self):
+        self.seek(0)
+        return self.read()
+
+
 class Tee(subprocess.Popen):
     """ A subprocess to send real-time input to several file descriptors """
 
     def __init__(self, input, fds, output=None, encoding=None, errors=None, text=None):
-        if output == STDOUT:
+        if output is STDOUT:
             raise ValueError("output cannot be STDOUT")
 
         if output is None:
@@ -95,7 +120,7 @@ class Popen(subprocess.Popen):
     """
 
     def __init__(
-        self, args, cwd=None, env=None,
+        self, args, cwd=None, env=None, encoding=None, errors=None, text=None,
         stdout_tees: Iterable[io.IOBase] = [], add_global_stdout_tees=True,
         stderr_tees: Iterable[io.IOBase] = [], add_global_stderr_tees=True,
         prompt_tees: Iterable[io.IOBase] = [], add_global_prompt_tees=True,
@@ -127,25 +152,21 @@ class Popen(subprocess.Popen):
         if stderr_fds:
             kwargs["stderr"] = PIPE
 
-        tee_kwargs = {
-            key: kwargs.get(key)
-            for key in ("encoding", "errors", "text")
-        }
-
         if prompt_fds:
             stream_prompts(prompt_fds, alias or args, cwd, env, err2out, comment)
 
-        super().__init__(args, cwd=cwd, env=env, **kwargs)
+        super().__init__(args, cwd=cwd, env=env,
+                         encoding=encoding, errors=errors, text=text, **kwargs)
 
         self.original_stdout = self.stdout
         self.original_stderr = self.stderr
 
         stdout_process = stderr_process = self
         if stdout_fds:
-            stdout_process = Tee(self.stdout, stdout_fds, stdout, **tee_kwargs)
+            stdout_process = Tee(self.stdout, stdout_fds, stdout, encoding, errors, text)
             self.stdout = stdout_process.output
         if stderr_fds:
-            stderr_process = Tee(self.stderr, stderr_fds, stderr, **tee_kwargs)
+            stderr_process = Tee(self.stderr, stderr_fds, stderr, encoding, errors, text)
             self.stderr = stderr_process.output
 
         self.stdout_process = stdout_process
@@ -405,9 +426,19 @@ def set_global_prompt_files(*files: io.IOBase):
     GLOBAL_PROMPTS = set(*files)
 
 
+def _output_context(kwargs, key, encoding, errors, text):
+    """ Create a PipeFile, store it in kwargs[key] and return it if it is FILE.
+        Just return a nullcontext otherwise.
+    """
+    if kwargs.get(key) is FILE:
+        kwargs[key] = PipeFile(encoding=encoding, errors=errors, text=text)
+        return kwargs[key]
+    return nullcontext()
+
+
 def run(
     *popenargs, input=None, capture_output=False, timeout=None, check=False,
-    sigterm_timeout=10, **kwargs
+    encoding=None, errors=None, text=None, sigterm_timeout=10, **kwargs
 ):
     """ A subprocess.run that instantiates this module's Popen """
     if input is not None:
@@ -418,11 +449,16 @@ def run(
     if capture_output:
         if kwargs.get("stdout") is not None or kwargs.get("stderr") is not None:
             raise ValueError("stdout and stderr arguments may not be used with capture_output.")
-        kwargs["stdout"] = PIPE
-        kwargs["stderr"] = PIPE
+        kwargs["stdout"] = FILE
+        kwargs["stderr"] = FILE
 
     comment = f"timeout={timeout}" if timeout else None
-    with Popen(*popenargs, comment=comment, **kwargs) as process:
+    with (
+        _output_context(kwargs, "stdout", encoding, errors, text) as stdout_file,
+        _output_context(kwargs, "stderr", encoding, errors, text) as stderr_file,
+        Popen(*popenargs, encoding=encoding, errors=errors, text=text,
+              comment=comment, **kwargs) as process
+    ):
         start = psutil.Process(process.pid).create_time()
         try:
             stdout, stderr = process.communicate(input, timeout=timeout)
@@ -436,6 +472,11 @@ def run(
         finally:
             end = time()
             returncode = process.poll()
+
+        if stdout_file:
+            stdout = stdout_file.read_all()
+        if stderr_file:
+            stderr = stderr_file.read_all()
 
         if check and returncode:
             raise CalledProcessError(returncode, process.args, output=stdout, stderr=stderr)

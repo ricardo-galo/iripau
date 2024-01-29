@@ -13,6 +13,7 @@ from tempfile import SpooledTemporaryFile
 from iripau.subprocess import DEVNULL
 from iripau.subprocess import PIPE
 from iripau.subprocess import STDOUT
+from iripau.subprocess import FILE
 from iripau.subprocess import Tee
 from iripau.subprocess import Popen
 from iripau.subprocess import TimeoutExpired
@@ -36,7 +37,7 @@ def get_prompt_and_command(command, err2out=False, timeout=None):
         "echo '' | bash -i 2>&1 1>/dev/null | head -1",
         shell=True,
         check=True,
-        universal_newlines=True,
+        text=True,
         stdout=subprocess.PIPE
     ).stdout[:-1]
 
@@ -289,10 +290,10 @@ class TestSubprocess(object):
     @pytest.mark.parametrize("manual_echo", [False, True], ids=["no_manual_echo", "manual_echo"])
     @pytest.mark.parametrize("extra_tees", [0, 1, 3], ids=["no_extra", "one_extra", "few_extra"])
     @pytest.mark.parametrize("stderr", [None, STDOUT], ids=["no_redirect", "redirect"])
-    @pytest.mark.parametrize("stdout", [None, PIPE], ids=["no_capture", "capture"])
+    @pytest.mark.parametrize("stdout", [None, PIPE, FILE], ids=["no_capture", "pipe", "file"])
     @pytest.mark.parametrize("echo", [False, True], ids=["no_echo", "echo"])
     def test_run_tee(self, echo, stdout, stderr, extra_tees, manual_echo, capfd):
-        redirect = stderr == STDOUT
+        redirect = stderr is STDOUT
         stdout_command = "echo This goes to stdout"
         stderr_command = "echo This goes to stderr >&2"
 
@@ -324,7 +325,7 @@ class TestSubprocess(object):
         }
 
         expected_stdout_1 = expected_stderr_1 = expected_stdout_2 = expected_stderr_2 = None
-        if stdout == PIPE:
+        if stdout is not None:
             expected_stdout_1 = "This goes to stdout\n"
             expected_stdout_2 = "This goes to stderr\n" if redirect else ""
 
