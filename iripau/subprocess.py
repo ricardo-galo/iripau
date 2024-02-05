@@ -120,7 +120,7 @@ class Popen(subprocess.Popen):
     """
 
     def __init__(
-        self, args, cwd=None, env=None, encoding=None, errors=None, text=None,
+        self, args, *, cwd=None, env=None, encoding=None, errors=None, text=None,
         stdout_tees: Iterable[io.IOBase] = [], add_global_stdout_tees=True,
         stderr_tees: Iterable[io.IOBase] = [], add_global_stderr_tees=True,
         prompt_tees: Iterable[io.IOBase] = [], add_global_prompt_tees=True,
@@ -437,7 +437,7 @@ def _output_context(kwargs, key, encoding, errors, text):
 
 
 def run(
-    *popenargs, input=None, capture_output=False, timeout=None, check=False,
+    args, *, input=None, capture_output=False, timeout=None, check=False,
     encoding=None, errors=None, text=None, sigterm_timeout=10, **kwargs
 ):
     """ A subprocess.run that instantiates this module's Popen """
@@ -456,7 +456,7 @@ def run(
     with (
         _output_context(kwargs, "stdout", encoding, errors, text) as stdout_file,
         _output_context(kwargs, "stderr", encoding, errors, text) as stderr_file,
-        Popen(*popenargs, encoding=encoding, errors=errors, text=text,
+        Popen(args, encoding=encoding, errors=errors, text=text,
               comment=comment, **kwargs) as process
     ):
         start = psutil.Process(process.pid).create_time()
@@ -486,29 +486,29 @@ def run(
         return output
 
 
-def call(*popenargs, **kwargs):
-    return run(*popenargs, **kwargs).returncode
+def call(*args, **kwargs):
+    return run(*args, **kwargs).returncode
 
 
-def check_call(*popenargs, **kwargs):
+def check_call(*args, **kwargs):
     kwargs["check"] = True
-    return call(*popenargs, **kwargs)
+    return call(*args, **kwargs)
 
 
-def check_output(*popenargs, **kwargs):
+def check_output(*args, **kwargs):
     kwargs["check"] = True
     kwargs.setdefault("stdout", PIPE)
-    return run(*popenargs, **kwargs).stdout
+    return run(*args, **kwargs).stdout
 
 
-def getoutput(*popenargs, **kwargs):
-    return getstatusoutput(*popenargs, **kwargs)[1]
+def getoutput(*args, **kwargs):
+    return getstatusoutput(*args, **kwargs)[1]
 
 
-def getstatusoutput(*popenargs, **kwargs):
+def getstatusoutput(*args, **kwargs):
     kwargs["stdout"] = PIPE
     kwargs["stderr"] = STDOUT
     kwargs["shell"] = True
     kwargs["text"] = True
-    output = run(*popenargs, **kwargs)
+    output = run(*args, **kwargs)
     return (output.returncode, output.stdout)
