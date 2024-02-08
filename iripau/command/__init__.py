@@ -105,7 +105,7 @@ def local_args(
     stdout_tees: Iterable[io.IOBase] = [], add_global_stdout_tees=True,
     stderr_tees: Iterable[io.IOBase] = [], add_global_stderr_tees=True,
     prompt_tees: Iterable[io.IOBase] = [], add_global_prompt_tees=True,
-    echo=None, alias=None, comment=None, input=None, capture_output=False,
+    echo=None, alias=None, input=None, capture_output=False,
     timeout=TIMEOUT, check=False, sigterm_timeout=10
 ):
     """ Return the subprocess.run kwargs for a command to be run locally """

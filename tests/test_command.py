@@ -35,7 +35,7 @@ def run_kwargs(
     stdout_tees=[], add_global_stdout_tees=True,
     stderr_tees=[], add_global_stderr_tees=True,
     prompt_tees=[], add_global_prompt_tees=True,
-    echo=None, alias=None, comment=None, input=None, capture_output=False,
+    echo=None, alias=None, input=None, capture_output=False,
     timeout=120, check=False, sigterm_timeout=10
 ):
     return locals()
