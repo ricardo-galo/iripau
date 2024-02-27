@@ -26,7 +26,7 @@ from subprocess import SubprocessError  # noqa: F401
 from subprocess import CalledProcessError
 
 from time import time
-from typing import Union, Iterable
+from typing import Union, Iterable, Callable
 from tempfile import SpooledTemporaryFile
 from contextlib import contextmanager, nullcontext
 
@@ -35,6 +35,9 @@ GLOBAL_ECHO = False
 GLOBAL_STDOUTS = set()
 GLOBAL_STDERRS = set()
 GLOBAL_PROMPTS = set()
+
+
+TeeStream = Union[io.IOBase, Callable[..., io.IOBase]]
 
 
 class PipeFile(SpooledTemporaryFile):
@@ -121,9 +124,9 @@ class Popen(subprocess.Popen):
 
     def __init__(
         self, args, *, cwd=None, env=None, encoding=None, errors=None, text=None,
-        stdout_tees: Iterable[io.IOBase] = [], add_global_stdout_tees=True,
-        stderr_tees: Iterable[io.IOBase] = [], add_global_stderr_tees=True,
-        prompt_tees: Iterable[io.IOBase] = [], add_global_prompt_tees=True,
+        stdout_tees: Iterable[TeeStream] = [], add_global_stdout_tees=True,
+        stderr_tees: Iterable[TeeStream] = [], add_global_stderr_tees=True,
+        prompt_tees: Iterable[TeeStream] = [], add_global_prompt_tees=True,
         echo=None, alias=None, comment=None, **kwargs
     ):
         stdout = kwargs.get("stdout")
@@ -173,7 +176,12 @@ class Popen(subprocess.Popen):
         self.stderr_process = stderr_process
 
     @staticmethod
+    def _get_tee_files(tees: Iterable[TeeStream]):
+        return set(callable(tee) and tee() or tee for tee in tees)
+
+    @classmethod
     def _get_tee_sets(
+        cls,
         stdout_tees, add_global_stdout_tees,
         stderr_tees, add_global_stderr_tees,
         prompt_tees, add_global_prompt_tees,
@@ -210,7 +218,11 @@ class Popen(subprocess.Popen):
             if stderr_tees:
                 stderr_tees.add(sys.stderr)
 
-        return stdout_tees, stderr_tees, prompt_tees
+        return (
+            cls._get_tee_files(stdout_tees),
+            cls._get_tee_files(stderr_tees),
+            cls._get_tee_files(prompt_tees)
+        )
 
     def get_pids(self):
         """ Return the pid for all of the processes in the tree """
@@ -411,17 +423,17 @@ def set_global_echo(value):
     GLOBAL_ECHO = bool(value)
 
 
-def set_global_stdout_files(*files: io.IOBase):
+def set_global_stdout_files(*files: TeeStream):
     global GLOBAL_STDOUTS
     GLOBAL_STDOUTS = set(*files)
 
 
-def set_global_stderr_files(*files: io.IOBase):
+def set_global_stderr_files(*files: TeeStream):
     global GLOBAL_STDERRS
     GLOBAL_STDERRS = set(*files)
 
 
-def set_global_prompt_files(*files: io.IOBase):
+def set_global_prompt_files(*files: TeeStream):
     global GLOBAL_PROMPTS
     GLOBAL_PROMPTS = set(*files)
 
