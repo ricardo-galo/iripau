@@ -37,7 +37,7 @@ GLOBAL_STDERRS = set()
 GLOBAL_PROMPTS = set()
 
 
-TeeStream = Union[io.IOBase, Callable[..., io.IOBase]]
+TeeStream = Union[io.IOBase, Callable[[], io.IOBase]]
 
 
 class PipeFile(SpooledTemporaryFile):
