@@ -10,7 +10,7 @@ import threading
 from collections import OrderedDict
 
 
-class LoggerFile(object):
+class LoggerFile:
     """ File that logs every line written to it """
 
     def __new__(cls, logger, level):

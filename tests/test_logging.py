@@ -17,7 +17,7 @@ from iripau.logging import SimpleThreadNameFormatter
 from iripau.logging import group_log_lines
 
 
-class TestLogging(object):
+class TestLogging:
 
     @staticmethod
     def write(stream, text):

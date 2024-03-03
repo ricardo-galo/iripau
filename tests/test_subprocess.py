@@ -58,7 +58,7 @@ def read_file(file):
     return file.read()
 
 
-class TestSubprocess(object):
+class TestSubprocess:
 
     def test_tee_stdout(self):
         with pytest.raises(ValueError):

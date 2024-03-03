@@ -13,7 +13,7 @@ from iripau.functools import retry
 from iripau.functools import globalize
 
 
-class TestFunctools(object):
+class TestFunctools:
 
     @pytest.mark.parametrize("timeout", [False, True], ids=["successful", "timed_out"])
     @pytest.mark.parametrize("outcome", [False, True])

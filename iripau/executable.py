@@ -9,7 +9,7 @@ from itertools import chain
 from iripau.command import host_run
 
 
-class Command(object):
+class Command:
     """ Run an executable command as a Python callable """
 
     def __init__(self, parent, command):
@@ -34,7 +34,7 @@ def make_option(option):
     return "--" + option.replace("_", "-"),
 
 
-class Executable(object):
+class Executable:
     """ Run an executable as a Python callable """
 
     def __init__(

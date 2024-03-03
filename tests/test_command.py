@@ -41,7 +41,7 @@ def run_kwargs(
     return locals()
 
 
-class TestCommand(object):
+class TestCommand:
 
     @patch("iripau.command.USER", new="current-user")
     def test_solve_ssh_users(self):

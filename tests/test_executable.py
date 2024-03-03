@@ -8,7 +8,7 @@ from iripau.executable import Command
 from iripau.executable import Executable
 
 
-class TestExecutable(object):
+class TestExecutable:
 
     def test_command_call(self):
         parent = MagicMock()
