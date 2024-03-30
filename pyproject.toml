@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "iripau"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
   "psutil"
 ]
@@ -21,7 +21,7 @@ license = "MPL-2.0"
 license-files = ["LICENSE"]
 keywords = ["subprocess", "command", "local", "remote", "ssh", "Linux", "real-time", "log", "logging", "threading", "utilities"]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Programming Language :: Python"
 ]
 

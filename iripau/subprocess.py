@@ -5,7 +5,6 @@ This module relies on the following system utilities being installed:
 * bash
 * kill
 * pstree
-* sudo
 * tee
 """
 
@@ -239,13 +238,13 @@ class Popen(subprocess.Popen):
 
     def terminate_tree(self):
         run(
-            ["sudo", "kill"] + self.get_pids(),
+            ["kill"] + self.get_pids(),
             stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL,
         )
 
     def kill_tree(self):
         run(
-            ["sudo", "kill", "-9"] + self.get_pids(),
+            ["kill", "-9"] + self.get_pids(),
             stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL,
         )
 
