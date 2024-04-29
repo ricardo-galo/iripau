@@ -1,5 +1,5 @@
 """
-Utilities for the requests module
+A wrapper of the requests module
 """
 
 import requests
@@ -79,3 +79,31 @@ class Session(requests.Session):
             echo
         )
         return response
+
+
+def delete(*args, **kwargs):
+    return Session().delete(*args, **kwargs)
+
+
+def get(*args, **kwargs):
+    return Session().get(*args, **kwargs)
+
+
+def head(*args, **kwargs):
+    return Session().head(*args, **kwargs)
+
+
+def options(*args, **kwargs):
+    return Session().options(*args, **kwargs)
+
+
+def patch(*args, **kwargs):
+    return Session().patch(*args, **kwargs)
+
+
+def post(*args, **kwargs):
+    return Session().post(*args, **kwargs)
+
+
+def put(*args, **kwargs):
+    return Session().put(*args, **kwargs)

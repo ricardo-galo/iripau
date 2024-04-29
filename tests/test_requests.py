@@ -3,8 +3,22 @@ Tests to validate iripau.requests module
 """
 
 import pytest
+import mock
 
 from iripau.requests import Session
+from iripau.requests import delete
+from iripau.requests import get
+from iripau.requests import head
+from iripau.requests import options
+from iripau.requests import patch
+from iripau.requests import post
+from iripau.requests import put
+
+URL = "https://some.url.com:8080/api"
+KWARGS = {
+    "kwarg1": "Value-1",
+    "kwarg2": "Value-2"
+}
 
 
 class TestRequests:
@@ -70,3 +84,45 @@ class TestRequests:
 
         assert response.request.headers["API-Key"] != "***"
         assert response.request.headers["Authorization"] != "***"
+
+    @mock.patch("iripau.requests.Session")
+    def test_delete(self, mock_session):
+        response = delete(URL, **KWARGS)
+        mock_session.return_value.delete.assert_called_once_with(URL, **KWARGS)
+        assert mock_session.return_value.delete.return_value == response
+
+    @mock.patch("iripau.requests.Session")
+    def test_get(self, mock_session):
+        response = get(URL, **KWARGS)
+        mock_session.return_value.get.assert_called_once_with(URL, **KWARGS)
+        assert mock_session.return_value.get.return_value == response
+
+    @mock.patch("iripau.requests.Session")
+    def test_head(self, mock_session):
+        response = head(URL, **KWARGS)
+        mock_session.return_value.head.assert_called_once_with(URL, **KWARGS)
+        assert mock_session.return_value.head.return_value == response
+
+    @mock.patch("iripau.requests.Session")
+    def test_options(self, mock_session):
+        response = options(URL, **KWARGS)
+        mock_session.return_value.options.assert_called_once_with(URL, **KWARGS)
+        assert mock_session.return_value.options.return_value == response
+
+    @mock.patch("iripau.requests.Session")
+    def test_patch(self, mock_session):
+        response = patch(URL, **KWARGS)
+        mock_session.return_value.patch.assert_called_once_with(URL, **KWARGS)
+        assert mock_session.return_value.patch.return_value == response
+
+    @mock.patch("iripau.requests.Session")
+    def test_post(self, mock_session):
+        response = post(URL, **KWARGS)
+        mock_session.return_value.post.assert_called_once_with(URL, **KWARGS)
+        assert mock_session.return_value.post.return_value == response
+
+    @mock.patch("iripau.requests.Session")
+    def test_put(self, mock_session):
+        response = put(URL, **KWARGS)
+        mock_session.return_value.put.assert_called_once_with(URL, **KWARGS)
+        assert mock_session.return_value.put.return_value == response
