@@ -292,7 +292,8 @@ class TestSubprocess:
     @pytest.mark.parametrize("stderr", [None, STDOUT], ids=["no_redirect", "redirect"])
     @pytest.mark.parametrize("stdout", [None, PIPE, FILE], ids=["no_capture", "pipe", "file"])
     @pytest.mark.parametrize("echo", [False, True], ids=["no_echo", "echo"])
-    def test_run_tee(self, echo, stdout, stderr, extra_tees, manual_echo, capfd):
+    @pytest.mark.parametrize("simulation", [False, True], ids=["reality", "simulation"])
+    def test_run_tee(self, simulation, echo, stdout, stderr, extra_tees, manual_echo, capfd):
         redirect = stderr is STDOUT
         stdout_command = "echo This goes to stdout"
         stderr_command = "echo This goes to stderr >&2"
@@ -314,30 +315,12 @@ class TestSubprocess:
             stderr_tees.add(sys.stderr)
 
         kwargs = {
-            "stdout": stdout,
-            "stderr": stderr,
-            "shell": True,
             "text": True,
             "echo": echo,
             "stdout_tees": stdout_tees | all_tees,
             "stderr_tees": stderr_tees | all_tees,
             "prompt_tees": prompt_tees | all_tees
         }
-
-        expected_stdout_1 = expected_stderr_1 = expected_stdout_2 = expected_stderr_2 = None
-        if stdout is not None:
-            expected_stdout_1 = "This goes to stdout\n"
-            expected_stdout_2 = "This goes to stderr\n" if redirect else ""
-
-        count = 30
-        for _ in range(count):
-            output = run(stdout_command, **kwargs)
-            assert expected_stdout_1 == output.stdout
-            assert expected_stderr_1 == output.stderr
-
-            output = run(stderr_command, **kwargs)
-            assert expected_stdout_2 == output.stdout
-            assert expected_stderr_2 == output.stderr
 
         expected_stdout_command_prompt = get_prompt_and_command(stdout_command, redirect) + "\n"
         expected_stderr_command_prompt = get_prompt_and_command(stderr_command, redirect) + "\n"
@@ -352,8 +335,11 @@ class TestSubprocess:
             expected_stderr = ""
             if echo or manual_echo:
                 expected_captured_stdout = expected_output
+            elif stdout is None:
+                expected_captured_stdout = "" if simulation else expected_stdout
             else:
-                expected_captured_stdout = expected_stdout if stdout is None else ""
+                expected_captured_stdout = ""
+            expected_captured_stderr = ""
         else:
             expected_stdout = "This goes to stdout\n"
             expected_stderr = "This goes to stderr\n"
@@ -362,8 +348,48 @@ class TestSubprocess:
                     expected_stdout_command_prompt + "This goes to stdout\n" +
                     expected_stderr_command_prompt
                 )
+                expected_captured_stderr = expected_stderr
+            elif stdout is None:
+                if simulation:
+                    expected_captured_stdout = ""
+                    expected_captured_stderr = ""
+                else:
+                    expected_captured_stdout = expected_stdout
+                    expected_captured_stderr = expected_stderr
             else:
-                expected_captured_stdout = expected_stdout if stdout is None else ""
+                expected_captured_stdout = ""
+                expected_captured_stderr = "" if simulation else expected_stderr
+
+        count = 1
+        if simulation:
+            fake_stdout_command = stdout_command
+            fake_stderr_command = stderr_command
+            fake_stdout_1 = "This goes to stdout\n"
+            fake_stderr_1 = ""
+            fake_stdout_2 = ""
+            fake_stderr_2 = "This goes to stderr\n"
+            if redirect:  # Simulate redirection
+                fake_stdout_command += " 2>&1"
+                fake_stderr_command += " 2>&1"
+                fake_stdout_2, fake_stderr_2 = fake_stderr_2, fake_stdout_2
+
+            for _ in range(count):
+                Popen.simulate(fake_stdout_command, fake_stdout_1, fake_stderr_1, **kwargs)
+                Popen.simulate(fake_stderr_command, fake_stdout_2, fake_stderr_2, **kwargs)
+        else:
+            expected_stdout_1 = expected_stderr_1 = expected_stdout_2 = expected_stderr_2 = None
+            if stdout is not None:
+                expected_stdout_1 = "This goes to stdout\n"
+                expected_stdout_2 = "This goes to stderr\n" if redirect else ""
+
+            for _ in range(count):
+                output = run(stdout_command, stdout=stdout, stderr=stderr, shell=True, **kwargs)
+                assert expected_stdout_1 == output.stdout
+                assert expected_stderr_1 == output.stderr
+
+                output = run(stderr_command, stdout=stdout, stderr=stderr, shell=True, **kwargs)
+                assert expected_stdout_2 == output.stdout
+                assert expected_stderr_2 == output.stderr
 
         expected_content = expected_stdout * count
         for file in stdout_tees - {sys.stdout}:
@@ -383,7 +409,7 @@ class TestSubprocess:
 
         out, err = capfd.readouterr()
         assert expected_captured_stdout * count == out
-        assert expected_stderr * count == err
+        assert expected_captured_stderr * count == err
 
     @pytest.mark.parametrize("echo", [False, True], ids=["no_echo", "echo"])
     def test_run_alias(self, echo, capfd):

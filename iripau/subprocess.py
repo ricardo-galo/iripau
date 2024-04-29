@@ -37,6 +37,7 @@ GLOBAL_PROMPTS = set()
 
 
 TeeStream = Union[io.IOBase, Callable[[], io.IOBase]]
+TeeStreams = Iterable[TeeStream]
 
 
 class PipeFile(SpooledTemporaryFile):
@@ -123,26 +124,20 @@ class Popen(subprocess.Popen):
 
     def __init__(
         self, args, *, cwd=None, env=None, encoding=None, errors=None, text=None,
-        stdout_tees: Iterable[TeeStream] = [], add_global_stdout_tees=True,
-        stderr_tees: Iterable[TeeStream] = [], add_global_stderr_tees=True,
-        prompt_tees: Iterable[TeeStream] = [], add_global_prompt_tees=True,
+        stdout_tees: TeeStreams = [], add_global_stdout_tees=True,
+        stderr_tees: TeeStreams = [], add_global_stderr_tees=True,
+        prompt_tees: TeeStreams = [], add_global_prompt_tees=True,
         echo=None, alias=None, comment=None, **kwargs
     ):
         stdout = kwargs.get("stdout")
         stderr = kwargs.get("stderr")
 
-        stdout_tees, stderr_tees, prompt_tees = self._get_tee_sets(
+        stdout_tees, stderr_tees, prompt_tees, err2out = self._get_tee_sets(
             stdout_tees, add_global_stdout_tees,
             stderr_tees, add_global_stderr_tees,
             prompt_tees, add_global_prompt_tees,
             echo, stdout, stderr
         )
-
-        if stderr is STDOUT:
-            err2out = True
-            stderr_tees = set()
-        else:
-            err2out = False
 
         stdout_fds = {tee.fileno() for tee in stdout_tees}
         stderr_fds = {tee.fileno() for tee in stderr_tees}
@@ -175,7 +170,7 @@ class Popen(subprocess.Popen):
         self.stderr_process = stderr_process
 
     @staticmethod
-    def _get_tee_files(tees: Iterable[TeeStream]):
+    def _get_tee_files(tees: TeeStreams):
         return set(callable(tee) and tee() or tee for tee in tees)
 
     @classmethod
@@ -217,11 +212,51 @@ class Popen(subprocess.Popen):
             if stderr_tees:
                 stderr_tees.add(sys.stderr)
 
+        if stderr is STDOUT:
+            err2out = True
+            stderr_tees = set()
+        else:
+            err2out = False
+
         return (
             cls._get_tee_files(stdout_tees),
             cls._get_tee_files(stderr_tees),
-            cls._get_tee_files(prompt_tees)
+            cls._get_tee_files(prompt_tees),
+            err2out
         )
+
+    @classmethod
+    def simulate(
+        cls, cmd, stdout, stderr, encoding=None, errors=None, text=None, comment=None,
+        stdout_tees: TeeStreams = [], add_global_stdout_tees=True,
+        stderr_tees: TeeStreams = [], add_global_stderr_tees=True,
+        prompt_tees: TeeStreams = [], add_global_prompt_tees=True,
+        echo=None
+    ):
+        stdout_tees, stderr_tees, prompt_tees, err2out = cls._get_tee_sets(
+            stdout_tees, add_global_stdout_tees,
+            stderr_tees, add_global_stderr_tees,
+            prompt_tees, add_global_prompt_tees,
+            echo, DEVNULL, DEVNULL
+        )
+
+        if not (stdout_tees or stderr_tees or prompt_tees):
+            return
+
+        stdout_fds = {tee.fileno() for tee in stdout_tees}
+        stderr_fds = {tee.fileno() for tee in stderr_tees}
+        prompt_fds = {tee.fileno() for tee in prompt_tees}
+
+        if prompt_fds:
+            stream_prompts(prompt_fds, cmd, None, None, err2out, comment)
+
+        if stdout_fds:
+            with Tee(PIPE, stdout_fds, DEVNULL, encoding, errors, text) as tee:
+                tee.communicate(stdout)
+
+        if stderr_fds:
+            with Tee(PIPE, stderr_fds, DEVNULL, encoding, errors, text) as tee:
+                tee.communicate(stderr)
 
     def get_pids(self):
         """ Return the pid for all of the processes in the tree """
@@ -382,7 +417,7 @@ if subprocess.run(
         stderr=DEVNULL
     ).stdout.splitlines()[-2:]
 
-    def stream_prompts(fds: Iterable[str], cmd, cwd=None, env=None, err2out=False, comment=None):
+    def stream_prompts(fds: Iterable[int], cmd, cwd=None, env=None, err2out=False, comment=None):
         """ Write shell prompt and command into file descriptors fds """
         fds = normalize_outerr_fds(fds)
         custom_env = {"CPS1": PS1, "CPS2": PS2}
@@ -392,7 +427,7 @@ if subprocess.run(
             "(\n"
             "    IFS= read -r \"line\"\n"
             "    echo \"${CPS1@P}${line}\"\n"
-            "    while IFS= read line; do\n"
+            "    while IFS= read -r \"line\"; do\n"
             "        echo \"${CPS2@P}${line}\"\n"
             "    done\n"
             ") | " + quote(Tee.get_cmd(fds - {1}))
@@ -400,7 +435,7 @@ if subprocess.run(
         subprocess.run(
             ["bash", "-c", script],
             text=True,
-            input=shellify(cmd, err2out, comment),
+            input=shellify(cmd, err2out, comment) + "\n",
             stdout=None if 1 in fds else DEVNULL,
             stderr=None if 2 in fds else DEVNULL,
             pass_fds=fds - {1, 2},
@@ -409,7 +444,7 @@ if subprocess.run(
             check=True
         )
 else:  # Use hard-coded PS1 and PS2 strings
-    def stream_prompts(fds: Iterable[str], cmd, cwd=None, env=None, err2out=False, comment=None):
+    def stream_prompts(fds: Iterable[int], cmd, cwd=None, env=None, err2out=False, comment=None):
         """ Write shell prompt and command into file descriptors fds """
         cmd = shellify(cmd, err2out, comment) + "\n"
         input = "$ " + "> ".join(cmd.splitlines(keepends=True))
@@ -449,7 +484,7 @@ def _output_context(kwargs, key, encoding, errors, text):
 
 def run(
     args, *, input=None, capture_output=False, timeout=None, check=False,
-    encoding=None, errors=None, text=None, sigterm_timeout=10, **kwargs
+    encoding=None, errors=None, text=None, sigterm_timeout=10, comment=None, **kwargs
 ):
     """ A subprocess.run that instantiates this module's Popen """
     if input is not None:
@@ -463,7 +498,7 @@ def run(
         kwargs["stdout"] = FILE
         kwargs["stderr"] = FILE
 
-    comment = f"timeout={timeout}" if timeout else None
+    comment = " ".join((comment or "", f"timeout={timeout}" if timeout else "")).strip()
     with (
         _output_context(kwargs, "stdout", encoding, errors, text) as stdout_file,
         _output_context(kwargs, "stderr", encoding, errors, text) as stderr_file,
