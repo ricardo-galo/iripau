@@ -132,12 +132,14 @@ class Popen(subprocess.Popen):
         stdout = kwargs.get("stdout")
         stderr = kwargs.get("stderr")
 
-        stdout_tees, stderr_tees, prompt_tees, err2out = self._get_tee_sets(
+        stdout_tees, stderr_tees, prompt_tees, new_tees, err2out = self._get_tee_sets(
             stdout_tees, add_global_stdout_tees,
             stderr_tees, add_global_stderr_tees,
             prompt_tees, add_global_prompt_tees,
             echo, stdout, stderr
         )
+
+        self.new_tees = new_tees
 
         stdout_fds = {tee.fileno() for tee in stdout_tees}
         stderr_fds = {tee.fileno() for tee in stderr_tees}
@@ -169,9 +171,28 @@ class Popen(subprocess.Popen):
         self.stdout_process = stdout_process
         self.stderr_process = stderr_process
 
+    def __del__(self):
+        self._close_tee_files(self.new_tees)
+        super().__del__()
+
     @staticmethod
-    def _get_tee_files(tees: TeeStreams):
-        return set(callable(tee) and tee() or tee for tee in tees)
+    def _get_tee_files(tees: TeeStreams, new_tee_files):
+        """ If any tee in tees is a function, store the return value in new_tee_files"""
+        tee_files = set()
+        for tee in tees:
+            if callable(tee):
+                tee = tee()
+                new_tee_files.append(tee)
+            tee_files.add(tee)
+        return tee_files
+
+    @staticmethod
+    def _close_tee_files(tees):
+        while tees:
+            try:
+                tees.pop().close()
+            except Exception:
+                pass
 
     @classmethod
     def _get_tee_sets(
@@ -218,11 +239,12 @@ class Popen(subprocess.Popen):
         else:
             err2out = False
 
+        new_tees = []
         return (
-            cls._get_tee_files(stdout_tees),
-            cls._get_tee_files(stderr_tees),
-            cls._get_tee_files(prompt_tees),
-            err2out
+            cls._get_tee_files(stdout_tees, new_tees),
+            cls._get_tee_files(stderr_tees, new_tees),
+            cls._get_tee_files(prompt_tees, new_tees),
+            new_tees, err2out
         )
 
     @classmethod
@@ -233,7 +255,7 @@ class Popen(subprocess.Popen):
         prompt_tees: TeeStreams = [], add_global_prompt_tees=True,
         echo=None
     ):
-        stdout_tees, stderr_tees, prompt_tees, err2out = cls._get_tee_sets(
+        stdout_tees, stderr_tees, prompt_tees, new_tees, err2out = cls._get_tee_sets(
             stdout_tees, add_global_stdout_tees,
             stderr_tees, add_global_stderr_tees,
             prompt_tees, add_global_prompt_tees,
@@ -243,20 +265,23 @@ class Popen(subprocess.Popen):
         if not (stdout_tees or stderr_tees or prompt_tees):
             return
 
-        stdout_fds = {tee.fileno() for tee in stdout_tees}
-        stderr_fds = {tee.fileno() for tee in stderr_tees}
-        prompt_fds = {tee.fileno() for tee in prompt_tees}
+        try:
+            stdout_fds = {tee.fileno() for tee in stdout_tees}
+            stderr_fds = {tee.fileno() for tee in stderr_tees}
+            prompt_fds = {tee.fileno() for tee in prompt_tees}
 
-        if prompt_fds:
-            stream_prompts(prompt_fds, cmd, None, None, err2out, comment)
+            if prompt_fds:
+                stream_prompts(prompt_fds, cmd, None, None, err2out, comment)
 
-        if stdout_fds:
-            with Tee(PIPE, stdout_fds, DEVNULL, encoding, errors, text) as tee:
-                tee.communicate(stdout)
+            if stdout_fds:
+                with Tee(PIPE, stdout_fds, DEVNULL, encoding, errors, text) as tee:
+                    tee.communicate(stdout)
 
-        if stderr_fds:
-            with Tee(PIPE, stderr_fds, DEVNULL, encoding, errors, text) as tee:
-                tee.communicate(stderr)
+            if stderr_fds:
+                with Tee(PIPE, stderr_fds, DEVNULL, encoding, errors, text) as tee:
+                    tee.communicate(stderr)
+        finally:
+            cls._close_tee_files(new_tees)
 
     def get_pids(self):
         """ Return the pid for all of the processes in the tree """
@@ -335,6 +360,7 @@ class Popen(subprocess.Popen):
         if self.stderr_process is not self:
             stderr = self.stderr_process.communicate(timeout=timeout)
             timeout = None
+        self._close_tee_files(self.new_tees)
         return stdout, stderr, timeout
 
     def _communicate_all(self, timeout):
