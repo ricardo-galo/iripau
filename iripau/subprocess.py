@@ -459,17 +459,17 @@ def set_global_echo(value):
 
 def set_global_stdout_files(*files: TeeStream):
     global GLOBAL_STDOUTS
-    GLOBAL_STDOUTS = set(*files)
+    GLOBAL_STDOUTS = set(files)
 
 
 def set_global_stderr_files(*files: TeeStream):
     global GLOBAL_STDERRS
-    GLOBAL_STDERRS = set(*files)
+    GLOBAL_STDERRS = set(files)
 
 
 def set_global_prompt_files(*files: TeeStream):
     global GLOBAL_PROMPTS
-    GLOBAL_PROMPTS = set(*files)
+    GLOBAL_PROMPTS = set(files)
 
 
 def _output_context(kwargs, key, encoding, errors, text):
