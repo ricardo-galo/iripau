@@ -21,6 +21,10 @@ KWARGS = {
 }
 
 
+def hide_content(response):
+    return b"***"
+
+
 class TestRequests:
 
     @pytest.mark.parametrize("hide_output", [False, True], ids=["show_output", "hide_output"])
@@ -44,7 +48,7 @@ class TestRequests:
                 "name": "The Name",
                 "status": "Old$"
             },
-            hide_output=hide_output,
+            output_processor=hide_output and hide_content or None,
             headers_to_hide=["API-Key", "Authorization"],
             headers_to_omit=["User-Agent", "Accept-Encoding", "Connection"],
             echo=True

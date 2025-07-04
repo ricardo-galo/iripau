@@ -9,9 +9,13 @@ from curlify import to_curl
 from iripau.subprocess import TeeStreams, Popen
 
 
+def process_output(response):
+    return response.content
+
+
 def curlify(
     response, compressed=False, verify=True, pretty=False,
-    hide_output=False, headers_to_hide=[], headers_to_omit=[],
+    output_processor=None, headers_to_hide=[], headers_to_omit=[],
     stdout_tees: TeeStreams = [], add_global_stdout_tees=True,
     stderr_tees: TeeStreams = [], add_global_stderr_tees=True,
     prompt_tees: TeeStreams = [], add_global_prompt_tees=True,
@@ -33,7 +37,10 @@ def curlify(
             if header in request.headers:
                 request.headers[header] = "***"
 
-    stdout = hide_output and b"***" or response.content
+    if output_processor is None:
+        output_processor = process_output
+
+    stdout = output_processor(response)
     if not stdout.endswith(b"\n"):
         stdout += b"\n"
     stderr = ""
@@ -58,7 +65,7 @@ class Session(requests.Session):
 
     def request(
         self, *args, compressed=False, pretty=False,
-        hide_output=False, headers_to_hide=[], headers_to_omit=[],
+        output_processor=None, headers_to_hide=[], headers_to_omit=[],
         stdout_tees: TeeStreams = [], add_global_stdout_tees=True,
         stderr_tees: TeeStreams = [], add_global_stderr_tees=True,
         prompt_tees: TeeStreams = [], add_global_prompt_tees=True,
@@ -72,7 +79,7 @@ class Session(requests.Session):
 
         curlify(
             response, compressed, verify, pretty,
-            hide_output, headers_to_hide, headers_to_omit,
+            output_processor, headers_to_hide, headers_to_omit,
             stdout_tees, add_global_stdout_tees,
             stderr_tees, add_global_stderr_tees,
             prompt_tees, add_global_prompt_tees,
