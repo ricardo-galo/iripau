@@ -25,7 +25,7 @@ from subprocess import SubprocessError  # noqa: F401
 from subprocess import CalledProcessError
 
 from time import time
-from typing import Union, Iterable, Callable
+from typing import Iterable, Callable
 from tempfile import SpooledTemporaryFile
 from contextlib import contextmanager, nullcontext
 
@@ -36,7 +36,7 @@ GLOBAL_STDERRS = set()
 GLOBAL_PROMPTS = set()
 
 
-TeeStream = Union[io.IOBase, Callable[[], io.IOBase]]
+TeeStream = io.IOBase | Callable[[], io.IOBase]
 TeeStreams = Iterable[TeeStream]
 
 
@@ -414,7 +414,7 @@ def quote(cmd: Iterable[str]):
     return " ".join(map(shlex.quote, cmd))
 
 
-def shellify(cmd: Union[str, Iterable[str]], err2out=False, comment=None):
+def shellify(cmd: str | Iterable[str], err2out=False, comment=None):
     """ Quote command if needed and optionally add extra strings to express
         stderr being redirected to stdout and a comment
     """

@@ -13,16 +13,13 @@ from iripau.requests import options
 from iripau.requests import patch
 from iripau.requests import post
 from iripau.requests import put
+from iripau.requests import hide_content
 
 URL = "https://some.url.com:8080/api"
 KWARGS = {
     "kwarg1": "Value-1",
     "kwarg2": "Value-2"
 }
-
-
-def hide_content(response):
-    return b"***"
 
 
 class TestRequests:

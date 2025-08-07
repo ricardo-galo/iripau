@@ -35,9 +35,15 @@ class TestFileLock:
         assert not lock_1.acquired
         assert not lock_2.acquired
 
+        assert not lock_1.locked()
+        assert not lock_2.locked()
+
         lock_1.acquire()
         assert lock_1.acquired
         assert not lock_2.acquired
+
+        assert lock_1.locked()
+        assert not lock_2.locked()
 
         with pytest.raises(TimeoutError):
             lock_2.acquire(timeout=2)
@@ -45,17 +51,29 @@ class TestFileLock:
         assert lock_1.acquired
         assert not lock_2.acquired
 
+        assert lock_1.locked()
+        assert not lock_2.locked()
+
         lock_1.release()
         assert not lock_1.acquired
         assert not lock_2.acquired
+
+        assert not lock_1.locked()
+        assert not lock_2.locked()
 
         lock_2.acquire()
         assert not lock_1.acquired
         assert lock_2.acquired
 
+        assert not lock_1.locked()
+        assert lock_2.locked()
+
         lock_2.release()
         assert not lock_1.acquired
         assert not lock_2.acquired
+
+        assert not lock_1.locked()
+        assert not lock_2.locked()
 
     def test_context(self):
         with FileLock(self.file_name):
