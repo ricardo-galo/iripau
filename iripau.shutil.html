@@ -65,9 +65,13 @@
     <ul>
 <li><a class="reference internal" href="#">iripau.shutil module</a><ul>
 <li><a class="reference internal" href="#iripau.shutil.FileLock"><code class="docutils literal notranslate"><span class="pre">FileLock</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.lock_path"><code class="docutils literal notranslate"><span class="pre">FileLock.lock_path</span></code></a></li>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.timeout"><code class="docutils literal notranslate"><span class="pre">FileLock.timeout</span></code></a></li>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.acquired"><code class="docutils literal notranslate"><span class="pre">FileLock.acquired</span></code></a></li>
 <li><a class="reference internal" href="#iripau.shutil.FileLock.poll_time"><code class="docutils literal notranslate"><span class="pre">FileLock.poll_time</span></code></a></li>
 <li><a class="reference internal" href="#iripau.shutil.FileLock.acquire"><code class="docutils literal notranslate"><span class="pre">FileLock.acquire()</span></code></a></li>
 <li><a class="reference internal" href="#iripau.shutil.FileLock.release"><code class="docutils literal notranslate"><span class="pre">FileLock.release()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.locked"><code class="docutils literal notranslate"><span class="pre">FileLock.locked()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#iripau.shutil.create_file"><code class="docutils literal notranslate"><span class="pre">create_file()</span></code></a></li>
@@ -173,62 +177,224 @@
             
   <section id="module-iripau.shutil">
 <span id="iripau-shutil-module"></span><h1>iripau.shutil module<a class="headerlink" href="#module-iripau.shutil" title="Link to this heading">¶</a></h1>
-<p>Shell utilities</p>
+<p>Generic and stand-alone shell utilities.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="iripau.shutil.FileLock">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">FileLock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#FileLock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.FileLock" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides a file‐based lock to ensure that only one thread or process
+can access a shared resource at a time.</p>
+<p>The lock is implemented by creating a lock file at the specified path.
+Acquisition blocks until the lock file can be exclusively created without
+contention. Supports optional timeout and context‐manager protocol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Filesystem path to the lock file.</p></li>
+<li><p><strong>timeout</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Maximum time in seconds to wait for the lock.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="iripau.shutil.FileLock.lock_path">
+<span class="sig-name descname"><span class="pre">lock_path</span></span><a class="headerlink" href="#iripau.shutil.FileLock.lock_path" title="Link to this definition">¶</a></dt>
+<dd><p>Filesystem path to the lock file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="iripau.shutil.FileLock.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><a class="headerlink" href="#iripau.shutil.FileLock.timeout" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum time in seconds to wait for the lock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="iripau.shutil.FileLock.acquired">
+<span class="sig-name descname"><span class="pre">acquired</span></span><a class="headerlink" href="#iripau.shutil.FileLock.acquired" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the file lock is acquired by this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boot</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="iripau.shutil.FileLock.poll_time">
 <span class="sig-name descname"><span class="pre">poll_time</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.05</span></em><a class="headerlink" href="#iripau.shutil.FileLock.poll_time" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Time to wait between file creation tries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="iripau.shutil.FileLock.acquire">
 <span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#FileLock.acquire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.FileLock.acquire" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Block until the file lock is exclusively created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Override the maximum time in seconds to wait for the lock.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TimeoutError</strong> – If timeout reached.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="iripau.shutil.FileLock.release">
 <span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#FileLock.release"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.FileLock.release" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Release a lock. If locked, remove the file previously created.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.shutil.FileLock.locked">
+<span class="sig-name descname"><span class="pre">locked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#FileLock.locked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.FileLock.locked" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the file lock is acquired.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iripau.shutil.create_file">
 <span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">create_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#create_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.create_file" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create a file with the specified <code class="docutils literal notranslate"><span class="pre">content</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the file to be created or overrode.</p></li>
+<li><p><strong>content</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The file will be created with this data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iripau.shutil.read_file">
 <span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">read_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.read_file" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the content of a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the file to read.</p></li>
+<li><p><strong>binary</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Whether the file content is binary.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The content of the file.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iripau.shutil.remove_file">
 <span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">remove_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#remove_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.remove_file" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Delete a file.
+If the file does not exist, do nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the file to delete.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iripau.shutil.remove_tree">
 <span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">remove_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#remove_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.remove_tree" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Delete a file or a directory.
+If <code class="docutils literal notranslate"><span class="pre">root</span></code> does not exist, do nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>root</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the file or directory to delete.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iripau.shutil.file_created">
 <span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">file_created</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#file_created"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.file_created" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>A context-manager that creates a file with the desired content at enter
+and delete it at exit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the file to be created or overrode.</p></li>
+<li><p><strong>content</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The file will be created with this data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em> – The <code class="docutils literal notranslate"><span class="pre">file_name</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Create a file, send it to a remote host and delete it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+
+<span class="k">with</span> <span class="n">file_created</span><span class="p">(</span><span class="s2">&quot;/tmp/example.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;Some content&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_name</span><span class="p">:</span>
+    <span class="c1"># scp /tmp/example.txt host:/tmp/</span>
+    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;scp&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;host:/tmp/&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iripau.shutil.wait_for_file">
 <span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">wait_for_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_obj</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#wait_for_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.wait_for_file" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Block until there is new data to be read in <code class="docutils literal notranslate"><span class="pre">file_obj</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_obj</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code></span>) – A file opened to read.</p></li>
+<li><p><strong>*args</strong> – Passed to <a class="reference internal" href="iripau.functools.html#iripau.functools.wait_for" title="iripau.functools.wait_for"><code class="xref py py-func docutils literal notranslate"><span class="pre">functools.wait_for()</span></code></a>.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to <a class="reference internal" href="iripau.functools.html#iripau.functools.wait_for" title="iripau.functools.wait_for"><code class="xref py py-func docutils literal notranslate"><span class="pre">functools.wait_for()</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iripau.shutil.rotate">
 <span class="sig-prename descclassname"><span class="pre">iripau.shutil.</span></span><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/shutil.html#rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.shutil.rotate" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Rotate file or directory backups by renaming existing entries with
+incrementing suffixes. File extensions are preserved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Path to the file or directory to rotate.</p></li>
+<li><p><strong>seq</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Initial sequence index, normally left at 0.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Rotate a log file and its backups so that a new <code class="docutils literal notranslate"><span class="pre">log.txt</span></code> can be
+created without overiding the previous log files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># To cause the following effect:</span>
+<span class="c1"># | Original files | Renamed files |</span>
+<span class="c1"># | -------------- | ------------- |</span>
+<span class="c1"># | log.txt        | log.1.txt     |</span>
+<span class="c1"># | log.1.txt      | log.2.txt     |</span>
+<span class="c1"># | log.2.txt      | log.3.txt     |</span>
+
+<span class="n">rotate</span><span class="p">(</span><span class="s2">&quot;log.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </section>
 
@@ -244,9 +410,13 @@
     <ul>
 <li><a class="reference internal" href="#">iripau.shutil module</a><ul>
 <li><a class="reference internal" href="#iripau.shutil.FileLock"><code class="docutils literal notranslate"><span class="pre">FileLock</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.lock_path"><code class="docutils literal notranslate"><span class="pre">FileLock.lock_path</span></code></a></li>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.timeout"><code class="docutils literal notranslate"><span class="pre">FileLock.timeout</span></code></a></li>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.acquired"><code class="docutils literal notranslate"><span class="pre">FileLock.acquired</span></code></a></li>
 <li><a class="reference internal" href="#iripau.shutil.FileLock.poll_time"><code class="docutils literal notranslate"><span class="pre">FileLock.poll_time</span></code></a></li>
 <li><a class="reference internal" href="#iripau.shutil.FileLock.acquire"><code class="docutils literal notranslate"><span class="pre">FileLock.acquire()</span></code></a></li>
 <li><a class="reference internal" href="#iripau.shutil.FileLock.release"><code class="docutils literal notranslate"><span class="pre">FileLock.release()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.shutil.FileLock.locked"><code class="docutils literal notranslate"><span class="pre">FileLock.locked()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#iripau.shutil.create_file"><code class="docutils literal notranslate"><span class="pre">create_file()</span></code></a></li>

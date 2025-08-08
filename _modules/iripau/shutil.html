@@ -124,9 +124,10 @@
             
   <h1>Source code for iripau.shutil</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Shell utilities</span>
+<span class="sd">Generic and stand-alone shell utilities.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">errno</span>
 <span class="kn">import</span> <span class="nn">select</span>
@@ -139,9 +140,27 @@
 <div class="viewcode-block" id="FileLock">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.FileLock">[docs]</a>
 <span class="k">class</span> <span class="nc">FileLock</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Provides a file‐based lock to ensure that only one thread or process</span>
+<span class="sd">        can access a shared resource at a time.</span>
+
+<span class="sd">        The lock is implemented by creating a lock file at the specified path.</span>
+<span class="sd">        Acquisition blocks until the lock file can be exclusively created without</span>
+<span class="sd">        contention. Supports optional timeout and context‐manager protocol.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_name: Filesystem path to the lock file.</span>
+<span class="sd">            timeout: Maximum time in seconds to wait for the lock.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            lock_path (str): Filesystem path to the lock file.</span>
+<span class="sd">            timeout (Optional[float]): Maximum time in seconds to wait for the lock.</span>
+<span class="sd">            acquired (boot): Whether the file lock is acquired by this object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: float: Time to wait between file creation tries.</span>
     <span class="n">poll_time</span> <span class="o">=</span> <span class="mf">0.05</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">file_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acquired</span> <span class="o">=</span> <span class="kc">False</span>
@@ -172,7 +191,16 @@
 
 <div class="viewcode-block" id="FileLock.acquire">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.FileLock.acquire">[docs]</a>
-    <span class="k">def</span> <span class="nf">acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">acquire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Block until the file lock is exclusively created.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                timeout: Override the maximum time in seconds to wait for the lock.</span>
+
+<span class="sd">            Raises:</span>
+<span class="sd">                TimeoutError: If timeout reached.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">acquired</span><span class="p">:</span>
             <span class="n">wait_for</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_lock_file_created</span><span class="p">,</span>
@@ -185,17 +213,31 @@
 <div class="viewcode-block" id="FileLock.release">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.FileLock.release">[docs]</a>
     <span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Release a lock. If locked, remove the file previously created. &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">acquired</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fd</span><span class="p">)</span>
             <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">acquired</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="FileLock.locked">
+<a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.FileLock.locked">[docs]</a>
+    <span class="k">def</span> <span class="nf">locked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Whether the file lock is acquired. &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">acquired</span></div>
 </div>
 
 
 
 <div class="viewcode-block" id="create_file">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.create_file">[docs]</a>
-<span class="k">def</span> <span class="nf">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a file with the specified ``content``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_name: Path to the file to be created or overrode.</span>
+<span class="sd">            content: The file will be created with this data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;wb&quot;</span> <span class="k">if</span> <span class="nb">bytes</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;w&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span></div>
@@ -204,7 +246,16 @@
 
 <div class="viewcode-block" id="read_file">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.read_file">[docs]</a>
-<span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">binary</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return the content of a file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_name: Path to the file to read.</span>
+<span class="sd">            binary: Whether the file content is binary.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The content of the file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span> <span class="k">if</span> <span class="n">binary</span> <span class="k">else</span> <span class="s2">&quot;r&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div>
@@ -213,7 +264,13 @@
 
 <div class="viewcode-block" id="remove_file">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.remove_file">[docs]</a>
-<span class="k">def</span> <span class="nf">remove_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">remove_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Delete a file.</span>
+<span class="sd">        If the file does not exist, do nothing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_name: Path to the file to delete.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">suppress</span><span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span></div>
 
@@ -221,7 +278,13 @@
 
 <div class="viewcode-block" id="remove_tree">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.remove_tree">[docs]</a>
-<span class="k">def</span> <span class="nf">remove_tree</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">remove_tree</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Delete a file or a directory.</span>
+<span class="sd">        If ``root`` does not exist, do nothing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            root: Path to the file or directory to delete.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">suppress</span><span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
             <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
@@ -233,7 +296,27 @@
 <div class="viewcode-block" id="file_created">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.file_created">[docs]</a>
 <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
-<span class="k">def</span> <span class="nf">file_created</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">file_created</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A context-manager that creates a file with the desired content at enter</span>
+<span class="sd">        and delete it at exit.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_name: Path to the file to be created or overrode.</span>
+<span class="sd">            content: The file will be created with this data.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            str: The ``file_name``.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Create a file, send it to a remote host and delete it::</span>
+
+<span class="sd">                import subprocess</span>
+
+
+<span class="sd">                with file_created(&quot;/tmp/example.txt&quot;, &quot;Some content&quot;) as file_name:</span>
+<span class="sd">                    # scp /tmp/example.txt host:/tmp/</span>
+<span class="sd">                    subprocess.run([&quot;scp&quot;, file_name, &quot;host:/tmp/&quot;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">create_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">yield</span> <span class="n">file_name</span>
@@ -244,7 +327,14 @@
 
 <div class="viewcode-block" id="wait_for_file">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.wait_for_file">[docs]</a>
-<span class="k">def</span> <span class="nf">wait_for_file</span><span class="p">(</span><span class="n">file_obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">wait_for_file</span><span class="p">(</span><span class="n">file_obj</span><span class="p">:</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Block until there is new data to be read in ``file_obj``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            file_obj: A file opened to read.</span>
+<span class="sd">            *args: Passed to :func:`.functools.wait_for`.</span>
+<span class="sd">            **kwargs: Passed to :func:`.functools.wait_for`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">poll_obj</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
     <span class="n">poll_obj</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">file_obj</span><span class="p">,</span> <span class="n">select</span><span class="o">.</span><span class="n">POLLIN</span><span class="p">)</span>
     <span class="n">wait_for</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">poll_obj</span><span class="o">.</span><span class="n">poll</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
@@ -261,7 +351,27 @@
 
 <div class="viewcode-block" id="rotate">
 <a class="viewcode-back" href="../../iripau.shutil.html#iripau.shutil.rotate">[docs]</a>
-<span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">seq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Rotate file or directory backups by renaming existing entries with</span>
+<span class="sd">        incrementing suffixes. File extensions are preserved.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            path: Path to the file or directory to rotate.</span>
+<span class="sd">            seq: Initial sequence index, normally left at 0.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Rotate a log file and its backups so that a new ``log.txt`` can be</span>
+<span class="sd">            created without overiding the previous log files::</span>
+
+<span class="sd">                # To cause the following effect:</span>
+<span class="sd">                # | Original files | Renamed files |</span>
+<span class="sd">                # | -------------- | ------------- |</span>
+<span class="sd">                # | log.txt        | log.1.txt     |</span>
+<span class="sd">                # | log.1.txt      | log.2.txt     |</span>
+<span class="sd">                # | log.2.txt      | log.3.txt     |</span>
+
+<span class="sd">                rotate(&quot;log.txt&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_rotate</span><span class="p">(</span><span class="o">*</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">))</span></div>
 
 </pre></div>

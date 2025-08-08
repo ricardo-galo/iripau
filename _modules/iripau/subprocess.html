@@ -150,7 +150,7 @@
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">CalledProcessError</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Callable</span>
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">SpooledTemporaryFile</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span><span class="p">,</span> <span class="n">nullcontext</span>
 
@@ -161,7 +161,7 @@
 <span class="n">GLOBAL_PROMPTS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 
-<span class="n">TeeStream</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">]]</span>
+<span class="n">TeeStream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">]</span>
 <span class="n">TeeStreams</span> <span class="o">=</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">TeeStream</span><span class="p">]</span>
 
 
@@ -592,7 +592,7 @@
 
 <div class="viewcode-block" id="shellify">
 <a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.shellify">[docs]</a>
-<span class="k">def</span> <span class="nf">shellify</span><span class="p">(</span><span class="n">cmd</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">err2out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">shellify</span><span class="p">(</span><span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">err2out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Quote command if needed and optionally add extra strings to express</span>
 <span class="sd">        stderr being redirected to stdout and a comment</span>
 <span class="sd">    &quot;&quot;&quot;</span>

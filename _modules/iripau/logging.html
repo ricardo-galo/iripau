@@ -325,7 +325,7 @@
 <div class="viewcode-block" id="LoggerFile.log">
 <a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.LoggerFile.log">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">read_file</span><span class="p">:</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">read_file</span><span class="p">:</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Read the whole ``read_file`` line by line and log them using the</span>
 <span class="sd">            ``logger`` object at the specified logging ``level``.</span>
 
@@ -344,7 +344,7 @@
 <div class="viewcode-block" id="LoggerFile.patch">
 <a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.LoggerFile.patch">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">method_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">method_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Modify ``instance.method_name()`` so that ``callback()`` gets called</span>
 <span class="sd">            when ``method_name()`` is called. ``callback()`` will be called</span>
 <span class="sd">            first and then the original ``instance.method_name()``.</span>

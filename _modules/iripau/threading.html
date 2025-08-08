@@ -209,7 +209,7 @@
 
 <div class="viewcode-block" id="AsyncResult.run">
 <a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult.run">[docs]</a>
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Run the target ``function``, store its return value or exception</span>
 <span class="sd">            information if any.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -246,7 +246,7 @@
 
 <div class="viewcode-block" id="AsyncResult.wait">
 <a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult.wait">[docs]</a>
-    <span class="k">def</span> <span class="nf">wait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">wait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Implementation of :meth:`multiprocessing.pool.AsyncResult.wait`.</span>
 
 <span class="sd">            Args:</span>
@@ -351,7 +351,7 @@
 
 <div class="viewcode-block" id="MultiDequeuer.put">
 <a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.MultiDequeuer.put">[docs]</a>
-    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Add an element to the queue. This method is meant to be called by</span>
 <span class="sd">            the workers. It blocks until the element is consumed.</span>
 
