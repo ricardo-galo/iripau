@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>iripau.logging module &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="_static/documentation_options.js?v=937269b5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="iripau.random module" href="iripau.random.html" />
+    <link rel="prev" title="iripau.functools module" href="iripau.functools.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.logging module</a><ul>
+<li><a class="reference internal" href="#iripau.logging.LoggerFile"><code class="docutils literal notranslate"><span class="pre">LoggerFile</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.logging.LoggerFile.log"><code class="docutils literal notranslate"><span class="pre">LoggerFile.log()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.logging.LoggerFile.patch"><code class="docutils literal notranslate"><span class="pre">LoggerFile.patch()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.logging.SimpleThreadNameFormatter"><code class="docutils literal notranslate"><span class="pre">SimpleThreadNameFormatter</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.logging.SimpleThreadNameFormatter.format"><code class="docutils literal notranslate"><span class="pre">SimpleThreadNameFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.logging.group_log_lines"><code class="docutils literal notranslate"><span class="pre">group_log_lines()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.functools.html"
+                          title="previous chapter">iripau.functools module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.random.html"
+                          title="next chapter">iripau.random module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.logging.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.random.html" title="iripau.random module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="iripau.functools.html" title="iripau.functools module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" accesskey="U">iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.logging module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-iripau.logging">
+<span id="iripau-logging-module"></span><h1>iripau.logging module<a class="headerlink" href="#module-iripau.logging" title="Link to this heading">¶</a></h1>
+<p>Generic and stand-alone logging utilities that can also be used in conjunction
+with <a class="reference internal" href="iripau.subprocess.html#module-iripau.subprocess" title="iripau.subprocess"><code class="xref py py-mod docutils literal notranslate"><span class="pre">subprocess</span></code></a> to log the subprocesses’ <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> in
+real-time, regardless of whether the subprocess raised and exception using
+<code class="docutils literal notranslate"><span class="pre">check=True</span></code>, while maintaining the ability of capturing the subprocess’
+output.</p>
+<p class="rubric">Example</p>
+<p>Setup a logger for <code class="docutils literal notranslate"><span class="pre">stdout</span></code>, other one for <code class="docutils literal notranslate"><span class="pre">stderr</span></code> and another one to
+log outside of the subprocesses. All of the loggers will write to the same
+file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+
+<span class="n">output_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">SpooledTemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w+t&quot;</span><span class="p">)</span>
+
+<span class="n">normal_log_format</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%(asctime).19s</span><span class="s2"> - </span><span class="si">%(threadName)12.12s</span><span class="s2">: </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+<span class="n">output_log_format</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%(asctime).19s</span><span class="s2"> - </span><span class="si">%(threadName)12.12s</span><span class="s2">: [</span><span class="si">%(name)s</span><span class="s2">] </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+
+<span class="c1"># Setup normal log handler</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">SimpleThreadNameFormatter</span><span class="p">(</span><span class="n">normal_log_format</span><span class="p">)</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+
+<span class="c1"># Setup normal logger</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="c1"># Setup stdout and stderr log handler</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">SimpleThreadNameFormatter</span><span class="p">(</span><span class="n">output_log_format</span><span class="p">)</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+
+<span class="c1"># Setup stdout logger</span>
+<span class="n">stdout_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">)</span>
+<span class="n">stdout_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">stdout_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="c1"># Setup stderr logger</span>
+<span class="n">stderr_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;stderr&quot;</span><span class="p">)</span>
+<span class="n">stderr_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">stderr_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<p>To use the loggers from the example above in a subprocess using
+<a class="reference internal" href="iripau.subprocess.html#module-iripau.subprocess" title="iripau.subprocess"><code class="xref py py-mod docutils literal notranslate"><span class="pre">subprocess</span></code></a>, the <a class="reference internal" href="#iripau.logging.LoggerFile" title="iripau.logging.LoggerFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggerFile</span></code></a> objects can be created before
+spawning the processes, and closed at the end:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">iripau.subprocess</span> <span class="kn">import</span> <span class="n">run</span>
+
+
+<span class="c1"># Make sure to close the LoggerFiles</span>
+<span class="k">with</span> <span class="p">(</span>
+    <span class="n">LoggerFile</span><span class="p">(</span><span class="n">stdout_logger</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span> <span class="k">as</span> <span class="n">stdout_logger_file</span><span class="p">,</span>
+    <span class="n">LoggerFile</span><span class="p">(</span><span class="n">stderr_logger</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span> <span class="k">as</span> <span class="n">stderr_logger_file</span>
+<span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;kubectl&quot;</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;pods&quot;</span><span class="p">],</span>
+        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">prompt_tees</span><span class="o">=</span><span class="p">[</span><span class="n">stdout_logger_file</span><span class="p">],</span>
+        <span class="n">stdout_tees</span><span class="o">=</span><span class="p">[</span><span class="n">stdout_logger_file</span><span class="p">],</span>
+        <span class="n">stderr_tees</span><span class="o">=</span><span class="p">[</span><span class="n">stderr_logger_file</span><span class="p">]</span>
+    <span class="p">)</span>
+
+<span class="c1"># Output captured</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>
+
+<span class="c1"># Output logged</span>
+<span class="n">output_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Closing the <a class="reference internal" href="#iripau.logging.LoggerFile" title="iripau.logging.LoggerFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggerFile</span></code></a> objects do not affect the <code class="docutils literal notranslate"><span class="pre">output_file</span></code>
+created in the first example.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Passing a callable as a tee file in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a> causes the
+file to be created (the result of calling it) before spawning the process,
+and closed when it finishes.</p>
+</div>
+<p class="rubric">Example</p>
+<p>To log the command, <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> of all of the proceeses spawned
+using <a class="reference internal" href="iripau.subprocess.html#module-iripau.subprocess" title="iripau.subprocess"><code class="xref py py-mod docutils literal notranslate"><span class="pre">subprocess</span></code></a>, a global configuration can be done:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">from</span> <span class="nn">iripau.subprocess</span> <span class="kn">import</span> <span class="n">set_global_prompt_files</span>
+<span class="kn">from</span> <span class="nn">iripau.subprocess</span> <span class="kn">import</span> <span class="n">set_global_stdout_files</span>
+<span class="kn">from</span> <span class="nn">iripau.subprocess</span> <span class="kn">import</span> <span class="n">set_global_stderr_files</span>
+
+
+<span class="c1"># Create callables that receive no arguments and return a LoggerFile</span>
+<span class="n">stdout_logger_file</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">LoggerFle</span><span class="p">,</span> <span class="n">stdout_logger</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">stderr_logger_file</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">LoggerFle</span><span class="p">,</span> <span class="n">stderr_logger</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="n">set_global_prompt_files</span><span class="p">(</span><span class="n">stdout_logger_file</span><span class="p">)</span>
+<span class="n">set_global_stdout_files</span><span class="p">(</span><span class="n">stdout_logger_file</span><span class="p">)</span>
+<span class="n">set_global_stderr_files</span><span class="p">(</span><span class="n">stderr_logger_file</span><span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;kubectl&quot;</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;pods&quot;</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Output captured</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>
+
+<span class="c1"># Outpu logged</span>
+<span class="n">output_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Disable the use of globally configured loggers by setting to <code class="docutils literal notranslate"><span class="pre">False</span></code>
+<code class="docutils literal notranslate"><span class="pre">add_global_stdout_tees</span></code>, <code class="docutils literal notranslate"><span class="pre">add_global_stderr_tees</span></code> and/or
+<code class="docutils literal notranslate"><span class="pre">add_global_prompt_tees</span></code> in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.run" title="iripau.subprocess.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">subprocess.run()</span></code></a> or
+<a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;kubectl&quot;</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;pods&quot;</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">add_global_stdout_tees</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_global_stderr_tees</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">add_global_prompt_tees</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.logging.LoggerFile">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.logging.</span></span><span class="sig-name descname"><span class="pre">LoggerFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/logging.html#LoggerFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.logging.LoggerFile" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>File-like object that logs every line written to it.
+A thread is created to asynchronously consume the file.
+The thread is joined when the file is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> – The object used to perform the logging.</p></li>
+<li><p><strong>level</strong> – The level used to perform the logging.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Get a logger object and use it to create a <a class="reference internal" href="#iripau.logging.LoggerFile" title="iripau.logging.LoggerFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggerFile</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">logger_file</span> <span class="o">=</span> <span class="n">LoggerFle</span><span class="p">(</span><span class="n">logger</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="c1"># Equivalent to logger.debug(&quot;A line in a file&quot;)</span>
+<span class="n">logger_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;A line in a file</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<p>A <a class="reference internal" href="#iripau.logging.LoggerFile" title="iripau.logging.LoggerFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggerFile</span></code></a> can be used in a subprocess:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">run</span>
+
+<span class="c1"># The stdout will be logged in real-time</span>
+<span class="n">run</span><span class="p">([</span><span class="s2">&quot;apt&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;python3&quot;</span><span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">logger_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.logging.LoggerFile.log">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/logging.html#LoggerFile.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.logging.LoggerFile.log" title="Link to this definition">¶</a></dt>
+<dd><p>Read the whole <code class="docutils literal notranslate"><span class="pre">read_file</span></code> line by line and log them using the
+<code class="docutils literal notranslate"><span class="pre">logger</span></code> object at the specified logging <code class="docutils literal notranslate"><span class="pre">level</span></code>.</p>
+<p>This is what will be running in a thread until <code class="docutils literal notranslate"><span class="pre">EOF</span></code> is reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>read_file</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code></span>) – A file opened in read mode.</p></li>
+<li><p><strong>logger</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></span>) – The object used to perform the logging.</p></li>
+<li><p><strong>level</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – The level used to perform the logging.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.logging.LoggerFile.patch">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/logging.html#LoggerFile.patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.logging.LoggerFile.patch" title="Link to this definition">¶</a></dt>
+<dd><p>Modify <code class="docutils literal notranslate"><span class="pre">instance.method_name()</span></code> so that <code class="docutils literal notranslate"><span class="pre">callback()</span></code> gets called
+when <code class="docutils literal notranslate"><span class="pre">method_name()</span></code> is called. <code class="docutils literal notranslate"><span class="pre">callback()</span></code> will be called
+first and then the original <code class="docutils literal notranslate"><span class="pre">instance.method_name()</span></code>.</p>
+<p>It is used to close the file when the thread is joined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instance</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span>) – An object whose method will be patched.</p></li>
+<li><p><strong>method_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the method to patch.</p></li>
+<li><p><strong>callback</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</span>) – The function to patch with. It will be called without
+arguments and its return value will be ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Print a message before closing a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_dummy_message</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The file is about to be closed...&quot;</span><span class="p">)</span>
+
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/file.txt&quot;</span><span class="p">)</span>
+<span class="n">LoggerFle</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="n">print_dummy_message</span><span class="p">)</span>
+
+<span class="c1"># The message will be printed right before the file is closed</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.logging.SimpleThreadNameFormatter">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.logging.</span></span><span class="sig-name descname"><span class="pre">SimpleThreadNameFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/logging.html#SimpleThreadNameFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.logging.SimpleThreadNameFormatter" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Formatter</span></code></p>
+<p>The same <code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Formatter</span></code> but <code class="docutils literal notranslate"><span class="pre">threadName</span></code> is just the first
+token after splitting it: <code class="docutils literal notranslate"><span class="pre">record.threadName.split(maxsplit=1)[0]</span></code>.</p>
+<p>The constructor arguments are the same as the base class.</p>
+<p class="rubric">Example</p>
+<p>Setup a logging handler to use <a class="reference internal" href="#iripau.logging.SimpleThreadNameFormatter" title="iripau.logging.SimpleThreadNameFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleThreadNameFormatter</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;%(threadName): </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">SimpleThreadNameFormatter</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.logging.SimpleThreadNameFormatter.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/logging.html#SimpleThreadNameFormatter.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.logging.SimpleThreadNameFormatter.format" title="Link to this definition">¶</a></dt>
+<dd><p>Override <code class="xref py py-meth docutils literal notranslate"><span class="pre">logging.Formatter.format()</span></code> to handle
+<code class="docutils literal notranslate"><span class="pre">record.threadName</span></code> as intended.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.logging.group_log_lines">
+<span class="sig-prename descclassname"><span class="pre">iripau.logging.</span></span><span class="sig-name descname"><span class="pre">group_log_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_id_regex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main_thread_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainThread'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/logging.html#group_log_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.logging.group_log_lines" title="Link to this definition">¶</a></dt>
+<dd><p>For a log file containing entries from several threads, group the lines
+so that the lines coming from the same thread are contiguous, preserving
+the order within the group. Lines coming from the main thread will not
+be grouped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – The lines to group.</p></li>
+<li><p><strong>thread_id_regex</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The pattern to get the thread name from each line.
+It should have one capturing group, which will be taken as the
+thread name.</p></li>
+<li><p><strong>main_thread_id</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the main thread.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em> – The next line according to the group ordering.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If a line does not match <code class="docutils literal notranslate"><span class="pre">thread_id_regex</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Open a log file and print the grouped lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># The thread name is at the beginning of each line, before &#39;:&#39;</span>
+<span class="n">thread_id_regex</span> <span class="o">=</span> <span class="s2">&quot;(.+): .*&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/threaded.log&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log_file</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">group_log_lines</span><span class="p">(</span><span class="n">log_file</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.logging module</a><ul>
+<li><a class="reference internal" href="#iripau.logging.LoggerFile"><code class="docutils literal notranslate"><span class="pre">LoggerFile</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.logging.LoggerFile.log"><code class="docutils literal notranslate"><span class="pre">LoggerFile.log()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.logging.LoggerFile.patch"><code class="docutils literal notranslate"><span class="pre">LoggerFile.patch()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.logging.SimpleThreadNameFormatter"><code class="docutils literal notranslate"><span class="pre">SimpleThreadNameFormatter</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.logging.SimpleThreadNameFormatter.format"><code class="docutils literal notranslate"><span class="pre">SimpleThreadNameFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.logging.group_log_lines"><code class="docutils literal notranslate"><span class="pre">group_log_lines()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.functools.html"
+                          title="previous chapter">iripau.functools module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.random.html"
+                          title="next chapter">iripau.random module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.logging.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.random.html" title="iripau.random module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="iripau.functools.html" title="iripau.functools module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" >iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.logging module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iripau.command &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=937269b5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.command</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for iripau.command</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Extension to the subprocess module to execute commands in different ways</span>
+
+<span class="sd">This module relies on the following system utilities being installed:</span>
+<span class="sd">* sh</span>
+<span class="sd">* ssh</span>
+<span class="sd">* sshpass</span>
+<span class="sd">* stty</span>
+<span class="sd">* sudo</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shlex</span>
+<span class="kn">import</span> <span class="nn">psutil</span>
+
+<span class="kn">from</span> <span class="nn">pty</span> <span class="kn">import</span> <span class="n">spawn</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="n">gethostname</span>
+<span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getuser</span>
+
+<span class="kn">from</span> <span class="nn">iripau</span> <span class="kn">import</span> <span class="n">subprocess</span>
+<span class="kn">from</span> <span class="nn">iripau.subprocess</span> <span class="kn">import</span> <span class="n">quote</span>
+
+<span class="n">GLOBAL_SSH_ARGS</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">USER</span> <span class="o">=</span> <span class="n">getuser</span><span class="p">()</span>
+
+<span class="n">LOCALHOSTS</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">gethostname</span><span class="p">()}</span> <span class="o">|</span> <span class="p">{</span>
+    <span class="n">addr</span><span class="o">.</span><span class="n">address</span>
+    <span class="k">for</span> <span class="n">nic</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">net_if_addrs</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">addr</span> <span class="ow">in</span> <span class="n">nic</span>
+    <span class="k">if</span> <span class="n">addr</span><span class="o">.</span><span class="n">family</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;AF_INET&quot;</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">_stty</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Prepend to &#39;cmd&#39; the stty command to set the terminal size to the current one &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s2">&quot;tput lines; tput cols&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;stty rows </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s2"> cols </span><span class="si">{</span><span class="n">cols</span><span class="si">}</span><span class="s2"> &amp;&amp; </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">_env</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="ow">and</span> <span class="n">user</span> <span class="ow">in</span> <span class="p">{</span><span class="n">USER</span><span class="p">,</span> <span class="kc">None</span><span class="p">}:</span>
+        <span class="n">envs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+        <span class="n">envs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">envs</span>
+
+
+<span class="k">def</span> <span class="nf">_parse_host</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+    <span class="n">splits</span> <span class="o">=</span> <span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">splits</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">+</span> <span class="n">splits</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_solve_ssh_users</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">local_user</span><span class="p">):</span>
+    <span class="n">remote_user</span><span class="p">,</span> <span class="n">parsed_host</span> <span class="o">=</span> <span class="n">_parse_host</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+    <span class="n">local_user</span> <span class="o">=</span> <span class="n">local_user</span> <span class="ow">or</span> <span class="n">USER</span>
+    <span class="n">remote_user</span> <span class="o">=</span> <span class="n">remote_user</span> <span class="ow">or</span> <span class="n">local_user</span>
+    <span class="k">if</span> <span class="n">remote_user</span> <span class="o">==</span> <span class="n">local_user</span><span class="p">:</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">parsed_host</span>
+    <span class="k">return</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">host</span>
+
+
+<span class="k">def</span> <span class="nf">_shell_envs</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return a list of shell env vars &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+
+<span class="k">def</span> <span class="nf">_is_localhost</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">LOCALHOSTS</span>
+
+
+<div class="viewcode-block" id="user_cmd">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.user_cmd">[docs]</a>
+<span class="k">def</span> <span class="nf">user_cmd</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return the final cmd so that the original cmd gets executed as the desired</span>
+<span class="sd">        user. Same thing for alias.</span>
+
+<span class="sd">        Assume current user has password-less sudo.</span>
+
+<span class="sd">        Return the updated cmd and alias.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">user</span> <span class="ow">in</span> <span class="p">{</span><span class="n">current</span> <span class="ow">or</span> <span class="n">USER</span><span class="p">,</span> <span class="kc">None</span><span class="p">}:</span>
+        <span class="k">return</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sh&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">alias</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">alias</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">alias</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sh&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">alias</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">alias</span> <span class="o">=</span> <span class="n">cmd</span>
+
+    <span class="n">env</span> <span class="o">=</span> <span class="n">_shell_envs</span><span class="p">(</span><span class="n">env</span> <span class="ow">or</span> <span class="p">{})</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="s2">&quot;-E&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s2">&quot;root&quot;</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="s2">&quot;-Eu&quot;</span><span class="p">,</span> <span class="n">user</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">env</span> <span class="o">+</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">alias</span></div>
+
+
+
+<div class="viewcode-block" id="local_args">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.local_args">[docs]</a>
+<span class="k">def</span> <span class="nf">local_args</span><span class="p">(</span>
+    <span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">stdout_tees</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stdout_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">stderr_tees</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stderr_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">prompt_tees</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_prompt_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">echo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sigterm_timeout</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return the subprocess.run kwargs for a command to be run locally &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">stdout</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">stderr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">capture_output</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="nb">input</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">stdin</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span>
+
+    <span class="n">args</span><span class="p">,</span> <span class="n">alias</span> <span class="o">=</span> <span class="n">user_cmd</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">alias</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+    <span class="n">shell</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">_env</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">locals</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="local_run">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.local_run">[docs]</a>
+<span class="k">def</span> <span class="nf">local_run</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">local_args</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="local_run_interactive">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.local_run_interactive">[docs]</a>
+<span class="k">def</span> <span class="nf">local_run_interactive</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">_stty</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="ow">and</span> <span class="n">user</span> <span class="ow">in</span> <span class="p">{</span><span class="n">USER</span><span class="p">,</span> <span class="kc">None</span><span class="p">}:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">_shell_envs</span><span class="p">(</span><span class="n">env</span><span class="p">))</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;export </span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2"> &amp;&amp; </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">user_cmd</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;sh&quot;</span><span class="p">,</span> <span class="s2">&quot;-ic&quot;</span><span class="p">,</span> <span class="n">cmd</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">spawn</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="set_global_ssh_args">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.set_global_ssh_args">[docs]</a>
+<span class="k">def</span> <span class="nf">set_global_ssh_args</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">GLOBAL_SSH_ARGS</span><span class="p">[:]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="shell_cmd">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.shell_cmd">[docs]</a>
+<span class="k">def</span> <span class="nf">shell_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return the final cmd so that the original cmd can be executed in the</span>
+<span class="sd">        shell. Same thing for alias.</span>
+
+<span class="sd">        Return the updated cmd and alias.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="n">alias</span> <span class="ow">or</span> <span class="n">cmd</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">alias</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">alias</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cwd</span><span class="p">:</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cd </span><span class="si">{</span><span class="n">shlex</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span><span class="si">}</span><span class="s2"> &amp;&amp; </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="ow">and</span> <span class="n">user</span> <span class="ow">in</span> <span class="p">{</span><span class="n">USER</span><span class="p">,</span> <span class="kc">None</span><span class="p">}:</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">_shell_envs</span><span class="p">(</span><span class="n">env</span><span class="p">))</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;export </span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2"> &amp;&amp; </span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span></div>
+
+
+
+<div class="viewcode-block" id="ssh_cmd">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.ssh_cmd">[docs]</a>
+<span class="k">def</span> <span class="nf">ssh_cmd</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[],</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return the final cmd so that the original cmd can be executed through</span>
+<span class="sd">        shs. Same thing for alias.</span>
+
+<span class="sd">        Return the updated cmd and alias.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span> <span class="o">=</span> <span class="n">shell_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ssh&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">args</span> <span class="o">+</span> <span class="p">[</span><span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">]</span>
+    <span class="n">alias</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ssh&quot;</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">alias</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">password</span><span class="p">:</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sshpass&quot;</span><span class="p">,</span> <span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="n">password</span><span class="p">]</span> <span class="o">+</span> <span class="n">cmd</span>
+    <span class="k">return</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span></div>
+
+
+
+<div class="viewcode-block" id="ssh_args">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.ssh_args">[docs]</a>
+<span class="k">def</span> <span class="nf">ssh_args</span><span class="p">(</span>
+    <span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">ssh_user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_password</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_args</span><span class="o">=</span><span class="p">[],</span> <span class="n">add_global_ssh_args</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return the subprocess.run kwargs for a command to be run through ssh &quot;&quot;&quot;</span>
+    <span class="n">remote_user</span><span class="p">,</span> <span class="n">host</span> <span class="o">=</span> <span class="n">_solve_ssh_users</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">ssh_user</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span> <span class="o">=</span> <span class="n">user_cmd</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">add_global_ssh_args</span><span class="p">:</span>
+        <span class="n">ssh_args</span> <span class="o">+=</span> <span class="n">GLOBAL_SSH_ARGS</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span> <span class="o">=</span> <span class="n">ssh_cmd</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">ssh_args</span><span class="p">,</span> <span class="n">ssh_password</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">local_args</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="n">alias</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">ssh_user</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ssh_run">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.ssh_run">[docs]</a>
+<span class="k">def</span> <span class="nf">ssh_run</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">ssh_args</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ssh_run_interactive">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.ssh_run_interactive">[docs]</a>
+<span class="k">def</span> <span class="nf">ssh_run_interactive</span><span class="p">(</span>
+    <span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">ssh_user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_password</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_args</span><span class="o">=</span><span class="p">[],</span> <span class="n">add_global_ssh_args</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+    <span class="n">remote_user</span><span class="p">,</span> <span class="n">host</span> <span class="o">=</span> <span class="n">_solve_ssh_users</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">ssh_user</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">user_cmd</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">_stty</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">)</span>
+    <span class="n">ssh_args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-tt&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">ssh_args</span>
+    <span class="k">if</span> <span class="n">add_global_ssh_args</span><span class="p">:</span>
+        <span class="n">ssh_args</span> <span class="o">+=</span> <span class="n">GLOBAL_SSH_ARGS</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ssh_cmd</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">ssh_args</span><span class="p">,</span> <span class="n">ssh_password</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">user_cmd</span><span class="p">(</span><span class="n">ssh_user</span><span class="p">,</span> <span class="n">cmd</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spawn</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="host_args">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.host_args">[docs]</a>
+<span class="k">def</span> <span class="nf">host_args</span><span class="p">(</span>
+    <span class="n">cmd</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="n">ssh_user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_password</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_args</span><span class="o">=</span><span class="p">[],</span> <span class="n">add_global_ssh_args</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return the subprocess.run kwargs for a command to be run in any host &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">_is_localhost</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">local_args</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">globals</span><span class="p">()[</span><span class="s2">&quot;ssh_args&quot;</span><span class="p">](</span>
+        <span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span>
+        <span class="n">ssh_user</span><span class="o">=</span><span class="n">ssh_user</span><span class="p">,</span>
+        <span class="n">ssh_password</span><span class="o">=</span><span class="n">ssh_password</span><span class="p">,</span>
+        <span class="n">ssh_args</span><span class="o">=</span><span class="n">ssh_args</span><span class="p">,</span>
+        <span class="n">add_global_ssh_args</span><span class="o">=</span><span class="n">add_global_ssh_args</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="host_run">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.host_run">[docs]</a>
+<span class="k">def</span> <span class="nf">host_run</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">host_args</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="host_run_interactive">
+<a class="viewcode-back" href="../../iripau.command.html#iripau.command.host_run_interactive">[docs]</a>
+<span class="k">def</span> <span class="nf">host_run_interactive</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">ssh_user</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">_is_localhost</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">local_run_interactive</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ssh_run_interactive</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">ssh_user</span><span class="o">=</span><span class="n">ssh_user</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.command</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

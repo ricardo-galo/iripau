@@ -1,0 +1,10 @@
+iripau.command package
+======================
+
+Module contents
+---------------
+
+.. automodule:: iripau.command
+   :members:
+   :show-inheritance:
+   :undoc-members:

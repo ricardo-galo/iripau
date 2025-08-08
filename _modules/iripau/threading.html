@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iripau.threading &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=937269b5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.threading</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for iripau.threading</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Generic and stand-alone threading utilities.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Collection</span><span class="p">,</span> <span class="n">Type</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span><span class="p">,</span> <span class="n">_make_key</span> <span class="k">as</span> <span class="n">make_key</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+
+<div class="viewcode-block" id="AsyncResult">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult">[docs]</a>
+<span class="k">class</span> <span class="nc">AsyncResult</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Implementation of the :class:`multiprocessing.pool.AsyncResult` class but</span>
+<span class="sd">        spawning a new thread to execute the target ``function`` instead of using</span>
+<span class="sd">        a Process or Thread Pool.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            function: Callable to run in a thnread.</span>
+<span class="sd">            *args: Will be passed to ``function``.</span>
+<span class="sd">            **kwargs: Will be passed to ``function``.</span>
+
+
+<span class="sd">        Example:</span>
+<span class="sd">            Start multiplying two matrices, do other things, and then print the</span>
+<span class="sd">            multiplication result::</span>
+
+<span class="sd">                from time import sleep</span>
+<span class="sd">                from random import randint</span>
+<span class="sd">                from operator import mul</span>
+
+
+<span class="sd">                def slow_matmul(a, b):</span>
+<span class="sd">                    return [[sum(map(mul, a_row, b_col)) for b_col in zip(*b)] for a_row in a]</span>
+
+
+<span class="sd">                a = [[randint(0, 100) for _ in range(1000)] for _ in range(1000)]</span>
+<span class="sd">                b = [[randint(0, 100) for _ in range(1000)] for _ in range(1000)]</span>
+<span class="sd">                result = AsyncResult(slow_matmul, a, b)</span>
+
+<span class="sd">                print(&quot;Processing...&quot;)</span>
+<span class="sd">                while not result.ready():</span>
+<span class="sd">                    sleep(5)</span>
+<span class="sd">                    print(&quot;Still processing...&quot;)</span>
+
+<span class="sd">                print(*result.get(timeout=900), sep=&quot;\\n&quot;)</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Perform several matrix multiplications at once and print the results::</span>
+
+<span class="sd">                from random import randint</span>
+
+
+<span class="sd">                def random_mat_mul():</span>
+<span class="sd">                    a = [[randint(0, 100) for _ in range(1000)] for _ in range(1000)]</span>
+<span class="sd">                    b = [[randint(0, 100) for _ in range(1000)] for _ in range(1000)]</span>
+<span class="sd">                    return slow_matmul(a, b)</span>
+
+<span class="sd">                results = [AsyncResult(random_mat_mul) for _ in range(10)]</span>
+<span class="sd">                for i, result in enumerate(results):</span>
+<span class="sd">                    print(f&quot;Result {i}:&quot;)</span>
+<span class="sd">                    print(*result.get(timeout=900), sep=&quot;\\n&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">...</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">target</span><span class="o">=</span><span class="n">function</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exc_info</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+<div class="viewcode-block" id="AsyncResult.run">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Run the target ``function``, store its return value or exception</span>
+<span class="sd">            information if any.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">exc_info</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AsyncResult.get">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult.get">[docs]</a>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Implementation of :meth:`multiprocessing.pool.AsyncResult.get`.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                timeout: Maximum time in seconds to wait for the result to arrive.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                The target ``function`` return value when it arrives.</span>
+
+<span class="sd">            Raises:</span>
+<span class="sd">                TimeoutError: If the result does not arrive within ``timeout``..</span>
+<span class="sd">                Exception: Whatever :class:`Exception` the target ``function``</span>
+<span class="sd">                    raised during its execution.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span><span class="s2">&quot;Timeout reached while joining the thread&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc_info</span><span class="p">:</span>
+            <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exc_info</span>
+            <span class="k">raise</span> <span class="n">exc_value</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">traceback</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_value</span></div>
+
+
+<div class="viewcode-block" id="AsyncResult.wait">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult.wait">[docs]</a>
+    <span class="k">def</span> <span class="nf">wait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Implementation of :meth:`multiprocessing.pool.AsyncResult.wait`.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                timeout: Maximum time to wait for the result to be available.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AsyncResult.ready">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult.ready">[docs]</a>
+    <span class="k">def</span> <span class="nf">ready</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Implementation of :meth:`multiprocessing.pool.AsyncResult.ready`.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                Whether the target ``function``  has completed</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_alive</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AsyncResult.successful">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.AsyncResult.successful">[docs]</a>
+    <span class="k">def</span> <span class="nf">successful</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Implementation of :meth:`multiprocessing.pool.AsyncResult.successful`.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                Whether the target ``function`` completed without raising an</span>
+<span class="sd">                exception.</span>
+
+<span class="sd">            Raises:</span>
+<span class="sd">                ValueError: If the result is not ready.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Thread has not completed&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MultiDequeuer">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.MultiDequeuer">[docs]</a>
+<span class="k">class</span> <span class="nc">MultiDequeuer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Implementation of the Producer-Consumer Design Pattern in which one of</span>
+<span class="sd">        the Producer workers will act as Consumer, processing all of the</span>
+<span class="sd">        elements that have been produced so far. Also, the workers will block</span>
+<span class="sd">        until the elements they produced are consumed.</span>
+
+<span class="sd">        This is helpful to keep the logic of processing one single element per</span>
+<span class="sd">        worker but consuming several elements more efficiently at once, without</span>
+<span class="sd">        the need of having a separated thread or threads for consumption.</span>
+
+<span class="sd">        If there is not any advantage on consuming multiple elements at once</span>
+<span class="sd">        compared to consuming them one by one, it is preferred to consume the</span>
+<span class="sd">        elements in the workers, keeping the logic of blocking the workers.</span>
+
+<span class="sd">        If blocking the workers is not desired, the regular Producer-Consumer</span>
+<span class="sd">        Pattern will suffice.</span>
+
+<span class="sd">        Attention:</span>
+<span class="sd">            This class relies on the Python GIL.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            consumer: The elements queue will be consumed by this callable, which</span>
+<span class="sd">                will be called by one of the workers passing all of the elements</span>
+<span class="sd">                in the queue so far. When the worker has started consuming the</span>
+<span class="sd">                queue, a new queue will be created to handle future elements.</span>
+<span class="sd">            time_to_consume: If this is greater than 0, the queue will be consumed</span>
+<span class="sd">                when this time (in seconds) has passed after the first element was</span>
+<span class="sd">                added to the queue.</span>
+<span class="sd">            count_hint: If this is greater than 0, the queue will be consumed when</span>
+<span class="sd">                at least this amount of elements have been added to the queue,</span>
+<span class="sd">                ignoring ``time_to_consume``.</span>
+<span class="sd">            collection_type: The elements queue will be cast into this type before</span>
+<span class="sd">                it is passed to the ``consumer`` callable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">consumer</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Collection</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="n">time_to_consume</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">count_hint</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">collection_type</span><span class="p">:</span> <span class="n">Type</span> <span class="o">=</span> <span class="nb">list</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">consume</span> <span class="o">=</span> <span class="n">consumer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">count_hint</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">time_to_consume</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">collection_type</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_data</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_new_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">deque</span><span class="p">(),</span>
+            <span class="n">threading</span><span class="o">.</span><span class="n">Barrier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">),</span>
+            <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="MultiDequeuer.put">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.MultiDequeuer.put">[docs]</a>
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Add an element to the queue. This method is meant to be called by</span>
+<span class="sd">            the workers. It blocks until the element is consumed.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                product: Element to add to the queue.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+        <span class="n">queue</span><span class="p">,</span> <span class="n">barrier</span><span class="p">,</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">data</span>
+
+        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">product</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">barrier</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">threading</span><span class="o">.</span><span class="n">BrokenBarrierError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="n">data</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_data</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">queue</span><span class="p">:</span>
+                <span class="n">products</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">consume</span><span class="p">(</span><span class="n">products</span><span class="p">)</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="FunctionCacher">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.FunctionCacher">[docs]</a>
+<span class="k">class</span> <span class="nc">FunctionCacher</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Cache the return value of a callable depending on their call arguments.</span>
+<span class="sd">        The first call will generate the cache and subsequent calls will return</span>
+<span class="sd">        the cached value without executing the original callable.</span>
+
+<span class="sd">        The instance of this class is meant to be called as if it were the</span>
+<span class="sd">        original callable.</span>
+
+<span class="sd">        The main difference from the functools.cache decorator is that the cache</span>
+<span class="sd">        for a particular set of arguments will be generated by only one</span>
+<span class="sd">        execution of the original callable; if more than one thread calls this</span>
+<span class="sd">        object before the cache is generated, only one of them will actually</span>
+<span class="sd">        execute the original callable and the rest will wait for it to finish.</span>
+
+<span class="sd">        https://docs.python.org/3/library/functools.html#functools.cache</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">synchronized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; The callable to be cached is function.</span>
+
+<span class="sd">            If enabled is False, caching will start disabled. It can be enabled</span>
+<span class="sd">            later on.</span>
+
+<span class="sd">            If synchronized is True, the original callable will be protected</span>
+<span class="sd">            with a lock to prevent it is executed in parallel.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+        <span class="k">if</span> <span class="n">enabled</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_cache</span><span class="p">(</span><span class="n">synchronized</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">disable_cache</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FunctionCacher.enable_cache">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.FunctionCacher.enable_cache">[docs]</a>
+    <span class="k">def</span> <span class="nf">enable_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">synchronized</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Enable caching if not enabled already.</span>
+<span class="sd">            The synchronized argument is used as in the constructor.</span>
+<span class="sd">            This method is not re-entrant nor thread-safe.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;cache&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">synchronized</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;locks&quot;</span><span class="p">):</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">locks</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_synced</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;locks&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">locks</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span></div>
+
+
+<div class="viewcode-block" id="FunctionCacher.disable_cache">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.FunctionCacher.disable_cache">[docs]</a>
+    <span class="k">def</span> <span class="nf">disable_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Disable and delete caching if not disabled already.</span>
+<span class="sd">            This method is not re-entrant nor thread-safe.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;cache&quot;</span><span class="p">):</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;locks&quot;</span><span class="p">):</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">locks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span></div>
+
+
+<div class="viewcode-block" id="FunctionCacher.clear_cache">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.FunctionCacher.clear_cache">[docs]</a>
+    <span class="k">def</span> <span class="nf">clear_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Delete cache if caching is not disabled.</span>
+<span class="sd">            This method is not re-entrant nor thread-safe.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;cache&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;locks&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">locks</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_cached</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">make_key</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">locks</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">locks</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">locks</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_synced</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">make_key</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="synchronized">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.synchronized">[docs]</a>
+<span class="k">def</span> <span class="nf">synchronized</span><span class="p">(</span><span class="n">lock</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Decorator to wrap a function with a lock/semaphore &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">lock</span><span class="p">):</span>
+        <span class="n">function</span><span class="p">,</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">lock</span><span class="p">,</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="n">shifted</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">lock</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="n">shifted</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="k">return</span> <span class="n">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">)</span> <span class="k">if</span> <span class="n">shifted</span> <span class="k">else</span> <span class="n">decorator</span></div>
+
+
+
+<div class="viewcode-block" id="cached">
+<a class="viewcode-back" href="../../iripau.threading.html#iripau.threading.cached">[docs]</a>
+<span class="k">def</span> <span class="nf">cached</span><span class="p">(</span><span class="n">synchronized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Decorator using the FunctionCacher class. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">synchronized</span><span class="p">):</span>
+        <span class="n">function</span><span class="p">,</span> <span class="n">synchronized</span> <span class="o">=</span> <span class="n">synchronized</span><span class="p">,</span> <span class="kc">False</span>
+        <span class="n">shifted</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">shifted</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">wraps</span><span class="p">(</span><span class="n">function</span><span class="p">)(</span><span class="n">FunctionCacher</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">synchronized</span><span class="p">,</span> <span class="n">enabled</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">)</span> <span class="k">if</span> <span class="n">shifted</span> <span class="k">else</span> <span class="n">decorator</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.threading</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

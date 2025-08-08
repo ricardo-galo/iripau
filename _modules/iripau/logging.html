@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iripau.logging &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=937269b5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.logging</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for iripau.logging</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Generic and stand-alone logging utilities that can also be used in conjunction</span>
+<span class="sd">with :mod:`.subprocess` to log the subprocesses&#39; ``stdout`` and ``stderr`` in</span>
+<span class="sd">real-time, regardless of whether the subprocess raised and exception using</span>
+<span class="sd">``check=True``, while maintaining the ability of capturing the subprocess&#39;</span>
+<span class="sd">output.</span>
+
+<span class="sd">Example:</span>
+<span class="sd">    Setup a logger for ``stdout``, other one for ``stderr`` and another one to</span>
+<span class="sd">    log outside of the subprocesses. All of the loggers will write to the same</span>
+<span class="sd">    file::</span>
+
+<span class="sd">        import logging</span>
+<span class="sd">        import tempfile</span>
+
+
+<span class="sd">        output_file = tempfile.SpooledTemporaryFile(mode=&quot;w+t&quot;)</span>
+
+<span class="sd">        normal_log_format = &quot;%(asctime).19s - %(threadName)12.12s: %(message)s&quot;</span>
+<span class="sd">        output_log_format = &quot;%(asctime).19s - %(threadName)12.12s: [%(name)s] %(message)s&quot;</span>
+
+<span class="sd">        # Setup normal log handler</span>
+<span class="sd">        formatter = SimpleThreadNameFormatter(normal_log_format)</span>
+<span class="sd">        handler = logging.StreamHandler(output_file)</span>
+<span class="sd">        handler.setLevel(logging.DEBUG)</span>
+<span class="sd">        handler.setFormatter(formatter)</span>
+
+<span class="sd">        # Setup normal logger</span>
+<span class="sd">        logger = logging.getLogger(__name__)</span>
+<span class="sd">        logger.setLevel(logging.DEBUG)</span>
+<span class="sd">        logger.addHandler(handler)</span>
+
+<span class="sd">        # Setup stdout and stderr log handler</span>
+<span class="sd">        formatter = SimpleThreadNameFormatter(output_log_format)</span>
+<span class="sd">        handler = logging.StreamHandler(output_file)</span>
+<span class="sd">        handler.setLevel(logging.DEBUG)</span>
+<span class="sd">        handler.setFormatter(formatter)</span>
+
+<span class="sd">        # Setup stdout logger</span>
+<span class="sd">        stdout_logger = logging.getLogger(&quot;stdout&quot;)</span>
+<span class="sd">        stdout_logger.setLevel(logging.DEBUG)</span>
+<span class="sd">        stdout_logger.addHandler(handler)</span>
+
+<span class="sd">        # Setup stderr logger</span>
+<span class="sd">        stderr_logger = logging.getLogger(&quot;stderr&quot;)</span>
+<span class="sd">        stderr_logger.setLevel(logging.DEBUG)</span>
+<span class="sd">        stderr_logger.addHandler(handler)</span>
+
+<span class="sd">Example:</span>
+<span class="sd">    To use the loggers from the example above in a subprocess using</span>
+<span class="sd">    :mod:`.subprocess`, the :class:`.LoggerFile` objects can be created before</span>
+<span class="sd">    spawning the processes, and closed at the end::</span>
+
+<span class="sd">        from iripau.subprocess import run</span>
+
+
+<span class="sd">        # Make sure to close the LoggerFiles</span>
+<span class="sd">        with (</span>
+<span class="sd">            LoggerFile(stdout_logger, logging.INFO) as stdout_logger_file,</span>
+<span class="sd">            LoggerFile(stderr_logger, logging.INFO) as stderr_logger_file</span>
+<span class="sd">        ):</span>
+<span class="sd">            output = run(</span>
+<span class="sd">                [&quot;kubectl&quot;, &quot;get&quot;, &quot;pods&quot;],</span>
+<span class="sd">                capture_output=True,</span>
+<span class="sd">                check=True,</span>
+<span class="sd">                prompt_tees=[stdout_logger_file],</span>
+<span class="sd">                stdout_tees=[stdout_logger_file],</span>
+<span class="sd">                stderr_tees=[stderr_logger_file]</span>
+<span class="sd">            )</span>
+
+<span class="sd">        # Output captured</span>
+<span class="sd">        print(output.stdout)</span>
+<span class="sd">        print(output.stderr)</span>
+<span class="sd">        print(output.returncode)</span>
+
+<span class="sd">        # Output logged</span>
+<span class="sd">        output_file.seek(0)</span>
+<span class="sd">        print(output_file.read())</span>
+
+<span class="sd">Important:</span>
+<span class="sd">    Closing the :class:`.LoggerFile` objects do not affect the ``output_file``</span>
+<span class="sd">    created in the first example.</span>
+
+<span class="sd">Tip:</span>
+<span class="sd">    Passing a callable as a tee file in :class:`.subprocess.Popen` causes the</span>
+<span class="sd">    file to be created (the result of calling it) before spawning the process,</span>
+<span class="sd">    and closed when it finishes.</span>
+
+<span class="sd">Example:</span>
+<span class="sd">    To log the command, ``stdout`` and ``stderr`` of all of the proceeses spawned</span>
+<span class="sd">    using :mod:`.subprocess`, a global configuration can be done::</span>
+
+<span class="sd">        from functools import partial</span>
+
+<span class="sd">        from iripau.subprocess import set_global_prompt_files</span>
+<span class="sd">        from iripau.subprocess import set_global_stdout_files</span>
+<span class="sd">        from iripau.subprocess import set_global_stderr_files</span>
+
+
+<span class="sd">        # Create callables that receive no arguments and return a LoggerFile</span>
+<span class="sd">        stdout_logger_file = partial(LoggerFle, stdout_logger, logging.INFO)</span>
+<span class="sd">        stderr_logger_file = partial(LoggerFle, stderr_logger, logging.INFO)</span>
+
+<span class="sd">        set_global_prompt_files(stdout_logger_file)</span>
+<span class="sd">        set_global_stdout_files(stdout_logger_file)</span>
+<span class="sd">        set_global_stderr_files(stderr_logger_file)</span>
+
+<span class="sd">        output = run(</span>
+<span class="sd">            [&quot;kubectl&quot;, &quot;get&quot;, &quot;pods&quot;],</span>
+<span class="sd">            capture_output=True,</span>
+<span class="sd">            check=True</span>
+<span class="sd">        )</span>
+
+<span class="sd">        # Output captured</span>
+<span class="sd">        print(output.stdout)</span>
+<span class="sd">        print(output.stderr)</span>
+<span class="sd">        print(output.returncode)</span>
+
+<span class="sd">        # Outpu logged</span>
+<span class="sd">        output_file.seek(0)</span>
+<span class="sd">        print(output_file.read())</span>
+
+<span class="sd">Tip:</span>
+<span class="sd">    Disable the use of globally configured loggers by setting to ``False``</span>
+<span class="sd">    ``add_global_stdout_tees``, ``add_global_stderr_tees`` and/or</span>
+<span class="sd">    ``add_global_prompt_tees`` in :func:`.subprocess.run` or</span>
+<span class="sd">    :class:`.subprocess.Popen`::</span>
+
+<span class="sd">        output = run(</span>
+<span class="sd">            [&quot;kubectl&quot;, &quot;get&quot;, &quot;pods&quot;],</span>
+<span class="sd">            capture_output=True,</span>
+<span class="sd">            check=True,</span>
+<span class="sd">            add_global_stdout_tees=False,</span>
+<span class="sd">            add_global_stderr_tees=False,</span>
+<span class="sd">            add_global_prompt_tees=False</span>
+<span class="sd">        )</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+
+<div class="viewcode-block" id="LoggerFile">
+<a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.LoggerFile">[docs]</a>
+<span class="k">class</span> <span class="nc">LoggerFile</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; File-like object that logs every line written to it.</span>
+<span class="sd">        A thread is created to asynchronously consume the file.</span>
+<span class="sd">        The thread is joined when the file is closed.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            logger: The object used to perform the logging.</span>
+<span class="sd">            level: The level used to perform the logging.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Get a logger object and use it to create a :class:`.LoggerFile`::</span>
+
+<span class="sd">                import logging</span>
+
+<span class="sd">                logger = logging.get_logger(__name__)</span>
+<span class="sd">                logger_file = LoggerFle(logger, logging.DEBUG)</span>
+
+<span class="sd">                # Equivalent to logger.debug(&quot;A line in a file&quot;)</span>
+<span class="sd">                logger_file.write(&quot;A line in a file\\n&quot;)</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            A :class:`.LoggerFile` can be used in a subprocess::</span>
+
+<span class="sd">                from subprocess import run</span>
+
+<span class="sd">                # The stdout will be logged in real-time</span>
+<span class="sd">                run([&quot;apt&quot;, &quot;install&quot;, &quot;-y&quot;, &quot;python3&quot;], stdout=logger_file)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pipe</span><span class="p">()</span>
+        <span class="n">read_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fdopen</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="n">write_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fdopen</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span>
+            <span class="n">target</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
+            <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">read_file</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">level</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Close write_file when the thread joins</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">thread</span><span class="p">,</span> <span class="s2">&quot;join&quot;</span><span class="p">,</span> <span class="n">write_file</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+
+        <span class="c1"># Join the thread when the file is closed</span>
+        <span class="n">write_file</span><span class="o">.</span><span class="n">close</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="n">join</span>
+
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">write_file</span>
+
+<div class="viewcode-block" id="LoggerFile.log">
+<a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.LoggerFile.log">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">read_file</span><span class="p">:</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Read the whole ``read_file`` line by line and log them using the</span>
+<span class="sd">            ``logger`` object at the specified logging ``level``.</span>
+
+<span class="sd">            This is what will be running in a thread until ``EOF`` is reached.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                read_file: A file opened in read mode.</span>
+<span class="sd">                logger: The object used to perform the logging.</span>
+<span class="sd">                level: The level used to perform the logging.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">read_file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">read_file</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="LoggerFile.patch">
+<a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.LoggerFile.patch">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">method_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Modify ``instance.method_name()`` so that ``callback()`` gets called</span>
+<span class="sd">            when ``method_name()`` is called. ``callback()`` will be called</span>
+<span class="sd">            first and then the original ``instance.method_name()``.</span>
+
+<span class="sd">            It is used to close the file when the thread is joined.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                instance: An object whose method will be patched.</span>
+<span class="sd">                method_name: The name of the method to patch.</span>
+<span class="sd">                callback: The function to patch with. It will be called without</span>
+<span class="sd">                    arguments and its return value will be ignored.</span>
+
+<span class="sd">            Example:</span>
+<span class="sd">                Print a message before closing a file::</span>
+
+<span class="sd">                    def print_dummy_message():</span>
+<span class="sd">                        print(&quot;The file is about to be closed...&quot;)</span>
+
+
+<span class="sd">                    f = open(&quot;/tmp/file.txt&quot;)</span>
+<span class="sd">                    LoggerFle.patch(f, &quot;close&quot;, print_dummy_message)</span>
+
+<span class="sd">                    # The message will be printed right before the file is closed</span>
+<span class="sd">                    f.close()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">original_method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">method_name</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">new_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">callback</span><span class="p">()</span>
+            <span class="n">original_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">method_name</span><span class="p">,</span> <span class="n">new_method</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="SimpleThreadNameFormatter">
+<a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.SimpleThreadNameFormatter">[docs]</a>
+<span class="k">class</span> <span class="nc">SimpleThreadNameFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; The same :class:`logging.Formatter` but ``threadName`` is just the first</span>
+<span class="sd">        token after splitting it: ``record.threadName.split(maxsplit=1)[0]``.</span>
+
+<span class="sd">        The constructor arguments are the same as the base class.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Setup a logging handler to use :class:`SimpleThreadNameFormatter`::</span>
+
+<span class="sd">                import sys</span>
+<span class="sd">                import logging</span>
+
+<span class="sd">                format = &quot;%(threadName): %(message)s&quot;</span>
+<span class="sd">                formatter = SimpleThreadNameFormatter(format)</span>
+<span class="sd">                handler = logging.StreamHandler(sys.stdout)</span>
+<span class="sd">                handler.setFormatter(formatter)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SimpleThreadNameFormatter.format">
+<a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.SimpleThreadNameFormatter.format">[docs]</a>
+    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Override :meth:`logging.Formatter.format` to handle</span>
+<span class="sd">            ``record.threadName`` as intended.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">threadName</span><span class="p">:</span>
+            <span class="n">record</span><span class="o">.</span><span class="n">threadName</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">threadName</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="group_log_lines">
+<a class="viewcode-back" href="../../iripau.logging.html#iripau.logging.group_log_lines">[docs]</a>
+<span class="k">def</span> <span class="nf">group_log_lines</span><span class="p">(</span>
+    <span class="n">lines</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">thread_id_regex</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">main_thread_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;MainThread&quot;</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; For a log file containing entries from several threads, group the lines</span>
+<span class="sd">        so that the lines coming from the same thread are contiguous, preserving</span>
+<span class="sd">        the order within the group. Lines coming from the main thread will not</span>
+<span class="sd">        be grouped.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lines: The lines to group.</span>
+<span class="sd">            thread_id_regex: The pattern to get the thread name from each line.</span>
+<span class="sd">                It should have one capturing group, which will be taken as the</span>
+<span class="sd">                thread name.</span>
+<span class="sd">            main_thread_id: The name of the main thread.</span>
+<span class="sd">        Yields:</span>
+<span class="sd">            str: The next line according to the group ordering.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If a line does not match ``thread_id_regex``.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Open a log file and print the grouped lines::</span>
+
+<span class="sd">                import sys</span>
+
+<span class="sd">                # The thread name is at the beginning of each line, before &#39;:&#39;</span>
+<span class="sd">                thread_id_regex = &quot;(.+): .*&quot;</span>
+
+<span class="sd">                with open(&quot;/tmp/threaded.log&quot;) as log_file:</span>
+<span class="sd">                    sys.stdout.writelines(group_log_lines(log_file))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lines_map</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">thread_id_regex</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid log line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">main_thread_id</span> <span class="o">==</span> <span class="n">thread</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">thread_lines</span> <span class="ow">in</span> <span class="n">lines_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">thread_line</span> <span class="ow">in</span> <span class="n">thread_lines</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">thread_line</span>
+            <span class="k">yield</span> <span class="n">line</span>
+            <span class="n">lines_map</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lines_map</span><span class="p">[</span><span class="n">thread</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">thread</span><span class="p">,</span> <span class="p">[])</span> <span class="o">+</span> <span class="p">[</span><span class="n">line</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">thread_lines</span> <span class="ow">in</span> <span class="n">lines_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">thread_line</span> <span class="ow">in</span> <span class="n">thread_lines</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">thread_line</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.logging</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

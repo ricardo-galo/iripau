@@ -1,0 +1,33 @@
+iripau package
+==============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   iripau.command
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   iripau.executable
+   iripau.functools
+   iripau.logging
+   iripau.random
+   iripau.requests
+   iripau.shutil
+   iripau.subprocess
+   iripau.threading
+
+Module contents
+---------------
+
+.. automodule:: iripau
+   :members:
+   :show-inheritance:
+   :undoc-members:

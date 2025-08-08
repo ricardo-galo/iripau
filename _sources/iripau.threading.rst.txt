@@ -1,0 +1,7 @@
+iripau.threading module
+=======================
+
+.. automodule:: iripau.threading
+   :members:
+   :show-inheritance:
+   :undoc-members:

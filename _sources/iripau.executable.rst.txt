@@ -1,0 +1,7 @@
+iripau.executable module
+========================
+
+.. automodule:: iripau.executable
+   :members:
+   :show-inheritance:
+   :undoc-members:

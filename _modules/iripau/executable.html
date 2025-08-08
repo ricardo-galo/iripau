@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iripau.executable &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=937269b5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.executable</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for iripau.executable</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Execute Command-Line Interfaces (CLI) as Python functions.</span>
+
+<span class="sd">Call an instance of :class:`.Executable`, or any of its attributes, passing</span>
+<span class="sd">positional arguments as ``*args`` and optional arguments as ``**kwargs``.</span>
+<span class="sd">All of the quoting is handled automatically, so there is no need to handle spaces</span>
+<span class="sd">nor any special characters such as single and double quotes.</span>
+<span class="sd">The attributes of the object will be instances of :class:`Command`.</span>
+<span class="sd">The return value is an instance of :class:`subprocess.CompletedProcess`.</span>
+
+<span class="sd">Example:</span>
+<span class="sd">    Make a ``docker`` wrapper::</span>
+
+<span class="sd">        docker = Executable(&quot;docker&quot;)</span>
+
+<span class="sd">        # docker --version</span>
+<span class="sd">        output = docker(version=True)</span>
+
+<span class="sd">        # docker run ubuntu:24.04 --volume=/tmp/data:/data:Z --name=test-container</span>
+<span class="sd">        output = docker.run(&quot;ubuntu:24.04&quot;, volume=&quot;/tmp/data:/data:Z&quot;, name=&quot;test-container&quot;)</span>
+
+<span class="sd">        # docker container rename test-container renamed-container</span>
+<span class="sd">        output = docker.container.rename(&quot;test-container&quot;, &quot;renamed-container&quot;)</span>
+
+<span class="sd">Note:</span>
+<span class="sd">    All values for positional and optional arguments are converted to string</span>
+<span class="sd">    with ``str(value)`` before creating the final subproces command.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">shlex</span> <span class="kn">import</span> <span class="n">split</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="kn">from</span> <span class="nn">iripau.command</span> <span class="kn">import</span> <span class="n">host_run</span>
+
+
+<div class="viewcode-block" id="Command">
+<a class="viewcode-back" href="../../iripau.executable.html#iripau.executable.Command">[docs]</a>
+<span class="k">class</span> <span class="nc">Command</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Run a command or sub-command of a CLI as a Python function.</span>
+
+<span class="sd">        The attributes of :class:`.Executable` will be instances of this class,</span>
+<span class="sd">        as well as any other sub-attribute.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            parent (:class:`.Executable` | :class:`.Command`): Object to</span>
+<span class="sd">                call so the subprocess can actually be executed.</span>
+<span class="sd">            command: Python identifier for a given command or cub-command.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_command</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_mk_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mk_command</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_mk_command</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">child</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="make_command">
+<a class="viewcode-back" href="../../iripau.executable.html#iripau.executable.make_command">[docs]</a>
+<span class="k">def</span> <span class="nf">make_command</span><span class="p">(</span><span class="n">command</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Replace underscore with dash.</span>
+
+<span class="sd">        Suitable for a CLI that uses dashes as word-separator in their</span>
+<span class="sd">        positional arguments.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            command: Python identifier referring to a CLI command or sub-command.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Final token to be used as a CLI positional argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">command</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="make_option">
+<a class="viewcode-back" href="../../iripau.executable.html#iripau.executable.make_option">[docs]</a>
+<span class="k">def</span> <span class="nf">make_option</span><span class="p">(</span><span class="n">option</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Replace underscore with dash and prepend two more dashes.</span>
+
+<span class="sd">        Suitable for a CLI that uses dashes as word-separator in their</span>
+<span class="sd">        positional arguments.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            option: Python identifier referring to a CLI optional argument.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The tokens that could be used as a CLI positional argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;--&quot;</span> <span class="o">+</span> <span class="n">option</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">),</span></div>
+
+
+
+<div class="viewcode-block" id="Executable">
+<a class="viewcode-back" href="../../iripau.executable.html#iripau.executable.Executable">[docs]</a>
+<span class="k">class</span> <span class="nc">Executable</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Run an executable as a Python callable.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            executable: Path to an executable file or just the name if it exists</span>
+<span class="sd">                in the ``PATH``. Or tokens that refer to a command.</span>
+<span class="sd">            make_command: Function to convert a Python identifier to the</span>
+<span class="sd">                corresponding command positional argument for the CLI.</span>
+<span class="sd">            make_option: Function to convert a Python identifier into the</span>
+<span class="sd">                corresponding optional argument for the CLI.</span>
+<span class="sd">            alias: Alias for ``executable``. See ``alias`` in</span>
+<span class="sd">                :class:`iripau.subprocess.Popen`.</span>
+<span class="sd">            run_args_prefix: When calling an instance of this class, all of the</span>
+<span class="sd">                ``**kwargs`` starting with this prefix will be passed to</span>
+<span class="sd">                ``run_function`` after removing the prefix.</span>
+<span class="sd">            run_function: The function that will actually run the process, wait</span>
+<span class="sd">                for it and return a :class:`subprocess.CompletedProcess`,</span>
+<span class="sd">                preferably.</span>
+<span class="sd">                If ``None``, the default will be :func:`iripau.command.host_run`.</span>
+<span class="sd">            **kwargs: Keyword arguments to be passed to ``run_function`` every</span>
+<span class="sd">                time this object is called.</span>
+<span class="sd">                The ``run_args_prefix`` is not needed here.</span>
+
+
+<span class="sd">        **Regarding optional arguments:**</span>
+
+<span class="sd">        Most of the CLIs have a long and short version for the same option,</span>
+<span class="sd">        for example ``docker run -m 128m`` and ``docker run --memory=128m``.</span>
+<span class="sd">        By default only one of those option can be used::</span>
+
+<span class="sd">            # docker run ubuntu:24.04 -m 128m</span>
+<span class="sd">            docker.run(&quot;ubuntu:24.04&quot;, m=&quot;128m&quot;)</span>
+
+<span class="sd">            # docker run ubuntu:24.04 --memory=128m</span>
+<span class="sd">            docker.run(&quot;ubuntu:24.04&quot;, memory=&quot;128m&quot;)</span>
+
+<span class="sd">        But using the name of a short option in a Python function might reduce</span>
+<span class="sd">        readability.</span>
+<span class="sd">        To solve that issue, the ``get`` method of a dictionary can be used as</span>
+<span class="sd">        ``make_option``.</span>
+<span class="sd">        The keys of the dictionaries would be the Python identifiers used when</span>
+<span class="sd">        calling the object::</span>
+
+<span class="sd">            options_map = {</span>
+<span class="sd">                &quot;config&quot;: (&quot;-c&quot;,),</span>
+<span class="sd">                &quot;memory&quot;: (&quot;-m&quot;),</span>
+<span class="sd">                &quot;quiet&quot;: (&quot;-q&quot;,)</span>
+<span class="sd">            }</span>
+
+<span class="sd">            docker = Executable(&quot;docker&quot;, make_option=options_map.get)</span>
+
+<span class="sd">            # docker run ubuntu:24.04 -m 128m</span>
+<span class="sd">            output = docker.run(&quot;ubuntu:24.04&quot;, memory=&quot;128m&quot;)</span>
+
+<span class="sd">        Also, the dictionary can be used in combination with the default function,</span>
+<span class="sd">        :func:`.make_option`, or any other function to avoid having all of the</span>
+<span class="sd">        options supported by the CLI in the dictionary::</span>
+
+<span class="sd">            option_map = {...}</span>
+
+<span class="sd">            def make_option(option):</span>
+<span class="sd">                tokens = options_map.get(option)</span>
+<span class="sd">                if tokens is None:</span>
+<span class="sd">                    tokens = make_option(option)</span>
+<span class="sd">                return tokens</span>
+
+<span class="sd">            docker = Executable(&quot;docker&quot;, make_option=make_option)</span>
+
+<span class="sd">        Tip:</span>
+<span class="sd">            Using a dictionary can help on ``make_command`` as well.</span>
+
+<span class="sd">        As you might have already noted, the values of the dictionary are tuples.</span>
+<span class="sd">        If that tuple has more that one item, one of those will be chosen randomly.</span>
+<span class="sd">        If the chosen option starts with ``--``, there will be a single token</span>
+<span class="sd">        with the option and the value: ``--memory=128m``.</span>
+<span class="sd">        If not, there will be two tokens: ``-m 128m``.</span>
+
+<span class="sd">        **Regarding the values that the optional arguments can have:**</span>
+
+<span class="sd">        | If ``True``, the option will be treated as a flag, with no value:</span>
+<span class="sd">        | **From:** ``help=True``</span>
+<span class="sd">        | **To:** ``--help``</span>
+
+<span class="sd">        | If ``False`` or ``None``, the option will be ignored:</span>
+<span class="sd">        | **From:** ``help=False`` or ``help=None``</span>
+<span class="sd">        | **To:** Nothing, not even an empty string</span>
+
+<span class="sd">        | If an iterable and not a string, the option will be repeated for each item:</span>
+<span class="sd">        | **From:** ``env=[&quot;DB_PASS=0123&quot;, &quot;DB_PORT=3210&quot;]``</span>
+<span class="sd">        | **To:** ``-e DB_PASS=0123 -e DB_PORT=3210``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">executable</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span>
+        <span class="n">make_command</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">make_command</span><span class="p">,</span>
+        <span class="n">make_option</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">make_option</span><span class="p">,</span>
+        <span class="n">alias</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">run_args_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span>
+        <span class="n">run_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run</span> <span class="o">=</span> <span class="n">run_function</span> <span class="ow">or</span> <span class="n">host_run</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_exe</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">executable</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">executable</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">executable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_alias</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">alias</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">alias</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">alias</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span> <span class="o">=</span> <span class="n">run_args_prefix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mk_option</span> <span class="o">=</span> <span class="n">make_option</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mk_command</span> <span class="o">=</span> <span class="n">make_command</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">child</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">optionals</span> <span class="o">=</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_make_arg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mk_option</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">positionals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span>
+        <span class="n">optionals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">optionals</span><span class="p">)</span>
+
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">key</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="p">):]:</span> <span class="n">value</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alias</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;alias&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alias</span> <span class="o">+</span> <span class="n">positionals</span> <span class="o">+</span> <span class="n">optionals</span><span class="p">)</span>
+
+        <span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exe</span> <span class="o">+</span> <span class="n">positionals</span> <span class="o">+</span> <span class="n">optionals</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_is_iterable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_make_arg</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return a list of tokens. Randomly choose a short or long option.</span>
+<span class="sd">            If a ``value`` is given it&#39;s appended appropriately.</span>
+<span class="sd">            If ``value`` is iterable, the option will be repeated for each item.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_is_iterable</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_make_arg</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">{</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">}:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">option</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">option</span><span class="p">]</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">option</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="n">value</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">option</span><span class="p">,</span> <span class="n">value</span><span class="p">]</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.executable</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

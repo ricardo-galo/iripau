@@ -1,0 +1,7 @@
+iripau.logging module
+=====================
+
+.. automodule:: iripau.logging
+   :members:
+   :show-inheritance:
+   :undoc-members:

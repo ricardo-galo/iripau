@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>iripau.threading module &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="_static/documentation_options.js?v=937269b5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="iripau.subprocess module" href="iripau.subprocess.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.threading module</a><ul>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult"><code class="docutils literal notranslate"><span class="pre">AsyncResult</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.run"><code class="docutils literal notranslate"><span class="pre">AsyncResult.run()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.get"><code class="docutils literal notranslate"><span class="pre">AsyncResult.get()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.wait"><code class="docutils literal notranslate"><span class="pre">AsyncResult.wait()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.ready"><code class="docutils literal notranslate"><span class="pre">AsyncResult.ready()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.successful"><code class="docutils literal notranslate"><span class="pre">AsyncResult.successful()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.threading.MultiDequeuer"><code class="docutils literal notranslate"><span class="pre">MultiDequeuer</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.threading.MultiDequeuer.put"><code class="docutils literal notranslate"><span class="pre">MultiDequeuer.put()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher"><code class="docutils literal notranslate"><span class="pre">FunctionCacher</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher.enable_cache"><code class="docutils literal notranslate"><span class="pre">FunctionCacher.enable_cache()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher.disable_cache"><code class="docutils literal notranslate"><span class="pre">FunctionCacher.disable_cache()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher.clear_cache"><code class="docutils literal notranslate"><span class="pre">FunctionCacher.clear_cache()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.threading.synchronized"><code class="docutils literal notranslate"><span class="pre">synchronized()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.cached"><code class="docutils literal notranslate"><span class="pre">cached()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.subprocess.html"
+                          title="previous chapter">iripau.subprocess module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.threading.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.subprocess.html" title="iripau.subprocess module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" accesskey="U">iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.threading module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-iripau.threading">
+<span id="iripau-threading-module"></span><h1>iripau.threading module<a class="headerlink" href="#module-iripau.threading" title="Link to this heading">¶</a></h1>
+<p>Generic and stand-alone threading utilities.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.threading.AsyncResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.threading.</span></span><span class="sig-name descname"><span class="pre">AsyncResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#AsyncResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.AsyncResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Thread</span></code></p>
+<p>Implementation of the <code class="xref py py-class docutils literal notranslate"><span class="pre">multiprocessing.pool.AsyncResult</span></code> class but
+spawning a new thread to execute the target <code class="docutils literal notranslate"><span class="pre">function</span></code> instead of using
+a Process or Thread Pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span>) – Callable to run in a thnread.</p></li>
+<li><p><strong>*args</strong> – Will be passed to <code class="docutils literal notranslate"><span class="pre">function</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Will be passed to <code class="docutils literal notranslate"><span class="pre">function</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Start multiplying two matrices, do other things, and then print the
+multiplication result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">mul</span>
+
+
+<span class="k">def</span> <span class="nf">slow_matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="n">a_row</span><span class="p">,</span> <span class="n">b_col</span><span class="p">))</span> <span class="k">for</span> <span class="n">b_col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">b</span><span class="p">)]</span> <span class="k">for</span> <span class="n">a_row</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">AsyncResult</span><span class="p">(</span><span class="n">slow_matmul</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing...&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">result</span><span class="o">.</span><span class="n">ready</span><span class="p">():</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Still processing...&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">900</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<p>Perform several matrix multiplications at once and print the results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+
+<span class="k">def</span> <span class="nf">random_mat_mul</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">slow_matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">AsyncResult</span><span class="p">(</span><span class="n">random_mat_mul</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">900</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.AsyncResult.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#AsyncResult.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.AsyncResult.run" title="Link to this definition">¶</a></dt>
+<dd><p>Run the target <code class="docutils literal notranslate"><span class="pre">function</span></code>, store its return value or exception
+information if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.AsyncResult.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#AsyncResult.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.AsyncResult.get" title="Link to this definition">¶</a></dt>
+<dd><p>Implementation of <code class="xref py py-meth docutils literal notranslate"><span class="pre">multiprocessing.pool.AsyncResult.get()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Maximum time in seconds to wait for the result to arrive.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The target <code class="docutils literal notranslate"><span class="pre">function</span></code> return value when it arrives.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TimeoutError</strong> – If the result does not arrive within <code class="docutils literal notranslate"><span class="pre">timeout</span></code>..</p></li>
+<li><p><strong>Exception</strong> – Whatever <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code> the target <code class="docutils literal notranslate"><span class="pre">function</span></code>
+    raised during its execution.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.AsyncResult.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#AsyncResult.wait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.AsyncResult.wait" title="Link to this definition">¶</a></dt>
+<dd><p>Implementation of <code class="xref py py-meth docutils literal notranslate"><span class="pre">multiprocessing.pool.AsyncResult.wait()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Maximum time to wait for the result to be available.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.AsyncResult.ready">
+<span class="sig-name descname"><span class="pre">ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#AsyncResult.ready"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.AsyncResult.ready" title="Link to this definition">¶</a></dt>
+<dd><p>Implementation of <code class="xref py py-meth docutils literal notranslate"><span class="pre">multiprocessing.pool.AsyncResult.ready()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the target <code class="docutils literal notranslate"><span class="pre">function</span></code>  has completed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.AsyncResult.successful">
+<span class="sig-name descname"><span class="pre">successful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#AsyncResult.successful"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.AsyncResult.successful" title="Link to this definition">¶</a></dt>
+<dd><p>Implementation of <code class="xref py py-meth docutils literal notranslate"><span class="pre">multiprocessing.pool.AsyncResult.successful()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the target <code class="docutils literal notranslate"><span class="pre">function</span></code> completed without raising an
+exception.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the result is not ready.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.threading.MultiDequeuer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.threading.</span></span><span class="sig-name descname"><span class="pre">MultiDequeuer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">consumer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_to_consume=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_hint=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_type=&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#MultiDequeuer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.MultiDequeuer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Implementation of the Producer-Consumer Design Pattern in which one of
+the Producer workers will act as Consumer, processing all of the
+elements that have been produced so far. Also, the workers will block
+until the elements they produced are consumed.</p>
+<p>This is helpful to keep the logic of processing one single element per
+worker but consuming several elements more efficiently at once, without
+the need of having a separated thread or threads for consumption.</p>
+<p>If there is not any advantage on consuming multiple elements at once
+compared to consuming them one by one, it is preferred to consume the
+elements in the workers, keeping the logic of blocking the workers.</p>
+<p>If blocking the workers is not desired, the regular Producer-Consumer
+Pattern will suffice.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This class relies on the Python GIL.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>consumer</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">Collection</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]], <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</span>) – The elements queue will be consumed by this callable, which
+will be called by one of the workers passing all of the elements
+in the queue so far. When the worker has started consuming the
+queue, a new queue will be created to handle future elements.</p></li>
+<li><p><strong>time_to_consume</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – If this is greater than 0, the queue will be consumed
+when this time (in seconds) has passed after the first element was
+added to the queue.</p></li>
+<li><p><strong>count_hint</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – If this is greater than 0, the queue will be consumed when
+at least this amount of elements have been added to the queue,
+ignoring <code class="docutils literal notranslate"><span class="pre">time_to_consume</span></code>.</p></li>
+<li><p><strong>collection_type</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code></span>) – The elements queue will be cast into this type before
+it is passed to the <code class="docutils literal notranslate"><span class="pre">consumer</span></code> callable.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.MultiDequeuer.put">
+<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#MultiDequeuer.put"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.MultiDequeuer.put" title="Link to this definition">¶</a></dt>
+<dd><p>Add an element to the queue. This method is meant to be called by
+the workers. It blocks until the element is consumed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>product</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></span>) – Element to add to the queue.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.threading.FunctionCacher">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.threading.</span></span><span class="sig-name descname"><span class="pre">FunctionCacher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synchronized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#FunctionCacher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.FunctionCacher" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Cache the return value of a callable depending on their call arguments.
+The first call will generate the cache and subsequent calls will return
+the cached value without executing the original callable.</p>
+<p>The instance of this class is meant to be called as if it were the
+original callable.</p>
+<p>The main difference from the functools.cache decorator is that the cache
+for a particular set of arguments will be generated by only one
+execution of the original callable; if more than one thread calls this
+object before the cache is generated, only one of them will actually
+execute the original callable and the rest will wait for it to finish.</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.cache">https://docs.python.org/3/library/functools.html#functools.cache</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.FunctionCacher.enable_cache">
+<span class="sig-name descname"><span class="pre">enable_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synchronized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#FunctionCacher.enable_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.FunctionCacher.enable_cache" title="Link to this definition">¶</a></dt>
+<dd><p>Enable caching if not enabled already.
+The synchronized argument is used as in the constructor.
+This method is not re-entrant nor thread-safe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.FunctionCacher.disable_cache">
+<span class="sig-name descname"><span class="pre">disable_cache</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#FunctionCacher.disable_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.FunctionCacher.disable_cache" title="Link to this definition">¶</a></dt>
+<dd><p>Disable and delete caching if not disabled already.
+This method is not re-entrant nor thread-safe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.threading.FunctionCacher.clear_cache">
+<span class="sig-name descname"><span class="pre">clear_cache</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#FunctionCacher.clear_cache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.FunctionCacher.clear_cache" title="Link to this definition">¶</a></dt>
+<dd><p>Delete cache if caching is not disabled.
+This method is not re-entrant nor thread-safe.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.threading.synchronized">
+<span class="sig-prename descclassname"><span class="pre">iripau.threading.</span></span><span class="sig-name descname"><span class="pre">synchronized</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#synchronized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.synchronized" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator to wrap a function with a lock/semaphore</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.threading.cached">
+<span class="sig-prename descclassname"><span class="pre">iripau.threading.</span></span><span class="sig-name descname"><span class="pre">cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">synchronized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/threading.html#cached"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.threading.cached" title="Link to this definition">¶</a></dt>
+<dd><p>Decorator using the FunctionCacher class.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.threading module</a><ul>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult"><code class="docutils literal notranslate"><span class="pre">AsyncResult</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.run"><code class="docutils literal notranslate"><span class="pre">AsyncResult.run()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.get"><code class="docutils literal notranslate"><span class="pre">AsyncResult.get()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.wait"><code class="docutils literal notranslate"><span class="pre">AsyncResult.wait()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.ready"><code class="docutils literal notranslate"><span class="pre">AsyncResult.ready()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.AsyncResult.successful"><code class="docutils literal notranslate"><span class="pre">AsyncResult.successful()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.threading.MultiDequeuer"><code class="docutils literal notranslate"><span class="pre">MultiDequeuer</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.threading.MultiDequeuer.put"><code class="docutils literal notranslate"><span class="pre">MultiDequeuer.put()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher"><code class="docutils literal notranslate"><span class="pre">FunctionCacher</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher.enable_cache"><code class="docutils literal notranslate"><span class="pre">FunctionCacher.enable_cache()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher.disable_cache"><code class="docutils literal notranslate"><span class="pre">FunctionCacher.disable_cache()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.FunctionCacher.clear_cache"><code class="docutils literal notranslate"><span class="pre">FunctionCacher.clear_cache()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.threading.synchronized"><code class="docutils literal notranslate"><span class="pre">synchronized()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.threading.cached"><code class="docutils literal notranslate"><span class="pre">cached()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.subprocess.html"
+                          title="previous chapter">iripau.subprocess module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.threading.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.subprocess.html" title="iripau.subprocess module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" >iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.threading module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

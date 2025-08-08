@@ -1,0 +1,7 @@
+iripau.subprocess module
+========================
+
+.. automodule:: iripau.subprocess
+   :members:
+   :show-inheritance:
+   :undoc-members:

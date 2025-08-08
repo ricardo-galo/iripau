@@ -1,0 +1,7 @@
+iripau.functools module
+=======================
+
+.. automodule:: iripau.functools
+   :members:
+   :show-inheritance:
+   :undoc-members:

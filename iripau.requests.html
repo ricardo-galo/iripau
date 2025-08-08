@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>iripau.requests module &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="_static/documentation_options.js?v=937269b5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="iripau.shutil module" href="iripau.shutil.html" />
+    <link rel="prev" title="iripau.random module" href="iripau.random.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.requests module</a><ul>
+<li><a class="reference internal" href="#iripau.requests.raw_content"><code class="docutils literal notranslate"><span class="pre">raw_content()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.hide_content"><code class="docutils literal notranslate"><span class="pre">hide_content()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.try_json_content"><code class="docutils literal notranslate"><span class="pre">try_json_content()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.curlify"><code class="docutils literal notranslate"><span class="pre">curlify()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.Session"><code class="docutils literal notranslate"><span class="pre">Session</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.requests.Session.request"><code class="docutils literal notranslate"><span class="pre">Session.request()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.requests.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.head"><code class="docutils literal notranslate"><span class="pre">head()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.options"><code class="docutils literal notranslate"><span class="pre">options()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.patch"><code class="docutils literal notranslate"><span class="pre">patch()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.post"><code class="docutils literal notranslate"><span class="pre">post()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.put"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.random.html"
+                          title="previous chapter">iripau.random module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.shutil.html"
+                          title="next chapter">iripau.shutil module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.requests.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.shutil.html" title="iripau.shutil module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="iripau.random.html" title="iripau.random module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" accesskey="U">iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.requests module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-iripau.requests">
+<span id="iripau-requests-module"></span><h1>iripau.requests module<a class="headerlink" href="#module-iripau.requests" title="Link to this heading">¶</a></h1>
+<p>A wrapper of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">requests</span></code> module that has extra features.</p>
+<p>In theory, the original <code class="xref py py-mod docutils literal notranslate"><span class="pre">requests</span></code> module can be replaced with <a class="reference internal" href="#module-iripau.requests" title="iripau.requests"><code class="xref py py-mod docutils literal notranslate"><span class="pre">requests</span></code></a>
+keeping the original functionality. After that, the extra features can be leveraged.</p>
+<p>Currently, the only extra feature is simulating a <code class="docutils literal notranslate"><span class="pre">curl</span></code> command. If a global
+configuration is made as in the examples mentioned in <a class="reference internal" href="iripau.logging.html#module-iripau.logging" title="iripau.logging"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging</span></code></a>, the
+requests made using <a class="reference internal" href="#module-iripau.requests" title="iripau.requests"><code class="xref py py-mod docutils literal notranslate"><span class="pre">requests</span></code></a> will be shown as <code class="docutils literal notranslate"><span class="pre">curl</span></code> commands without
+any further modifications to the existing code, if any. See <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>
+for more details.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This is not real-time output. The simulation takes place after the request
+finishes, because it needs the <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.Response</span></code> object.</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.raw_content">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">raw_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#raw_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.raw_content" title="Link to this definition">¶</a></dt>
+<dd><p>Just return the content of a response, either a string or bytes, without
+any post-processing.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This function can be used as the value for the <code class="docutils literal notranslate"><span class="pre">output_processor</span></code>
+argument in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> or <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>response</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span>) – The result of performing a request.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">response.content</span></code> as is.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.hide_content">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">hide_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#hide_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.hide_content" title="Link to this definition">¶</a></dt>
+<dd><p>Always return <code class="docutils literal notranslate"><span class="pre">***</span></code> as bytes.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This function can be used as the value for the <code class="docutils literal notranslate"><span class="pre">output_processor</span></code>
+argument in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> or <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>response</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span>) – The result of performing a request.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">b&quot;***&quot;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.try_json_content">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">try_json_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#try_json_content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.try_json_content" title="Link to this definition">¶</a></dt>
+<dd><p>Try to pretty-format the content of a response as JSON.
+If the content is not a valid JSON, return the raw content.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This function can be used as the value for the <code class="docutils literal notranslate"><span class="pre">output_processor</span></code>
+argument in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> or <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>response</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span>) – The result of performing a request.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The pretty JSON or the raw content.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.curlify">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">curlify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers_to_hide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers_to_omit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">echo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#curlify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.curlify" title="Link to this definition">¶</a></dt>
+<dd><p>Simulate the request was executed by a <code class="docutils literal notranslate"><span class="pre">curl</span></code> subprocess.
+The command and output can be echoed and/or sent to files as described
+in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.run" title="iripau.subprocess.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">subprocess.run()</span></code></a> and <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.
+At the end of the <code class="docutils literal notranslate"><span class="pre">curl</span></code> command, a comment with the HTTP status code
+and reason will be added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>response</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span>) – The result of performing a request.</p></li>
+<li><p><strong>compressed</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Whether or not the request used compressed data.
+If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the argument <code class="docutils literal notranslate"><span class="pre">--compressed</span></code> will be added to the
+<code class="docutils literal notranslate"><span class="pre">curl</span></code> command.</p></li>
+<li><p><strong>verify</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Whether or not the request disabled TLS certificate
+verification.
+If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the argument <code class="docutils literal notranslate"><span class="pre">--insecure</span></code> will be added to the
+<code class="docutils literal notranslate"><span class="pre">curl</span></code> command.</p></li>
+<li><p><strong>pretty</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – Break the <code class="docutils literal notranslate"><span class="pre">curl</span></code> command into several lines.</p></li>
+<li><p><strong>output_processor</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]]</span>) – The return value of this function will be used as
+the <code class="docutils literal notranslate"><span class="pre">stdout</span></code> of the <code class="docutils literal notranslate"><span class="pre">curl</span></code> command.
+The default is <a class="reference internal" href="#iripau.requests.raw_content" title="iripau.requests.raw_content"><code class="xref py py-func docutils literal notranslate"><span class="pre">raw_content()</span></code></a>, which returns whatever
+the content of the response is.</p></li>
+<li><p><strong>headers_to_hide</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – The value of these headers will be replaced with
+<code class="docutils literal notranslate"><span class="pre">***</span></code> in the final <code class="docutils literal notranslate"><span class="pre">curl</span></code> command.
+If the header was not used in the request, ignore it.</p></li>
+<li><p><strong>headers_to_omit</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – These headers won’t be in the final <code class="docutils literal notranslate"><span class="pre">curl</span></code> command.
+If the header was not used in the request, ignore it.</p></li>
+<li><p><strong>stdout_tees</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[], <code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code>]]]</span>) – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>stderr_tees</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[], <code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code>]]]</span>) – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>prompt_tees</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[], <code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code>]]]</span>) – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>add_global_stdout_tees</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>add_global_stderr_tees</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>add_global_prompt_tees</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>echo</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Perform a request and use the response to echo the simulated <code class="docutils literal notranslate"><span class="pre">curl</span></code>
+command and its output into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://dummyjson.com/test&quot;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">curlify</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># $ curl -H &#39;User-Agent: python-requests/2.32.3&#39; -H &#39;Accept-Encoding: gzip, deflate&#39; -H &#39;Accept: */*&#39; -H &#39;Connection: keep-alive&#39; https://dummyjson.com/test # 200 - OK</span>
+<span class="c1"># {&quot;status&quot;:&quot;ok&quot;,&quot;method&quot;:&quot;GET&quot;}</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">requests</span></code> might fill in some headers with deduced or default
+values for every request.</p>
+<p>I the example above, the headers <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code>, <code class="docutils literal notranslate"><span class="pre">Accept-Encoding</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Accept</span></code> and <code class="docutils literal notranslate"><span class="pre">Connection</span></code>  were added by the original
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">requests</span></code> module.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.requests.Session">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">Session</span></span><a class="reference internal" href="_modules/iripau/requests.html#Session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.Session" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></p>
+<p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.Session</span></code> that accepts <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments in
+the <a class="reference internal" href="#iripau.requests.Session.request" title="iripau.requests.Session.request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.request()</span></code></a> method.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The constructor arguments are the same as in the base
+<code class="xref py py-class docutils literal notranslate"><span class="pre">requests.Session</span></code>.</p>
+</div>
+<p class="rubric">Example</p>
+<p>Echo the simulated <code class="docutils literal notranslate"><span class="pre">curl</span></code> command and its output into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://dummyjson.com/test&quot;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># $ curl -H &#39;User-Agent: python-requests/2.32.3&#39; -H &#39;Accept-Encoding: gzip, deflate&#39; -H &#39;Accept: */*&#39; -H &#39;Connection: keep-alive&#39; --insecure https://dummyjson.com/test # 200 - OK</span>
+<span class="c1"># {&quot;status&quot;:&quot;ok&quot;,&quot;method&quot;:&quot;GET&quot;}</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<p>Pass some headers to a request and echo the pretty <code class="docutils literal notranslate"><span class="pre">curl</span></code>
+equivalent command into the terminal but hide the value of some
+headers and without showing other ones, such as the ones added
+automatically:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer A_VERY_LONG_AND_SECRET_JWT_TOKEN&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Nintendo 3DS; U; ; en) Version/1.7412.EU&quot;</span>
+<span class="p">}</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="s2">&quot;https://dummyjson.com/test&quot;</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;field&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">},</span>
+    <span class="n">headers_to_hide</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s2">&quot;API-Key&quot;</span><span class="p">],</span>
+    <span class="n">headers_to_omit</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Accept-Encoding&quot;</span><span class="p">,</span> <span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;User-Agent&quot;</span><span class="p">],</span>
+    <span class="n">pretty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">echo</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># $ curl -H &#39;Accept-Encoding: gzip, deflate&#39; \</span>
+<span class="c1"># &gt;   -H &#39;Accept: application/json&#39; \</span>
+<span class="c1"># &gt;   -H &#39;Connection: keep-alive&#39; \</span>
+<span class="c1"># &gt;   -H &#39;Authorization: ***&#39; \</span>
+<span class="c1"># &gt;   -d &#39;{&quot;field&quot;: &quot;value&quot;}&#39; \</span>
+<span class="c1"># &gt;   https://dummyjson.com/test # 200 - OK</span>
+<span class="c1"># {&quot;status&quot;:&quot;ok&quot;,&quot;method&quot;:&quot;POST&quot;}</span>
+</pre></div>
+</div>
+<p>In that example, the intention was to hide the header <code class="docutils literal notranslate"><span class="pre">API-Key</span></code>,
+but it was not actually used in the request, so it simply gets ignored.</p>
+<p class="rubric">Example</p>
+<p>Print the content of the response as a prettified JSON string:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://dummyjson.com/test&quot;</span><span class="p">,</span>
+    <span class="n">headers_to_omit</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Accept&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Accept-Encoding&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Connection&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Content-Length&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;User-Agent&quot;</span>
+    <span class="p">],</span>
+    <span class="n">output_processor</span><span class="o">=</span><span class="n">try_json_content</span><span class="p">,</span>
+    <span class="n">echo</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># $ curl https://dummyjson.com/test # 200 - OK</span>
+<span class="c1"># {</span>
+<span class="c1">#     &quot;status&quot;: &quot;ok&quot;,</span>
+<span class="c1">#     &quot;method&quot;: &quot;GET&quot;</span>
+<span class="c1"># }</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The names of the headers are case-insensitive.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.requests.Session.request">
+<span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers_to_hide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers_to_omit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">echo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#Session.request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.Session.request" title="Link to this definition">¶</a></dt>
+<dd><p>Constructs a <code class="xref py py-class docutils literal notranslate"><span class="pre">requests.Request</span></code>, prepares it and sends it.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here as well as in
+the methods for the specific HTTP methods:</p>
+<ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.delete()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.get()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.head()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.options()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.patch()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.post()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.put()</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compressed</strong> – The same as in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a>.</p></li>
+<li><p><strong>pretty</strong> – The same as in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a>.</p></li>
+<li><p><strong>output_processor</strong> – The same as in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a>.</p></li>
+<li><p><strong>headers_to_hide</strong> – The same as in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a>.</p></li>
+<li><p><strong>headers_to_omit</strong> – The same as in <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a>.</p></li>
+<li><p><strong>stdout_tees</strong> – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>stderr_tees</strong> – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>prompt_tees</strong> – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>add_global_stdout_tees</strong> – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>add_global_stderr_tees</strong> – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>add_global_prompt_tees</strong> – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>echo</strong> – The same as in <a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>*args</strong> – Passed to the base <code class="xref py py-meth docutils literal notranslate"><span class="pre">requests.Session.request()</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Passed to the base <code class="xref py py-meth docutils literal notranslate"><span class="pre">requests.Session.request()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.delete">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.delete" title="Link to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>, call the DELETE HTTP method and return the result.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.delete()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.delete()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.get">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.get" title="Link to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>, call the GET HTTP method and return the result.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.get()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.get()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.head">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.head" title="Link to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>, call the HEAD HTTP method and return the result.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.head()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.head()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.options">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.options" title="Link to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>, call the OPTIONS HTTP method and return the result.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.options()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.options()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.patch">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">patch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.patch" title="Link to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>, call the PATCH HTTP method and return the result.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.patch()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.patch()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.post">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.post" title="Link to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>, call the POST HTTP method and return the result.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.post()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.post()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.requests.put">
+<span class="sig-prename descclassname"><span class="pre">iripau.requests.</span></span><span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/requests.html#put"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.requests.put" title="Link to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#iripau.requests.Session" title="iripau.requests.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>, call the PUT HTTP method and return the result.
+The <a class="reference internal" href="#iripau.requests.curlify" title="iripau.requests.curlify"><code class="xref py py-func docutils literal notranslate"><span class="pre">curlify()</span></code></a> arguments can also be used here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.put()</span></code></p></li>
+<li><p><strong>**kwargs</strong> – Passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">Session.put()</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of performing a request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.requests module</a><ul>
+<li><a class="reference internal" href="#iripau.requests.raw_content"><code class="docutils literal notranslate"><span class="pre">raw_content()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.hide_content"><code class="docutils literal notranslate"><span class="pre">hide_content()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.try_json_content"><code class="docutils literal notranslate"><span class="pre">try_json_content()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.curlify"><code class="docutils literal notranslate"><span class="pre">curlify()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.Session"><code class="docutils literal notranslate"><span class="pre">Session</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.requests.Session.request"><code class="docutils literal notranslate"><span class="pre">Session.request()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.requests.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.head"><code class="docutils literal notranslate"><span class="pre">head()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.options"><code class="docutils literal notranslate"><span class="pre">options()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.patch"><code class="docutils literal notranslate"><span class="pre">patch()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.post"><code class="docutils literal notranslate"><span class="pre">post()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.requests.put"><code class="docutils literal notranslate"><span class="pre">put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.random.html"
+                          title="previous chapter">iripau.random module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.shutil.html"
+                          title="next chapter">iripau.shutil module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.requests.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.shutil.html" title="iripau.shutil module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="iripau.random.html" title="iripau.random module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" >iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.requests module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

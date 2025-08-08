@@ -1,0 +1,7 @@
+iripau.random module
+====================
+
+.. automodule:: iripau.random
+   :members:
+   :show-inheritance:
+   :undoc-members:

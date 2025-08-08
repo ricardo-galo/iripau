@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>iripau.subprocess module &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="_static/documentation_options.js?v=937269b5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="iripau.threading module" href="iripau.threading.html" />
+    <link rel="prev" title="iripau.shutil module" href="iripau.shutil.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.subprocess module</a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.PipeFile"><code class="docutils literal notranslate"><span class="pre">PipeFile</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.PipeFile.read_all"><code class="docutils literal notranslate"><span class="pre">PipeFile.read_all()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.subprocess.Tee"><code class="docutils literal notranslate"><span class="pre">Tee</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.Tee.get_cmd"><code class="docutils literal notranslate"><span class="pre">Tee.get_cmd()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Tee.get_kwargs"><code class="docutils literal notranslate"><span class="pre">Tee.get_kwargs()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Tee.communicate"><code class="docutils literal notranslate"><span class="pre">Tee.communicate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen"><code class="docutils literal notranslate"><span class="pre">Popen</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.simulate"><code class="docutils literal notranslate"><span class="pre">Popen.simulate()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.get_pids"><code class="docutils literal notranslate"><span class="pre">Popen.get_pids()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.terminate_tree"><code class="docutils literal notranslate"><span class="pre">Popen.terminate_tree()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.kill_tree"><code class="docutils literal notranslate"><span class="pre">Popen.kill_tree()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.end_tree"><code class="docutils literal notranslate"><span class="pre">Popen.end_tree()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.poll"><code class="docutils literal notranslate"><span class="pre">Popen.poll()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.wait"><code class="docutils literal notranslate"><span class="pre">Popen.wait()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.communicate"><code class="docutils literal notranslate"><span class="pre">Popen.communicate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.subprocess.normalize_outerr_fds"><code class="docutils literal notranslate"><span class="pre">normalize_outerr_fds()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.quote"><code class="docutils literal notranslate"><span class="pre">quote()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.shellify"><code class="docutils literal notranslate"><span class="pre">shellify()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.stream_prompts"><code class="docutils literal notranslate"><span class="pre">stream_prompts()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_echo"><code class="docutils literal notranslate"><span class="pre">set_global_echo()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_stdout_files"><code class="docutils literal notranslate"><span class="pre">set_global_stdout_files()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_stderr_files"><code class="docutils literal notranslate"><span class="pre">set_global_stderr_files()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_prompt_files"><code class="docutils literal notranslate"><span class="pre">set_global_prompt_files()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.call"><code class="docutils literal notranslate"><span class="pre">call()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.check_call"><code class="docutils literal notranslate"><span class="pre">check_call()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.check_output"><code class="docutils literal notranslate"><span class="pre">check_output()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.getoutput"><code class="docutils literal notranslate"><span class="pre">getoutput()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.getstatusoutput"><code class="docutils literal notranslate"><span class="pre">getstatusoutput()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.shutil.html"
+                          title="previous chapter">iripau.shutil module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.threading.html"
+                          title="next chapter">iripau.threading module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.subprocess.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.threading.html" title="iripau.threading module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="iripau.shutil.html" title="iripau.shutil module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" accesskey="U">iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.subprocess module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-iripau.subprocess">
+<span id="iripau-subprocess-module"></span><h1>iripau.subprocess module<a class="headerlink" href="#module-iripau.subprocess" title="Link to this heading">¶</a></h1>
+<p>A wrapper of the subprocess module</p>
+<p>This module relies on the following system utilities being installed:
+* bash
+* kill
+* pstree
+* tee</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.subprocess.PipeFile">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">PipeFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#PipeFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.PipeFile" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">SpooledTemporaryFile</span></code></p>
+<p>A file to be used as stdin, stdout and stderr in Popen to avoid dead lock
+when the process output is too long using PIPE.</p>
+<p>If used as stdin, the content should be written before spawning the process.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.PipeFile.read_all">
+<span class="sig-name descname"><span class="pre">read_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#PipeFile.read_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.PipeFile.read_all" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.subprocess.Tee">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">Tee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Tee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Tee" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Popen</span></code></p>
+<p>A subprocess to send real-time input to several file descriptors</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Tee.get_cmd">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Tee.get_cmd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Tee.get_cmd" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Tee.get_kwargs">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Tee.get_kwargs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Tee.get_kwargs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Tee.communicate">
+<span class="sig-name descname"><span class="pre">communicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Tee.communicate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Tee.communicate" title="Link to this definition">¶</a></dt>
+<dd><p>Interact with process: Send data to stdin and close it.
+Read data from stdout and stderr, until end-of-file is
+reached.  Wait for process to terminate.</p>
+<p>The optional “input” argument should be data to be sent to the
+child process, or None, if no data should be sent to the child.
+communicate() returns a tuple (stdout, stderr).</p>
+<p>By default, all communication is in bytes, and therefore any
+“input” should be bytes, and the (stdout, stderr) will be bytes.
+If in text mode (indicated by self.text_mode), any “input” should
+be a string, and (stdout, stderr) will be strings decoded
+according to locale encoding, or by “encoding” if set. Text mode
+is triggered by setting any of text, encoding, errors or
+universal_newlines.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">Popen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">cwd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">echo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Popen</span></code></p>
+<p>A subprocess.Popen that can send its stdout and stderr to several files
+in real-time keeping the ability of capturing its output.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.simulate">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stdout_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_stderr_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_global_prompt_tees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">echo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.simulate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.simulate" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.get_pids">
+<span class="sig-name descname"><span class="pre">get_pids</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.get_pids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.get_pids" title="Link to this definition">¶</a></dt>
+<dd><p>Return the pid for all of the processes in the tree</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.terminate_tree">
+<span class="sig-name descname"><span class="pre">terminate_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.terminate_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.terminate_tree" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.kill_tree">
+<span class="sig-name descname"><span class="pre">kill_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.kill_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.kill_tree" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.end_tree">
+<span class="sig-name descname"><span class="pre">end_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sigterm_timeout</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.end_tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.end_tree" title="Link to this definition">¶</a></dt>
+<dd><p>Try to gracefully terminate the process tree,
+kill it after ‘sigterm_timeout’ seconds</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.poll">
+<span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.poll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.poll" title="Link to this definition">¶</a></dt>
+<dd><p>Check if child process has terminated. Set and return returncode
+attribute.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.wait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.wait" title="Link to this definition">¶</a></dt>
+<dd><p>Wait for child process to terminate; returns self.returncode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="iripau.subprocess.Popen.communicate">
+<span class="sig-name descname"><span class="pre">communicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#Popen.communicate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.Popen.communicate" title="Link to this definition">¶</a></dt>
+<dd><p>Interact with process: Send data to stdin and close it.
+Read data from stdout and stderr, until end-of-file is
+reached.  Wait for process to terminate.</p>
+<p>The optional “input” argument should be data to be sent to the
+child process, or None, if no data should be sent to the child.
+communicate() returns a tuple (stdout, stderr).</p>
+<p>By default, all communication is in bytes, and therefore any
+“input” should be bytes, and the (stdout, stderr) will be bytes.
+If in text mode (indicated by self.text_mode), any “input” should
+be a string, and (stdout, stderr) will be strings decoded
+according to locale encoding, or by “encoding” if set. Text mode
+is triggered by setting any of text, encoding, errors or
+universal_newlines.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.normalize_outerr_fds">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">normalize_outerr_fds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#normalize_outerr_fds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.normalize_outerr_fds" title="Link to this definition">¶</a></dt>
+<dd><p>Return fds as a set but using 1 and 2 for stdout and stderr file
+descriptors in case we are being redirected</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.quote">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">quote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#quote"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.quote" title="Link to this definition">¶</a></dt>
+<dd><p>Convert the command tokens into a single string that could be pasted into
+the shell to execute the original command</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.shellify">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">shellify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err2out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#shellify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.shellify" title="Link to this definition">¶</a></dt>
+<dd><p>Quote command if needed and optionally add extra strings to express
+stderr being redirected to stdout and a comment</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.stream_prompts">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">stream_prompts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cwd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err2out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#stream_prompts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.stream_prompts" title="Link to this definition">¶</a></dt>
+<dd><p>Write shell prompt and command into file descriptors fds</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.set_global_echo">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">set_global_echo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#set_global_echo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.set_global_echo" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.set_global_stdout_files">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">set_global_stdout_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#set_global_stdout_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.set_global_stdout_files" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.set_global_stderr_files">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">set_global_stderr_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#set_global_stderr_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.set_global_stderr_files" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.set_global_prompt_files">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">set_global_prompt_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#set_global_prompt_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.set_global_prompt_files" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.run">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capture_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigterm_timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.run" title="Link to this definition">¶</a></dt>
+<dd><p>A subprocess.run that instantiates this module’s Popen</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.call">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.call" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.check_call">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">check_call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#check_call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.check_call" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.check_output">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">check_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#check_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.check_output" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.getoutput">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">getoutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#getoutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.getoutput" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.subprocess.getstatusoutput">
+<span class="sig-prename descclassname"><span class="pre">iripau.subprocess.</span></span><span class="sig-name descname"><span class="pre">getstatusoutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/subprocess.html#getstatusoutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.subprocess.getstatusoutput" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.subprocess module</a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.PipeFile"><code class="docutils literal notranslate"><span class="pre">PipeFile</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.PipeFile.read_all"><code class="docutils literal notranslate"><span class="pre">PipeFile.read_all()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.subprocess.Tee"><code class="docutils literal notranslate"><span class="pre">Tee</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.Tee.get_cmd"><code class="docutils literal notranslate"><span class="pre">Tee.get_cmd()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Tee.get_kwargs"><code class="docutils literal notranslate"><span class="pre">Tee.get_kwargs()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Tee.communicate"><code class="docutils literal notranslate"><span class="pre">Tee.communicate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen"><code class="docutils literal notranslate"><span class="pre">Popen</span></code></a><ul>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.simulate"><code class="docutils literal notranslate"><span class="pre">Popen.simulate()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.get_pids"><code class="docutils literal notranslate"><span class="pre">Popen.get_pids()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.terminate_tree"><code class="docutils literal notranslate"><span class="pre">Popen.terminate_tree()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.kill_tree"><code class="docutils literal notranslate"><span class="pre">Popen.kill_tree()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.end_tree"><code class="docutils literal notranslate"><span class="pre">Popen.end_tree()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.poll"><code class="docutils literal notranslate"><span class="pre">Popen.poll()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.wait"><code class="docutils literal notranslate"><span class="pre">Popen.wait()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.Popen.communicate"><code class="docutils literal notranslate"><span class="pre">Popen.communicate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iripau.subprocess.normalize_outerr_fds"><code class="docutils literal notranslate"><span class="pre">normalize_outerr_fds()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.quote"><code class="docutils literal notranslate"><span class="pre">quote()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.shellify"><code class="docutils literal notranslate"><span class="pre">shellify()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.stream_prompts"><code class="docutils literal notranslate"><span class="pre">stream_prompts()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_echo"><code class="docutils literal notranslate"><span class="pre">set_global_echo()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_stdout_files"><code class="docutils literal notranslate"><span class="pre">set_global_stdout_files()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_stderr_files"><code class="docutils literal notranslate"><span class="pre">set_global_stderr_files()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.set_global_prompt_files"><code class="docutils literal notranslate"><span class="pre">set_global_prompt_files()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.call"><code class="docutils literal notranslate"><span class="pre">call()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.check_call"><code class="docutils literal notranslate"><span class="pre">check_call()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.check_output"><code class="docutils literal notranslate"><span class="pre">check_output()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.getoutput"><code class="docutils literal notranslate"><span class="pre">getoutput()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.subprocess.getstatusoutput"><code class="docutils literal notranslate"><span class="pre">getstatusoutput()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.shutil.html"
+                          title="previous chapter">iripau.shutil module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.threading.html"
+                          title="next chapter">iripau.threading module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.subprocess.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.threading.html" title="iripau.threading module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="iripau.shutil.html" title="iripau.shutil module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" >iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.subprocess module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

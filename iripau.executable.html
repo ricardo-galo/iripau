@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>iripau.executable module &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="_static/documentation_options.js?v=937269b5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="iripau.functools module" href="iripau.functools.html" />
+    <link rel="prev" title="iripau.command package" href="iripau.command.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.executable module</a><ul>
+<li><a class="reference internal" href="#iripau.executable.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+<li><a class="reference internal" href="#iripau.executable.make_command"><code class="docutils literal notranslate"><span class="pre">make_command()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.executable.make_option"><code class="docutils literal notranslate"><span class="pre">make_option()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.executable.Executable"><code class="docutils literal notranslate"><span class="pre">Executable</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.command.html"
+                          title="previous chapter">iripau.command package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.functools.html"
+                          title="next chapter">iripau.functools module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.executable.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.functools.html" title="iripau.functools module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="iripau.command.html" title="iripau.command package"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" accesskey="U">iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.executable module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-iripau.executable">
+<span id="iripau-executable-module"></span><h1>iripau.executable module<a class="headerlink" href="#module-iripau.executable" title="Link to this heading">¶</a></h1>
+<p>Execute Command-Line Interfaces (CLI) as Python functions.</p>
+<p>Call an instance of <a class="reference internal" href="#iripau.executable.Executable" title="iripau.executable.Executable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a>, or any of its attributes, passing
+positional arguments as <code class="docutils literal notranslate"><span class="pre">*args</span></code> and optional arguments as <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>.
+All of the quoting is handled automatically, so there is no need to handle spaces
+nor any special characters such as single and double quotes.
+The attributes of the object will be instances of <a class="reference internal" href="#iripau.executable.Command" title="iripau.executable.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a>.
+The return value is an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.CompletedProcess</span></code>.</p>
+<p class="rubric">Example</p>
+<p>Make a <code class="docutils literal notranslate"><span class="pre">docker</span></code> wrapper:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="s2">&quot;docker&quot;</span><span class="p">)</span>
+
+<span class="c1"># docker --version</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">docker</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># docker run ubuntu:24.04 --volume=/tmp/data:/data:Z --name=test-container</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;ubuntu:24.04&quot;</span><span class="p">,</span> <span class="n">volume</span><span class="o">=</span><span class="s2">&quot;/tmp/data:/data:Z&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;test-container&quot;</span><span class="p">)</span>
+
+<span class="c1"># docker container rename test-container renamed-container</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;test-container&quot;</span><span class="p">,</span> <span class="s2">&quot;renamed-container&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All values for positional and optional arguments are converted to string
+with <code class="docutils literal notranslate"><span class="pre">str(value)</span></code> before creating the final subproces command.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.executable.Command">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.executable.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/executable.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.executable.Command" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Run a command or sub-command of a CLI as a Python function.</p>
+<p>The attributes of <a class="reference internal" href="#iripau.executable.Executable" title="iripau.executable.Executable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> will be instances of this class,
+as well as any other sub-attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="#iripau.executable.Executable" title="iripau.executable.Executable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a> | <a class="reference internal" href="#iripau.executable.Command" title="iripau.executable.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a>) – Object to
+call so the subprocess can actually be executed.</p></li>
+<li><p><strong>command</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Python identifier for a given command or cub-command.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.executable.make_command">
+<span class="sig-prename descclassname"><span class="pre">iripau.executable.</span></span><span class="sig-name descname"><span class="pre">make_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/executable.html#make_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.executable.make_command" title="Link to this definition">¶</a></dt>
+<dd><p>Replace underscore with dash.</p>
+<p>Suitable for a CLI that uses dashes as word-separator in their
+positional arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>command</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Python identifier referring to a CLI command or sub-command.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Final token to be used as a CLI positional argument.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.executable.make_option">
+<span class="sig-prename descclassname"><span class="pre">iripau.executable.</span></span><span class="sig-name descname"><span class="pre">make_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/executable.html#make_option"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.executable.make_option" title="Link to this definition">¶</a></dt>
+<dd><p>Replace underscore with dash and prepend two more dashes.</p>
+<p>Suitable for a CLI that uses dashes as word-separator in their
+positional arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>option</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Python identifier referring to a CLI optional argument.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The tokens that could be used as a CLI positional argument.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="iripau.executable.Executable">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">iripau.executable.</span></span><span class="sig-name descname"><span class="pre">Executable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">executable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">make_command=&lt;function</span> <span class="pre">make_command&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">make_option=&lt;function</span> <span class="pre">make_option&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alias=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_args_prefix='_'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_function=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/executable.html#Executable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.executable.Executable" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Run an executable as a Python callable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>executable</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – Path to an executable file or just the name if it exists
+in the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. Or tokens that refer to a command.</p></li>
+<li><p><strong>make_command</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – Function to convert a Python identifier to the
+corresponding command positional argument for the CLI.</p></li>
+<li><p><strong>make_option</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</span>) – Function to convert a Python identifier into the
+corresponding optional argument for the CLI.</p></li>
+<li><p><strong>alias</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span>) – Alias for <code class="docutils literal notranslate"><span class="pre">executable</span></code>. See <code class="docutils literal notranslate"><span class="pre">alias</span></code> in
+<a class="reference internal" href="iripau.subprocess.html#iripau.subprocess.Popen" title="iripau.subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">iripau.subprocess.Popen</span></code></a>.</p></li>
+<li><p><strong>run_args_prefix</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – When calling an instance of this class, all of the
+<code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> starting with this prefix will be passed to
+<code class="docutils literal notranslate"><span class="pre">run_function</span></code> after removing the prefix.</p></li>
+<li><p><strong>run_function</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span>) – The function that will actually run the process, wait
+for it and return a <code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.CompletedProcess</span></code>,
+preferably.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, the default will be <a class="reference internal" href="iripau.command.html#iripau.command.host_run" title="iripau.command.host_run"><code class="xref py py-func docutils literal notranslate"><span class="pre">iripau.command.host_run()</span></code></a>.</p></li>
+<li><p><strong>**kwargs</strong> – Keyword arguments to be passed to <code class="docutils literal notranslate"><span class="pre">run_function</span></code> every
+time this object is called.
+The <code class="docutils literal notranslate"><span class="pre">run_args_prefix</span></code> is not needed here.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Regarding optional arguments:</strong></p>
+<p>Most of the CLIs have a long and short version for the same option,
+for example <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-m</span> <span class="pre">128m</span></code> and <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--memory=128m</span></code>.
+By default only one of those option can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># docker run ubuntu:24.04 -m 128m</span>
+<span class="n">docker</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;ubuntu:24.04&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="s2">&quot;128m&quot;</span><span class="p">)</span>
+
+<span class="c1"># docker run ubuntu:24.04 --memory=128m</span>
+<span class="n">docker</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;ubuntu:24.04&quot;</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s2">&quot;128m&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But using the name of a short option in a Python function might reduce
+readability.
+To solve that issue, the <code class="docutils literal notranslate"><span class="pre">get</span></code> method of a dictionary can be used as
+<code class="docutils literal notranslate"><span class="pre">make_option</span></code>.
+The keys of the dictionaries would be the Python identifiers used when
+calling the object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">options_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,),</span>
+    <span class="s2">&quot;memory&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;quiet&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;-q&quot;</span><span class="p">,)</span>
+<span class="p">}</span>
+
+<span class="n">docker</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span> <span class="n">make_option</span><span class="o">=</span><span class="n">options_map</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+
+<span class="c1"># docker run ubuntu:24.04 -m 128m</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;ubuntu:24.04&quot;</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s2">&quot;128m&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Also, the dictionary can be used in combination with the default function,
+<a class="reference internal" href="#iripau.executable.make_option" title="iripau.executable.make_option"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_option()</span></code></a>, or any other function to avoid having all of the
+options supported by the CLI in the dictionary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option_map</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">make_option</span><span class="p">(</span><span class="n">option</span><span class="p">):</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">options_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tokens</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">make_option</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tokens</span>
+
+<span class="n">docker</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span> <span class="n">make_option</span><span class="o">=</span><span class="n">make_option</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Using a dictionary can help on <code class="docutils literal notranslate"><span class="pre">make_command</span></code> as well.</p>
+</div>
+<p>As you might have already noted, the values of the dictionary are tuples.
+If that tuple has more that one item, one of those will be chosen randomly.
+If the chosen option starts with <code class="docutils literal notranslate"><span class="pre">--</span></code>, there will be a single token
+with the option and the value: <code class="docutils literal notranslate"><span class="pre">--memory=128m</span></code>.
+If not, there will be two tokens: <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">128m</span></code>.</p>
+<p><strong>Regarding the values that the optional arguments can have:</strong></p>
+<div class="line-block">
+<div class="line">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the option will be treated as a flag, with no value:</div>
+<div class="line"><strong>From:</strong> <code class="docutils literal notranslate"><span class="pre">help=True</span></code></div>
+<div class="line"><strong>To:</strong> <code class="docutils literal notranslate"><span class="pre">--help</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">If <code class="docutils literal notranslate"><span class="pre">False</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>, the option will be ignored:</div>
+<div class="line"><strong>From:</strong> <code class="docutils literal notranslate"><span class="pre">help=False</span></code> or <code class="docutils literal notranslate"><span class="pre">help=None</span></code></div>
+<div class="line"><strong>To:</strong> Nothing, not even an empty string</div>
+</div>
+<div class="line-block">
+<div class="line">If an iterable and not a string, the option will be repeated for each item:</div>
+<div class="line"><strong>From:</strong> <code class="docutils literal notranslate"><span class="pre">env=[&quot;DB_PASS=0123&quot;,</span> <span class="pre">&quot;DB_PORT=3210&quot;]</span></code></div>
+<div class="line"><strong>To:</strong> <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">DB_PASS=0123</span> <span class="pre">-e</span> <span class="pre">DB_PORT=3210</span></code></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.executable module</a><ul>
+<li><a class="reference internal" href="#iripau.executable.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+<li><a class="reference internal" href="#iripau.executable.make_command"><code class="docutils literal notranslate"><span class="pre">make_command()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.executable.make_option"><code class="docutils literal notranslate"><span class="pre">make_option()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.executable.Executable"><code class="docutils literal notranslate"><span class="pre">Executable</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.command.html"
+                          title="previous chapter">iripau.command package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.functools.html"
+                          title="next chapter">iripau.functools module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.executable.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.functools.html" title="iripau.functools module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="iripau.command.html" title="iripau.command package"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" >iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.executable module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

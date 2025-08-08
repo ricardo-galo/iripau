@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iripau.subprocess &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=937269b5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.subprocess</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for iripau.subprocess</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A wrapper of the subprocess module</span>
+
+<span class="sd">This module relies on the following system utilities being installed:</span>
+<span class="sd">* bash</span>
+<span class="sd">* kill</span>
+<span class="sd">* pstree</span>
+<span class="sd">* tee</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">shlex</span>
+<span class="kn">import</span> <span class="nn">psutil</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">DEVNULL</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">PIPE</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">STDOUT</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">CompletedProcess</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">TimeoutExpired</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">SubprocessError</span>  <span class="c1"># noqa: F401</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">CalledProcessError</span>
+
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">SpooledTemporaryFile</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span><span class="p">,</span> <span class="n">nullcontext</span>
+
+<span class="n">FILE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="n">GLOBAL_ECHO</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">GLOBAL_STDOUTS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">GLOBAL_STDERRS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">GLOBAL_PROMPTS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+
+<span class="n">TeeStream</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">io</span><span class="o">.</span><span class="n">IOBase</span><span class="p">]]</span>
+<span class="n">TeeStreams</span> <span class="o">=</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">TeeStream</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="PipeFile">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.PipeFile">[docs]</a>
+<span class="k">class</span> <span class="nc">PipeFile</span><span class="p">(</span><span class="n">SpooledTemporaryFile</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A file to be used as stdin, stdout and stderr in Popen to avoid dead lock</span>
+<span class="sd">        when the process output is too long using PIPE.</span>
+
+<span class="sd">        If used as stdin, the content should be written before spawning the process.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w+t&quot;</span> <span class="k">if</span> <span class="n">text</span> <span class="k">else</span> <span class="s2">&quot;w+b&quot;</span><span class="p">,</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+            <span class="n">errors</span><span class="o">=</span><span class="n">errors</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PipeFile.read_all">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.PipeFile.read_all">[docs]</a>
+    <span class="k">def</span> <span class="nf">read_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Tee">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Tee">[docs]</a>
+<span class="k">class</span> <span class="nc">Tee</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A subprocess to send real-time input to several file descriptors &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">fds</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="n">STDOUT</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;output cannot be STDOUT&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">DEVNULL</span>
+
+        <span class="n">fds</span> <span class="o">=</span> <span class="n">normalize_outerr_fds</span><span class="p">(</span><span class="n">fds</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">fds</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">output</span> <span class="o">!=</span> <span class="n">DEVNULL</span><span class="p">:</span>
+                <span class="n">fds</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">stdout</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">stderr</span> <span class="o">=</span> <span class="n">output</span>
+        <span class="k">elif</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">fds</span><span class="p">:</span>
+            <span class="n">stdout</span> <span class="o">=</span> <span class="n">output</span>
+            <span class="n">stderr</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stdout</span> <span class="o">=</span> <span class="n">output</span>
+            <span class="n">stderr</span> <span class="o">=</span> <span class="n">DEVNULL</span>
+
+        <span class="n">fds</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">stdin</span><span class="o">=</span><span class="nb">input</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">stderr</span><span class="p">,</span> <span class="n">pass_fds</span><span class="o">=</span><span class="n">fds</span> <span class="o">-</span> <span class="p">{</span><span class="mi">2</span><span class="p">},</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">get_kwargs</span><span class="p">(</span><span class="n">fds</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span>
+
+<div class="viewcode-block" id="Tee.get_cmd">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Tee.get_cmd">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_cmd</span><span class="p">(</span><span class="n">fds</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;tee&quot;</span><span class="p">,</span> <span class="s2">&quot;-a&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;/dev/fd/</span><span class="si">{</span><span class="n">fd</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">fd</span> <span class="ow">in</span> <span class="n">fds</span><span class="p">]</span></div>
+
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="s2">&quot;/dev/fd/2&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">W_OK</span><span class="p">):</span>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">get_kwargs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fds</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_cmd</span><span class="p">(</span><span class="n">fds</span><span class="p">)}</span>
+    <span class="k">else</span><span class="p">:</span>
+<div class="viewcode-block" id="Tee.get_kwargs">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Tee.get_kwargs">[docs]</a>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">get_kwargs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fds</span><span class="p">):</span>
+            <span class="k">if</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">fds</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">{</span>
+                    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">get_cmd</span><span class="p">(</span><span class="n">fds</span> <span class="o">-</span> <span class="p">{</span><span class="mi">2</span><span class="p">}))</span> <span class="o">+</span> <span class="s2">&quot; &gt;(cat &gt;&amp;2)&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;shell&quot;</span><span class="p">:</span> <span class="kc">True</span>
+                <span class="p">}</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_cmd</span><span class="p">(</span><span class="n">fds</span><span class="p">)}</span></div>
+
+
+<div class="viewcode-block" id="Tee.communicate">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Tee.communicate">[docs]</a>
+    <span class="k">def</span> <span class="nf">communicate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">stdout</span> <span class="k">if</span> <span class="n">stderr</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">stderr</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Popen">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen">[docs]</a>
+<span class="k">class</span> <span class="nc">Popen</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A subprocess.Popen that can send its stdout and stderr to several files</span>
+<span class="sd">        in real-time keeping the ability of capturing its output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">stdout_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stdout_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">stderr_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stderr_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">prompt_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_prompt_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">echo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="n">stdout</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">)</span>
+        <span class="n">stderr</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stderr&quot;</span><span class="p">)</span>
+
+        <span class="n">stdout_tees</span><span class="p">,</span> <span class="n">stderr_tees</span><span class="p">,</span> <span class="n">prompt_tees</span><span class="p">,</span> <span class="n">new_tees</span><span class="p">,</span> <span class="n">err2out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_tee_sets</span><span class="p">(</span>
+            <span class="n">stdout_tees</span><span class="p">,</span> <span class="n">add_global_stdout_tees</span><span class="p">,</span>
+            <span class="n">stderr_tees</span><span class="p">,</span> <span class="n">add_global_stderr_tees</span><span class="p">,</span>
+            <span class="n">prompt_tees</span><span class="p">,</span> <span class="n">add_global_prompt_tees</span><span class="p">,</span>
+            <span class="n">echo</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">new_tees</span> <span class="o">=</span> <span class="n">new_tees</span>
+
+        <span class="n">stdout_fds</span> <span class="o">=</span> <span class="p">{</span><span class="n">tee</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="k">for</span> <span class="n">tee</span> <span class="ow">in</span> <span class="n">stdout_tees</span><span class="p">}</span>
+        <span class="n">stderr_fds</span> <span class="o">=</span> <span class="p">{</span><span class="n">tee</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="k">for</span> <span class="n">tee</span> <span class="ow">in</span> <span class="n">stderr_tees</span><span class="p">}</span>
+        <span class="n">prompt_fds</span> <span class="o">=</span> <span class="p">{</span><span class="n">tee</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="k">for</span> <span class="n">tee</span> <span class="ow">in</span> <span class="n">prompt_tees</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">stdout_fds</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PIPE</span>
+
+        <span class="k">if</span> <span class="n">stderr_fds</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stderr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PIPE</span>
+
+        <span class="k">if</span> <span class="n">prompt_fds</span><span class="p">:</span>
+            <span class="n">stream_prompts</span><span class="p">(</span><span class="n">prompt_fds</span><span class="p">,</span> <span class="n">alias</span> <span class="ow">or</span> <span class="n">args</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">err2out</span><span class="p">,</span> <span class="n">comment</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">,</span>
+                         <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">original_stdout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original_stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span>
+
+        <span class="n">stdout_process</span> <span class="o">=</span> <span class="n">stderr_process</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">if</span> <span class="n">stdout_fds</span><span class="p">:</span>
+            <span class="n">stdout_process</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">stdout_fds</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">stdout_process</span><span class="o">.</span><span class="n">output</span>
+        <span class="k">if</span> <span class="n">stderr_fds</span><span class="p">:</span>
+            <span class="n">stderr_process</span> <span class="o">=</span> <span class="n">Tee</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">stderr_fds</span><span class="p">,</span> <span class="n">stderr</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">stderr_process</span><span class="o">.</span><span class="n">output</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span> <span class="o">=</span> <span class="n">stdout_process</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span> <span class="o">=</span> <span class="n">stderr_process</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_tee_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">new_tees</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__del__</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_get_tee_files</span><span class="p">(</span><span class="n">tees</span><span class="p">:</span> <span class="n">TeeStreams</span><span class="p">,</span> <span class="n">new_tee_files</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; If any tee in tees is a function, store the return value in new_tee_files&quot;&quot;&quot;</span>
+        <span class="n">tee_files</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">tee</span> <span class="ow">in</span> <span class="n">tees</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">tee</span><span class="p">):</span>
+                <span class="n">tee</span> <span class="o">=</span> <span class="n">tee</span><span class="p">()</span>
+                <span class="n">new_tee_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tee</span><span class="p">)</span>
+            <span class="n">tee_files</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tee</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tee_files</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_close_tee_files</span><span class="p">(</span><span class="n">tees</span><span class="p">):</span>
+        <span class="k">while</span> <span class="n">tees</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">tees</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_get_tee_sets</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">stdout_tees</span><span class="p">,</span> <span class="n">add_global_stdout_tees</span><span class="p">,</span>
+        <span class="n">stderr_tees</span><span class="p">,</span> <span class="n">add_global_stderr_tees</span><span class="p">,</span>
+        <span class="n">prompt_tees</span><span class="p">,</span> <span class="n">add_global_prompt_tees</span><span class="p">,</span>
+        <span class="n">echo</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span>
+    <span class="p">):</span>
+        <span class="n">stdout_tees</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stdout_tees</span><span class="p">)</span>
+        <span class="n">stderr_tees</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stderr_tees</span><span class="p">)</span>
+        <span class="n">prompt_tees</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">prompt_tees</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">add_global_prompt_tees</span><span class="p">:</span>
+            <span class="n">prompt_tees</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">GLOBAL_PROMPTS</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">add_global_stdout_tees</span><span class="p">:</span>
+            <span class="n">stdout_tees</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">GLOBAL_STDOUTS</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">add_global_stderr_tees</span><span class="p">:</span>
+            <span class="n">stderr_tees</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">GLOBAL_STDERRS</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">echo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">echo</span> <span class="o">=</span> <span class="n">GLOBAL_ECHO</span>
+
+        <span class="k">if</span> <span class="n">echo</span><span class="p">:</span>
+            <span class="n">prompt_tees</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+            <span class="n">stdout_tees</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+            <span class="n">stderr_tees</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">stdout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">stdout_tees</span> <span class="o">==</span> <span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">}:</span>
+                <span class="n">stdout_tees</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># tee process not needed for stdout</span>
+            <span class="k">if</span> <span class="n">stdout_tees</span><span class="p">:</span>
+                <span class="n">stdout_tees</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">stderr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">stderr_tees</span> <span class="o">==</span> <span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">}:</span>
+                <span class="n">stderr_tees</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># tee process not needed for stderr</span>
+            <span class="k">if</span> <span class="n">stderr_tees</span><span class="p">:</span>
+                <span class="n">stderr_tees</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">stderr</span> <span class="ow">is</span> <span class="n">STDOUT</span><span class="p">:</span>
+            <span class="n">err2out</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">stderr_tees</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">err2out</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">new_tees</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_get_tee_files</span><span class="p">(</span><span class="n">stdout_tees</span><span class="p">,</span> <span class="n">new_tees</span><span class="p">),</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_get_tee_files</span><span class="p">(</span><span class="n">stderr_tees</span><span class="p">,</span> <span class="n">new_tees</span><span class="p">),</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_get_tee_files</span><span class="p">(</span><span class="n">prompt_tees</span><span class="p">,</span> <span class="n">new_tees</span><span class="p">),</span>
+            <span class="n">new_tees</span><span class="p">,</span> <span class="n">err2out</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Popen.simulate">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.simulate">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">stdout_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stdout_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">stderr_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stderr_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">prompt_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_prompt_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">echo</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="n">stdout_tees</span><span class="p">,</span> <span class="n">stderr_tees</span><span class="p">,</span> <span class="n">prompt_tees</span><span class="p">,</span> <span class="n">new_tees</span><span class="p">,</span> <span class="n">err2out</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_tee_sets</span><span class="p">(</span>
+            <span class="n">stdout_tees</span><span class="p">,</span> <span class="n">add_global_stdout_tees</span><span class="p">,</span>
+            <span class="n">stderr_tees</span><span class="p">,</span> <span class="n">add_global_stderr_tees</span><span class="p">,</span>
+            <span class="n">prompt_tees</span><span class="p">,</span> <span class="n">add_global_prompt_tees</span><span class="p">,</span>
+            <span class="n">echo</span><span class="p">,</span> <span class="n">DEVNULL</span><span class="p">,</span> <span class="n">DEVNULL</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">stdout_tees</span> <span class="ow">or</span> <span class="n">stderr_tees</span> <span class="ow">or</span> <span class="n">prompt_tees</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stdout_fds</span> <span class="o">=</span> <span class="p">{</span><span class="n">tee</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="k">for</span> <span class="n">tee</span> <span class="ow">in</span> <span class="n">stdout_tees</span><span class="p">}</span>
+            <span class="n">stderr_fds</span> <span class="o">=</span> <span class="p">{</span><span class="n">tee</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="k">for</span> <span class="n">tee</span> <span class="ow">in</span> <span class="n">stderr_tees</span><span class="p">}</span>
+            <span class="n">prompt_fds</span> <span class="o">=</span> <span class="p">{</span><span class="n">tee</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="k">for</span> <span class="n">tee</span> <span class="ow">in</span> <span class="n">prompt_tees</span><span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">prompt_fds</span><span class="p">:</span>
+                <span class="n">stream_prompts</span><span class="p">(</span><span class="n">prompt_fds</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">err2out</span><span class="p">,</span> <span class="n">comment</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">stdout_fds</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">Tee</span><span class="p">(</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout_fds</span><span class="p">,</span> <span class="n">DEVNULL</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="k">as</span> <span class="n">tee</span><span class="p">:</span>
+                    <span class="n">tee</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">stderr_fds</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">Tee</span><span class="p">(</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr_fds</span><span class="p">,</span> <span class="n">DEVNULL</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="k">as</span> <span class="n">tee</span><span class="p">:</span>
+                    <span class="n">tee</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_close_tee_files</span><span class="p">(</span><span class="n">new_tees</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Popen.get_pids">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.get_pids">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_pids</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return the pid for all of the processes in the tree &quot;&quot;&quot;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;pstree&quot;</span><span class="p">,</span> <span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">)],</span>
+            <span class="n">stdin</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span>
+            <span class="n">stderr</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">((</span><span class="se">\\</span><span class="s2">d+)</span><span class="se">\\</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">stdout</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Popen.terminate_tree">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.terminate_tree">[docs]</a>
+    <span class="k">def</span> <span class="nf">terminate_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;kill&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pids</span><span class="p">(),</span>
+            <span class="n">stdin</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Popen.kill_tree">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.kill_tree">[docs]</a>
+    <span class="k">def</span> <span class="nf">kill_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;kill&quot;</span><span class="p">,</span> <span class="s2">&quot;-9&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pids</span><span class="p">(),</span>
+            <span class="n">stdin</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Popen.end_tree">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.end_tree">[docs]</a>
+    <span class="k">def</span> <span class="nf">end_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigterm_timeout</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Try to gracefully terminate the process tree,</span>
+<span class="sd">            kill it after &#39;sigterm_timeout&#39; seconds</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">sigterm_timeout</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">terminate_tree</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">sigterm_timeout</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">kill_tree</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kill_tree</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Popen.poll">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.poll">[docs]</a>
+    <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">processes</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span><span class="p">}</span> <span class="o">-</span> <span class="p">{</span><span class="bp">self</span><span class="p">}</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Popen.wait">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.wait">[docs]</a>
+    <span class="k">def</span> <span class="nf">wait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">processes</span> <span class="o">=</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span><span class="p">}</span> <span class="o">-</span> <span class="p">{</span><span class="bp">self</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
+            <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span></div>
+
+
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">_streams_restored</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_stdout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">original_stderr</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span><span class="o">.</span><span class="n">stdout</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span><span class="o">.</span><span class="n">stderr</span>
+
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">_stdin_none</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">original_stdin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdin</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdin</span> <span class="o">=</span> <span class="n">original_stdin</span>
+
+    <span class="k">def</span> <span class="nf">_communicate_tees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+        <span class="n">stdout</span> <span class="o">=</span> <span class="n">stderr</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">stdout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_tee_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">new_tees</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="p">,</span> <span class="n">timeout</span>
+
+    <span class="k">def</span> <span class="nf">_communicate_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+        <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicate_tees</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="n">main_stdout</span><span class="p">,</span> <span class="n">main_stderr</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">main_stdout</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span> <span class="ow">is</span> <span class="bp">self</span> <span class="k">else</span> <span class="n">stdout</span><span class="p">,</span>
+            <span class="n">main_stderr</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span> <span class="ow">is</span> <span class="bp">self</span> <span class="k">else</span> <span class="n">stderr</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_any_communication_started</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdout_process</span><span class="o">.</span><span class="n">_communication_started</span> <span class="ow">or</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stderr_process</span><span class="o">.</span><span class="n">_communication_started</span> <span class="ow">or</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_communication_started</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Popen.communicate">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.Popen.communicate">[docs]</a>
+    <span class="k">def</span> <span class="nf">communicate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_any_communication_started</span> <span class="ow">and</span> <span class="nb">input</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot send input after starting communication&quot;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_streams_restored</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdin</span> <span class="ow">and</span> <span class="nb">input</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_stdin_write</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+                <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stdin_none</span><span class="p">():</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicate_all</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_communicate_all</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="normalize_outerr_fds">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.normalize_outerr_fds">[docs]</a>
+<span class="k">def</span> <span class="nf">normalize_outerr_fds</span><span class="p">(</span><span class="n">fds</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return fds as a set but using 1 and 2 for stdout and stderr file</span>
+<span class="sd">        descriptors in case we are being redirected</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_fd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>  <span class="c1"># This might not always be 1</span>
+    <span class="n">err_fd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>  <span class="c1"># This might not always be 2</span>
+    <span class="n">fds</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">fds</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">out_fd</span> <span class="ow">in</span> <span class="n">fds</span><span class="p">:</span>
+        <span class="n">fds</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">out_fd</span><span class="p">)</span>
+        <span class="n">fds</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err_fd</span> <span class="ow">in</span> <span class="n">fds</span><span class="p">:</span>
+        <span class="n">fds</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">err_fd</span><span class="p">)</span>
+        <span class="n">fds</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fds</span></div>
+
+
+
+<div class="viewcode-block" id="quote">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.quote">[docs]</a>
+<span class="k">def</span> <span class="nf">quote</span><span class="p">(</span><span class="n">cmd</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Convert the command tokens into a single string that could be pasted into</span>
+<span class="sd">        the shell to execute the original command</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">quote</span><span class="p">,</span> <span class="n">cmd</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="shellify">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.shellify">[docs]</a>
+<span class="k">def</span> <span class="nf">shellify</span><span class="p">(</span><span class="n">cmd</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">err2out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Quote command if needed and optionally add extra strings to express</span>
+<span class="sd">        stderr being redirected to stdout and a comment</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">quote</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err2out</span><span class="p">:</span>
+        <span class="n">cmd</span> <span class="o">+=</span> <span class="s2">&quot; 2&gt;&amp;1&quot;</span>
+    <span class="k">if</span> <span class="n">comment</span><span class="p">:</span>
+        <span class="n">cmd</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; # </span><span class="si">{</span><span class="n">comment</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">cmd</span></div>
+
+
+
+<span class="c1"># If bash is installed and supports prompt expansion</span>
+<span class="k">if</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;echo ${0@P}&quot;</span><span class="p">],</span>
+    <span class="n">stdin</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span>
+    <span class="n">stdout</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span>
+    <span class="n">stderr</span><span class="o">=</span><span class="n">DEVNULL</span>
+<span class="p">)</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">HOME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span>
+    <span class="n">PS1</span><span class="p">,</span> <span class="n">PS2</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;-ic&quot;</span><span class="p">,</span> <span class="s2">&quot;echo </span><span class="se">\&quot;</span><span class="s2">$PS1</span><span class="se">\&quot;</span><span class="s2">; echo </span><span class="se">\&quot;</span><span class="s2">$PS2</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">],</span>
+        <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">stdin</span><span class="o">=</span><span class="n">DEVNULL</span><span class="p">,</span>
+        <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span>
+        <span class="n">stderr</span><span class="o">=</span><span class="n">DEVNULL</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+
+    <span class="k">def</span> <span class="nf">stream_prompts</span><span class="p">(</span><span class="n">fds</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">err2out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Write shell prompt and command into file descriptors fds &quot;&quot;&quot;</span>
+        <span class="n">fds</span> <span class="o">=</span> <span class="n">normalize_outerr_fds</span><span class="p">(</span><span class="n">fds</span><span class="p">)</span>
+        <span class="n">custom_env</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;CPS1&quot;</span><span class="p">:</span> <span class="n">PS1</span><span class="p">,</span> <span class="s2">&quot;CPS2&quot;</span><span class="p">:</span> <span class="n">PS2</span><span class="p">}</span>
+        <span class="n">custom_env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">env</span> <span class="ow">or</span> <span class="p">{})</span>
+        <span class="n">custom_env</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;HOME&quot;</span><span class="p">,</span> <span class="n">HOME</span><span class="p">)</span>
+        <span class="n">script</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;(</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;    IFS= read -r </span><span class="se">\&quot;</span><span class="s2">line</span><span class="se">\&quot;\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;    echo </span><span class="se">\&quot;</span><span class="s2">${CPS1@P}$</span><span class="si">{line}</span><span class="se">\&quot;\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;    while IFS= read -r </span><span class="se">\&quot;</span><span class="s2">line</span><span class="se">\&quot;</span><span class="s2">; do</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;        echo </span><span class="se">\&quot;</span><span class="s2">${CPS2@P}$</span><span class="si">{line}</span><span class="se">\&quot;\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;    done</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;) | &quot;</span> <span class="o">+</span> <span class="n">quote</span><span class="p">(</span><span class="n">Tee</span><span class="o">.</span><span class="n">get_cmd</span><span class="p">(</span><span class="n">fds</span> <span class="o">-</span> <span class="p">{</span><span class="mi">1</span><span class="p">}))</span>
+        <span class="p">)</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">script</span><span class="p">],</span>
+            <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="nb">input</span><span class="o">=</span><span class="n">shellify</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">err2out</span><span class="p">,</span> <span class="n">comment</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">stdout</span><span class="o">=</span><span class="kc">None</span> <span class="k">if</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">fds</span> <span class="k">else</span> <span class="n">DEVNULL</span><span class="p">,</span>
+            <span class="n">stderr</span><span class="o">=</span><span class="kc">None</span> <span class="k">if</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">fds</span> <span class="k">else</span> <span class="n">DEVNULL</span><span class="p">,</span>
+            <span class="n">pass_fds</span><span class="o">=</span><span class="n">fds</span> <span class="o">-</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span>
+            <span class="n">cwd</span><span class="o">=</span><span class="n">cwd</span><span class="p">,</span>
+            <span class="n">env</span><span class="o">=</span><span class="n">custom_env</span><span class="p">,</span>
+            <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>  <span class="c1"># Use hard-coded PS1 and PS2 strings</span>
+<div class="viewcode-block" id="stream_prompts">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.stream_prompts">[docs]</a>
+    <span class="k">def</span> <span class="nf">stream_prompts</span><span class="p">(</span><span class="n">fds</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">err2out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Write shell prompt and command into file descriptors fds &quot;&quot;&quot;</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">shellify</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">err2out</span><span class="p">,</span> <span class="n">comment</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="s2">&quot;$ &quot;</span> <span class="o">+</span> <span class="s2">&quot;&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="n">keepends</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="k">with</span> <span class="n">Tee</span><span class="p">(</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">fds</span><span class="p">,</span> <span class="n">DEVNULL</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">tee</span><span class="p">:</span>
+            <span class="n">tee</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="nb">input</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="set_global_echo">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.set_global_echo">[docs]</a>
+<span class="k">def</span> <span class="nf">set_global_echo</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">GLOBAL_ECHO</span>
+    <span class="n">GLOBAL_ECHO</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="set_global_stdout_files">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.set_global_stdout_files">[docs]</a>
+<span class="k">def</span> <span class="nf">set_global_stdout_files</span><span class="p">(</span><span class="o">*</span><span class="n">files</span><span class="p">:</span> <span class="n">TeeStream</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">GLOBAL_STDOUTS</span>
+    <span class="n">GLOBAL_STDOUTS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">files</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="set_global_stderr_files">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.set_global_stderr_files">[docs]</a>
+<span class="k">def</span> <span class="nf">set_global_stderr_files</span><span class="p">(</span><span class="o">*</span><span class="n">files</span><span class="p">:</span> <span class="n">TeeStream</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">GLOBAL_STDERRS</span>
+    <span class="n">GLOBAL_STDERRS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">files</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="set_global_prompt_files">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.set_global_prompt_files">[docs]</a>
+<span class="k">def</span> <span class="nf">set_global_prompt_files</span><span class="p">(</span><span class="o">*</span><span class="n">files</span><span class="p">:</span> <span class="n">TeeStream</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">GLOBAL_PROMPTS</span>
+    <span class="n">GLOBAL_PROMPTS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">files</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_output_context</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a PipeFile, store it in kwargs[key] and return it if it is FILE.</span>
+<span class="sd">        Just return a nullcontext otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">is</span> <span class="n">FILE</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">PipeFile</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">nullcontext</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="run">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.run">[docs]</a>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+    <span class="n">args</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sigterm_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A subprocess.run that instantiates this module&#39;s Popen &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stdin&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;stdin and input arguments may not both be used.&quot;</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stdin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PIPE</span>
+
+    <span class="k">if</span> <span class="n">capture_output</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stderr&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;stdout and stderr arguments may not be used with capture_output.&quot;</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">FILE</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stderr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">FILE</span>
+
+    <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">comment</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;timeout=</span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">timeout</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">with</span> <span class="p">(</span>
+        <span class="n">_output_context</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;stdout&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="k">as</span> <span class="n">stdout_file</span><span class="p">,</span>
+        <span class="n">_output_context</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;stderr&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> <span class="k">as</span> <span class="n">stderr_file</span><span class="p">,</span>
+        <span class="n">Popen</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span>
+              <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">process</span>
+    <span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span><span class="o">.</span><span class="n">create_time</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">TimeoutExpired</span><span class="p">:</span>
+            <span class="n">process</span><span class="o">.</span><span class="n">end_tree</span><span class="p">(</span><span class="n">sigterm_timeout</span><span class="p">)</span>
+            <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">raise</span>
+        <span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722</span>
+            <span class="n">process</span><span class="o">.</span><span class="n">kill_tree</span><span class="p">()</span>
+            <span class="k">raise</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+            <span class="n">returncode</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">stdout_file</span><span class="p">:</span>
+            <span class="n">stdout</span> <span class="o">=</span> <span class="n">stdout_file</span><span class="o">.</span><span class="n">read_all</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">stderr_file</span><span class="p">:</span>
+            <span class="n">stderr</span> <span class="o">=</span> <span class="n">stderr_file</span><span class="o">.</span><span class="n">read_all</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">check</span> <span class="ow">and</span> <span class="n">returncode</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CalledProcessError</span><span class="p">(</span><span class="n">returncode</span><span class="p">,</span> <span class="n">process</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">stderr</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">CompletedProcess</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="n">returncode</span><span class="p">,</span> <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+
+
+<div class="viewcode-block" id="call">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.call">[docs]</a>
+<span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">run</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">returncode</span></div>
+
+
+
+<div class="viewcode-block" id="check_call">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.check_call">[docs]</a>
+<span class="k">def</span> <span class="nf">check_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;check&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="check_output">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.check_output">[docs]</a>
+<span class="k">def</span> <span class="nf">check_output</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;check&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;stdout&quot;</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">run</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">stdout</span></div>
+
+
+
+<div class="viewcode-block" id="getoutput">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.getoutput">[docs]</a>
+<span class="k">def</span> <span class="nf">getoutput</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">getstatusoutput</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="getstatusoutput">
+<a class="viewcode-back" href="../../iripau.subprocess.html#iripau.subprocess.getstatusoutput">[docs]</a>
+<span class="k">def</span> <span class="nf">getstatusoutput</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PIPE</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stderr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">STDOUT</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.subprocess</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

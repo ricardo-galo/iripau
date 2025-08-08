@@ -1,0 +1,7 @@
+iripau.requests module
+======================
+
+.. automodule:: iripau.requests
+   :members:
+   :show-inheritance:
+   :undoc-members:

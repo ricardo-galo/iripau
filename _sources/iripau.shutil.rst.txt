@@ -1,0 +1,7 @@
+iripau.shutil module
+====================
+
+.. automodule:: iripau.shutil
+   :members:
+   :show-inheritance:
+   :undoc-members:

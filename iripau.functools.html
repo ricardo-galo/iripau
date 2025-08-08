@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>iripau.functools module &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="_static/documentation_options.js?v=937269b5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="iripau.logging module" href="iripau.logging.html" />
+    <link rel="prev" title="iripau.executable module" href="iripau.executable.html" /><link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg">
+            <script type="text/javascript" src="_static/copybutton.js"></script>
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/search-focus.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.functools module</a><ul>
+<li><a class="reference internal" href="#iripau.functools.wait_for"><code class="docutils literal notranslate"><span class="pre">wait_for()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.functools.retry"><code class="docutils literal notranslate"><span class="pre">retry()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.functools.globalize"><code class="docutils literal notranslate"><span class="pre">globalize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.executable.html"
+                          title="previous chapter">iripau.executable module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.logging.html"
+                          title="next chapter">iripau.logging module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.functools.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.logging.html" title="iripau.logging module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="iripau.executable.html" title="iripau.executable module"
+             accesskey="P">previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" accesskey="U">iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.functools module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-iripau.functools">
+<span id="iripau-functools-module"></span><h1>iripau.functools module<a class="headerlink" href="#module-iripau.functools" title="Link to this heading">¶</a></h1>
+<p>Function utilities with similar philosophy as the <code class="xref py py-mod docutils literal notranslate"><span class="pre">functools</span></code> module.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.functools.wait_for">
+<span class="sig-prename descclassname"><span class="pre">iripau.functools.</span></span><span class="sig-name descname"><span class="pre">wait_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_outcome</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_poll_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_stop_condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/functools.html#wait_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.functools.wait_for" title="Link to this definition">¶</a></dt>
+<dd><p>Wait for <code class="docutils literal notranslate"><span class="pre">condition(*args,</span> <span class="pre">**kwargs)</span></code> to be <code class="docutils literal notranslate"><span class="pre">_outcome</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></span>) – Call this function many times with <code class="docutils literal notranslate"><span class="pre">*args</span></code> and
+<code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> until its return value is <code class="docutils literal notranslate"><span class="pre">_outcome</span></code>.</p></li>
+<li><p><strong>*args</strong> – Pass these arguments to <code class="docutils literal notranslate"><span class="pre">condition</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Pass these keyword arguments to <code class="docutils literal notranslate"><span class="pre">condition</span></code>.</p></li>
+<li><p><strong>_timeout</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Max time in seconds to continue on calling <code class="docutils literal notranslate"><span class="pre">condition</span></code>.</p></li>
+<li><p><strong>_outcome</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>) – The desired outcome to gracefully stop waiting.</p></li>
+<li><p><strong>_poll_time</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Seconds in between <code class="docutils literal notranslate"><span class="pre">condition</span></code> calls.</p></li>
+<li><p><strong>_stop_condition</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[], <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]</span>) – Stop waiting if the result of calling this function
+is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TimeoutError</strong> – If timeout reached.</p></li>
+<li><p><strong>InterruptedError</strong> – If <code class="docutils literal notranslate"><span class="pre">_stop_condition()</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Wait for a network interface to have an IP address:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">netifaces</span>
+
+
+<span class="k">def</span> <span class="nf">iface_is_connected</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; ``iface`` has an IP v4 address &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">netifaces</span><span class="o">.</span><span class="n">AF_INET</span> <span class="ow">in</span> <span class="n">netifaces</span><span class="o">.</span><span class="n">ifaddresses</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span>
+
+
+<span class="n">wait_for</span><span class="p">(</span><span class="n">iface_is_connected</span><span class="p">,</span> <span class="s2">&quot;eth0&quot;</span><span class="p">,</span> <span class="n">_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<p>Wait for a process to finish, but stop waiting if there is an error
+log:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psutil</span>
+
+
+<span class="k">def</span> <span class="nf">log_file_contains_error</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; The log informs the process has stalled &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/tmp/events.log&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Error: Process stalled&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+
+<span class="n">wait_for</span><span class="p">(</span>
+    <span class="n">psutil</span><span class="o">.</span><span class="n">pid_exists</span><span class="p">,</span> <span class="mi">12345</span><span class="p">,</span>
+    <span class="n">_outcome</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">_timeout</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span>
+    <span class="n">_poll_time</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">_stop_condition</span><span class="o">=</span><span class="n">log_file_contains_error</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">condition</span></code> and <code class="docutils literal notranslate"><span class="pre">_stop_condition</span></code> functions that read
+nicely when used in <cite>if</cite> statements, not in questions.
+For example, prefer <code class="docutils literal notranslate"><span class="pre">host_is_reachable()</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">is_host_reachable()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.functools.retry">
+<span class="sig-prename descclassname"><span class="pre">iripau.functools.</span></span><span class="sig-name descname"><span class="pre">retry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exceptions=&lt;class</span> <span class="pre">'Exception'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retry_condition=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backoff_time=0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/functools.html#retry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.functools.retry" title="Link to this definition">¶</a></dt>
+<dd><p>Add retry capabilities to the decorated function.</p>
+<p>Call the decorated function up to <code class="docutils literal notranslate"><span class="pre">tries</span></code> times, until it succeeds or
+it raises an unexpected exception.
+The decorated function Will only be retried if it raises one of the
+expected <code class="docutils literal notranslate"><span class="pre">exceptions</span></code> <strong>and</strong> <code class="docutils literal notranslate"><span class="pre">retry_condition</span></code> is fulfilled.
+Any other exception Will be raised immediately without further tries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tries</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – The decorated function will be called at most this amount of
+times.</p></li>
+<li><p><strong>exceptions</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code>], <code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code>]]]</span>) – The expected exceptions to trigger the retry.</p></li>
+<li><p><strong>retry_condition</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code>]], <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]</span>) – Function to call with the caught exception to verify
+if the retry process should continue.
+If it returns <code class="docutils literal notranslate"><span class="pre">False</span></code>, the caught exception will be raised.</p></li>
+<li><p><strong>backoff_time</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Seconds to wait before the next try.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]], <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The decorator.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Try to get the status of a server through a request to one of its
+REST API endpoints. Retry up to five times if Forbidden 403:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+<span class="kn">from</span> <span class="nn">requests.exceptions</span> <span class="kn">import</span> <span class="n">HTTPError</span>
+
+
+<span class="k">def</span> <span class="nf">http_code_is_forbidden</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; The status code in the response is 403 &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">403</span> <span class="o">==</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+
+
+<span class="nd">@retry</span><span class="p">(</span><span class="n">tries</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">exceptions</span><span class="o">=</span><span class="n">HTTPError</span><span class="p">,</span> <span class="n">retry_condition</span><span class="o">=</span><span class="n">http_code_is_forbidden</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_server_status</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">urljoin</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s2">&quot;api/status&quot;</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>  <span class="c1"># Maybe HTTPError</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<p>Find a line with a specific content in a log file. Retry if the file
+has not been created yet or if the content could not be found:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@retry</span><span class="p">(</span><span class="n">tries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">exceptions</span><span class="o">=</span><span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="ne">StopIteration</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">get_log_entry</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">log</span><span class="p">:</span>  <span class="c1"># Maybe FileNotFoundError</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span> <span class="k">if</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">line</span><span class="p">)</span>  <span class="c1"># Maybe StopIteration</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<p>Get information of a book through a REST API endpoint. Retry if the
+book does not exist, but fail immediately if the response JSON does
+not contain the key <code class="docutils literal notranslate"><span class="pre">&quot;book&quot;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="nd">@retry</span><span class="p">(</span><span class="n">tries</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">exceptions</span><span class="o">=</span><span class="ne">KeyError</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_book_data</span><span class="p">(</span><span class="n">book</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://localhost:8080/api/books&quot;</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="n">books</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;books&quot;</span><span class="p">]</span>  <span class="c1"># Maybe KeyError</span>
+
+    <span class="k">yield</span>  <span class="c1"># Only retry if exceptions occur after this line</span>
+
+    <span class="k">return</span> <span class="n">books</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>  <span class="c1"># Maybe KeyError</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iripau.functools.globalize">
+<span class="sig-prename descclassname"><span class="pre">iripau.functools.</span></span><span class="sig-name descname"><span class="pre">globalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iripau/functools.html#globalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#iripau.functools.globalize" title="Link to this definition">¶</a></dt>
+<dd><p>Make <code class="docutils literal notranslate"><span class="pre">function</span></code> globally available in the module it was defined so it
+can be serialized. Useful when calling local functions with
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">multiprocessing</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span>) – Function to make global.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The decorated function.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Use a nested function in some processes with <code class="xref py py-mod docutils literal notranslate"><span class="pre">multiprocessing</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+
+
+<span class="k">def</span> <span class="nf">increase_multiple_processes</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">increment</span><span class="p">):</span>
+
+    <span class="nd">@globalize</span>
+    <span class="k">def</span> <span class="nf">increase</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">increment</span>
+
+    <span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">increase</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">iripau.functools module</a><ul>
+<li><a class="reference internal" href="#iripau.functools.wait_for"><code class="docutils literal notranslate"><span class="pre">wait_for()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.functools.retry"><code class="docutils literal notranslate"><span class="pre">retry()</span></code></a></li>
+<li><a class="reference internal" href="#iripau.functools.globalize"><code class="docutils literal notranslate"><span class="pre">globalize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="iripau.executable.html"
+                          title="previous chapter">iripau.executable module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="iripau.logging.html"
+                          title="next chapter">iripau.logging module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iripau.functools.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iripau.logging.html" title="iripau.logging module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="iripau.executable.html" title="iripau.executable module"
+             >previous</a> |</li>
+          <li><img src="_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >iripau</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="iripau.html" >iripau package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.functools module</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

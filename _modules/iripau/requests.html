@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iripau.requests &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=937269b5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.requests</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for iripau.requests</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A wrapper of the :mod:`requests` module that has extra features.</span>
+
+<span class="sd">In theory, the original :mod:`requests` module can be replaced with :mod:`.requests`</span>
+<span class="sd">keeping the original functionality. After that, the extra features can be leveraged.</span>
+
+<span class="sd">Currently, the only extra feature is simulating a ``curl`` command. If a global</span>
+<span class="sd">configuration is made as in the examples mentioned in :mod:`.logging`, the</span>
+<span class="sd">requests made using :mod:`.requests` will be shown as ``curl`` commands without</span>
+<span class="sd">any further modifications to the existing code, if any. See :class:`.Session`</span>
+<span class="sd">for more details.</span>
+
+<span class="sd">Attention:</span>
+<span class="sd">    This is not real-time output. The simulation takes place after the request</span>
+<span class="sd">    finishes, because it needs the :class:`requests.Response` object.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">from</span> <span class="nn">curlify</span> <span class="kn">import</span> <span class="n">to_curl</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">iripau.subprocess</span> <span class="kn">import</span> <span class="n">TeeStreams</span><span class="p">,</span> <span class="n">Popen</span>
+
+
+<div class="viewcode-block" id="raw_content">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.raw_content">[docs]</a>
+<span class="k">def</span> <span class="nf">raw_content</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Just return the content of a response, either a string or bytes, without</span>
+<span class="sd">        any post-processing.</span>
+
+<span class="sd">        Hint:</span>
+<span class="sd">            This function can be used as the value for the ``output_processor``</span>
+<span class="sd">            argument in :func:`.curlify` or :class:`.Session`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            response: The result of performing a request.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            ``response.content`` as is.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span></div>
+
+
+
+<div class="viewcode-block" id="hide_content">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.hide_content">[docs]</a>
+<span class="k">def</span> <span class="nf">hide_content</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Always return ``***`` as bytes.</span>
+
+<span class="sd">        Hint:</span>
+<span class="sd">            This function can be used as the value for the ``output_processor``</span>
+<span class="sd">            argument in :func:`.curlify` or :class:`.Session`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            response: The result of performing a request.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            ``b&quot;***&quot;``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;***&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="try_json_content">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.try_json_content">[docs]</a>
+<span class="k">def</span> <span class="nf">try_json_content</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Try to pretty-format the content of a response as JSON.</span>
+<span class="sd">        If the content is not a valid JSON, return the raw content.</span>
+
+<span class="sd">        Hint:</span>
+<span class="sd">            This function can be used as the value for the ``output_processor``</span>
+<span class="sd">            argument in :func:`.curlify` or :class:`.Session`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            response: The result of performing a request.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The pretty JSON or the raw content.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span></div>
+
+
+
+<div class="viewcode-block" id="curlify">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.curlify">[docs]</a>
+<span class="k">def</span> <span class="nf">curlify</span><span class="p">(</span>
+    <span class="n">response</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">,</span>
+    <span class="n">compressed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">pretty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">output_processor</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">],</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">headers_to_hide</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">headers_to_omit</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+    <span class="n">stdout_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stdout_tees</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">stderr_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_stderr_tees</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">prompt_tees</span><span class="p">:</span> <span class="n">TeeStreams</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">add_global_prompt_tees</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">echo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Simulate the request was executed by a ``curl`` subprocess.</span>
+<span class="sd">        The command and output can be echoed and/or sent to files as described</span>
+<span class="sd">        in :func:`.subprocess.run` and :class:`.subprocess.Popen`.</span>
+<span class="sd">        At the end of the ``curl`` command, a comment with the HTTP status code</span>
+<span class="sd">        and reason will be added.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            response: The result of performing a request.</span>
+<span class="sd">            compressed: Whether or not the request used compressed data.</span>
+<span class="sd">                If ``True``, the argument ``--compressed`` will be added to the</span>
+<span class="sd">                ``curl`` command.</span>
+<span class="sd">            verify: Whether or not the request disabled TLS certificate</span>
+<span class="sd">                verification.</span>
+<span class="sd">                If ``False``, the argument ``--insecure`` will be added to the</span>
+<span class="sd">                ``curl`` command.</span>
+<span class="sd">            pretty: Break the ``curl`` command into several lines.</span>
+<span class="sd">            output_processor: The return value of this function will be used as</span>
+<span class="sd">                the ``stdout`` of the ``curl`` command.</span>
+<span class="sd">                The default is :func:`.raw_content`, which returns whatever</span>
+<span class="sd">                the content of the response is.</span>
+<span class="sd">            headers_to_hide: The value of these headers will be replaced with</span>
+<span class="sd">                ``***`` in the final ``curl`` command.</span>
+<span class="sd">                If the header was not used in the request, ignore it.</span>
+<span class="sd">            headers_to_omit: These headers won&#39;t be in the final ``curl`` command.</span>
+<span class="sd">                If the header was not used in the request, ignore it.</span>
+<span class="sd">            stdout_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">            stderr_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">            prompt_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">            add_global_stdout_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">            add_global_stderr_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">            add_global_prompt_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">            echo: The same as in :class:`.subprocess.Popen`.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Perform a request and use the response to echo the simulated ``curl``</span>
+<span class="sd">            command and its output into the terminal::</span>
+
+<span class="sd">                import requests</span>
+
+
+<span class="sd">                response = requests.get(&quot;https://dummyjson.com/test&quot;, verify=False)</span>
+<span class="sd">                curlify(response, echo=True)</span>
+
+<span class="sd">                # $ curl -H &#39;User-Agent: python-requests/2.32.3&#39; -H &#39;Accept-Encoding: gzip, deflate&#39; -H &#39;Accept: */*&#39; -H &#39;Connection: keep-alive&#39; https://dummyjson.com/test # 200 - OK</span>
+<span class="sd">                # {&quot;status&quot;:&quot;ok&quot;,&quot;method&quot;:&quot;GET&quot;}</span>
+
+<span class="sd">        Attention:</span>
+<span class="sd">            :mod:`requests` might fill in some headers with deduced or default</span>
+<span class="sd">            values for every request.</span>
+
+<span class="sd">            I the example above, the headers ``User-Agent``, ``Accept-Encoding``,</span>
+<span class="sd">            ``Accept`` and ``Connection``  were added by the original</span>
+<span class="sd">            :mod:`requests` module.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">request</span>
+    <span class="k">if</span> <span class="n">headers_to_hide</span> <span class="ow">or</span> <span class="n">headers_to_omit</span><span class="p">:</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">headers_to_omit</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="n">header</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">headers_to_hide</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+                <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="n">header</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;***&quot;</span>
+
+    <span class="k">if</span> <span class="n">output_processor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">output_processor</span> <span class="o">=</span> <span class="n">raw_content</span>
+
+    <span class="n">stdout</span> <span class="o">=</span> <span class="n">output_processor</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">stdout</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+        <span class="n">stdout</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">stderr</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+
+    <span class="n">Popen</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span>
+        <span class="n">cmd</span><span class="o">=</span><span class="n">to_curl</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">compressed</span><span class="p">,</span> <span class="n">verify</span><span class="p">,</span> <span class="n">pretty</span><span class="p">),</span>
+        <span class="n">stdout</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span>
+        <span class="n">stderr</span><span class="o">=</span><span class="n">stderr</span><span class="p">,</span>
+        <span class="n">comment</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">stdout_tees</span><span class="o">=</span><span class="n">stdout_tees</span><span class="p">,</span>
+        <span class="n">stderr_tees</span><span class="o">=</span><span class="n">stderr_tees</span><span class="p">,</span>
+        <span class="n">prompt_tees</span><span class="o">=</span><span class="n">prompt_tees</span><span class="p">,</span>
+        <span class="n">add_global_stdout_tees</span><span class="o">=</span><span class="n">add_global_stdout_tees</span><span class="p">,</span>
+        <span class="n">add_global_stderr_tees</span><span class="o">=</span><span class="n">add_global_stderr_tees</span><span class="p">,</span>
+        <span class="n">add_global_prompt_tees</span><span class="o">=</span><span class="n">add_global_prompt_tees</span><span class="p">,</span>
+        <span class="n">echo</span><span class="o">=</span><span class="n">echo</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Session">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.Session">[docs]</a>
+<span class="k">class</span> <span class="nc">Session</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A :class:`requests.Session` that accepts :func:`.curlify` arguments in</span>
+<span class="sd">        the :meth:`.Session.request` method.</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            The constructor arguments are the same as in the base</span>
+<span class="sd">            :class:`requests.Session`.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Echo the simulated ``curl`` command and its output into the terminal::</span>
+
+<span class="sd">                session = Session()</span>
+<span class="sd">                response = session.get(&quot;https://dummyjson.com/test&quot;, verify=False, echo=True)</span>
+
+<span class="sd">                # $ curl -H &#39;User-Agent: python-requests/2.32.3&#39; -H &#39;Accept-Encoding: gzip, deflate&#39; -H &#39;Accept: */*&#39; -H &#39;Connection: keep-alive&#39; --insecure https://dummyjson.com/test # 200 - OK</span>
+<span class="sd">                # {&quot;status&quot;:&quot;ok&quot;,&quot;method&quot;:&quot;GET&quot;}</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Pass some headers to a request and echo the pretty ``curl``</span>
+<span class="sd">            equivalent command into the terminal but hide the value of some</span>
+<span class="sd">            headers and without showing other ones, such as the ones added</span>
+<span class="sd">            automatically::</span>
+
+<span class="sd">                headers = {</span>
+<span class="sd">                    &quot;Accept&quot;: &quot;application/json&quot;,</span>
+<span class="sd">                    &quot;Authorization&quot;: &quot;Bearer A_VERY_LONG_AND_SECRET_JWT_TOKEN&quot;,</span>
+<span class="sd">                    &quot;Content-Type&quot;: &quot;application/json&quot;,</span>
+<span class="sd">                    &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Nintendo 3DS; U; ; en) Version/1.7412.EU&quot;</span>
+<span class="sd">                }</span>
+
+<span class="sd">                session = Session()</span>
+<span class="sd">                response = session.post(</span>
+<span class="sd">                    &quot;https://dummyjson.com/test&quot;,</span>
+<span class="sd">                    headers=headers,</span>
+<span class="sd">                    json={&quot;field&quot;: &quot;value&quot;},</span>
+<span class="sd">                    headers_to_hide=[&quot;Authorization&quot;, &quot;API-Key&quot;],</span>
+<span class="sd">                    headers_to_omit=[&quot;Accept-Encoding&quot;, &quot;Content-Type&quot;, &quot;User-Agent&quot;],</span>
+<span class="sd">                    pretty=True,</span>
+<span class="sd">                    echo=True</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # $ curl -H &#39;Accept-Encoding: gzip, deflate&#39; \\</span>
+<span class="sd">                # &gt;   -H &#39;Accept: application/json&#39; \\</span>
+<span class="sd">                # &gt;   -H &#39;Connection: keep-alive&#39; \\</span>
+<span class="sd">                # &gt;   -H &#39;Authorization: ***&#39; \\</span>
+<span class="sd">                # &gt;   -d &#39;{&quot;field&quot;: &quot;value&quot;}&#39; \\</span>
+<span class="sd">                # &gt;   https://dummyjson.com/test # 200 - OK</span>
+<span class="sd">                # {&quot;status&quot;:&quot;ok&quot;,&quot;method&quot;:&quot;POST&quot;}</span>
+
+<span class="sd">            In that example, the intention was to hide the header ``API-Key``,</span>
+<span class="sd">            but it was not actually used in the request, so it simply gets ignored.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Print the content of the response as a prettified JSON string::</span>
+
+<span class="sd">                session = Session()</span>
+<span class="sd">                response = session.get(</span>
+<span class="sd">                    &quot;https://dummyjson.com/test&quot;,</span>
+<span class="sd">                    headers_to_omit=[</span>
+<span class="sd">                        &quot;Accept&quot;,</span>
+<span class="sd">                        &quot;Accept-Encoding&quot;,</span>
+<span class="sd">                        &quot;Connection&quot;,</span>
+<span class="sd">                        &quot;Content-Length&quot;,</span>
+<span class="sd">                        &quot;Content-Type&quot;,</span>
+<span class="sd">                        &quot;User-Agent&quot;</span>
+<span class="sd">                    ],</span>
+<span class="sd">                    output_processor=try_json_content,</span>
+<span class="sd">                    echo=True</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # $ curl https://dummyjson.com/test # 200 - OK</span>
+<span class="sd">                # {</span>
+<span class="sd">                #     &quot;status&quot;: &quot;ok&quot;,</span>
+<span class="sd">                #     &quot;method&quot;: &quot;GET&quot;</span>
+<span class="sd">                # }</span>
+
+
+<span class="sd">        Hint:</span>
+<span class="sd">            The names of the headers are case-insensitive.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Session.request">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.Session.request">[docs]</a>
+    <span class="k">def</span> <span class="nf">request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">compressed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pretty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">output_processor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers_to_hide</span><span class="o">=</span><span class="p">[],</span> <span class="n">headers_to_omit</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">stdout_tees</span><span class="o">=</span><span class="p">[],</span> <span class="n">add_global_stdout_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">stderr_tees</span><span class="o">=</span><span class="p">[],</span> <span class="n">add_global_stderr_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">prompt_tees</span><span class="o">=</span><span class="p">[],</span> <span class="n">add_global_prompt_tees</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">echo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructs a :class:`requests.Request`, prepares it and sends it.</span>
+<span class="sd">            The :func:`.curlify` arguments can also be used here as well as in</span>
+<span class="sd">            the methods for the specific HTTP methods:</span>
+
+<span class="sd">            * :meth:`.Session.delete`</span>
+<span class="sd">            * :meth:`.Session.get`</span>
+<span class="sd">            * :meth:`.Session.head`</span>
+<span class="sd">            * :meth:`.Session.options`</span>
+<span class="sd">            * :meth:`.Session.patch`</span>
+<span class="sd">            * :meth:`.Session.post`</span>
+<span class="sd">            * :meth:`.Session.put`</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                compressed: The same as in :func:`.curlify`.</span>
+<span class="sd">                pretty: The same as in :func:`.curlify`.</span>
+<span class="sd">                output_processor: The same as in :func:`.curlify`.</span>
+<span class="sd">                headers_to_hide: The same as in :func:`.curlify`.</span>
+<span class="sd">                headers_to_omit: The same as in :func:`.curlify`.</span>
+<span class="sd">                stdout_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">                stderr_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">                prompt_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">                add_global_stdout_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">                add_global_stderr_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">                add_global_prompt_tees: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">                echo: The same as in :class:`.subprocess.Popen`.</span>
+<span class="sd">                *args: Passed to the base :meth:`requests.Session.request`.</span>
+<span class="sd">                **kwargs: Passed to the base :meth:`requests.Session.request`.</span>
+<span class="sd">            Return:</span>
+<span class="sd">                The result of performing a request.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">verify</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;verify&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verify</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">verify</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify</span>
+
+        <span class="n">curlify</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">compressed</span><span class="p">,</span> <span class="n">verify</span><span class="p">,</span> <span class="n">pretty</span><span class="p">,</span>
+            <span class="n">output_processor</span><span class="p">,</span> <span class="n">headers_to_hide</span><span class="p">,</span> <span class="n">headers_to_omit</span><span class="p">,</span>
+            <span class="n">stdout_tees</span><span class="p">,</span> <span class="n">add_global_stdout_tees</span><span class="p">,</span>
+            <span class="n">stderr_tees</span><span class="p">,</span> <span class="n">add_global_stderr_tees</span><span class="p">,</span>
+            <span class="n">prompt_tees</span><span class="p">,</span> <span class="n">add_global_prompt_tees</span><span class="p">,</span>
+            <span class="n">echo</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="delete">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.delete">[docs]</a>
+<span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a :class:`.Session`, call the DELETE HTTP method and return the result.</span>
+<span class="sd">        The :func:`.curlify` arguments can also be used here.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Passed to :meth:`.Session.delete`</span>
+<span class="sd">            **kwargs: Passed to :meth:`.Session.delete`</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The result of performing a request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.get">[docs]</a>
+<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a :class:`.Session`, call the GET HTTP method and return the result.</span>
+<span class="sd">        The :func:`.curlify` arguments can also be used here.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Passed to :meth:`.Session.get`</span>
+<span class="sd">            **kwargs: Passed to :meth:`.Session.get`</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The result of performing a request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="head">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.head">[docs]</a>
+<span class="k">def</span> <span class="nf">head</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a :class:`.Session`, call the HEAD HTTP method and return the result.</span>
+<span class="sd">        The :func:`.curlify` arguments can also be used here.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Passed to :meth:`.Session.head`</span>
+<span class="sd">            **kwargs: Passed to :meth:`.Session.head`</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The result of performing a request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="options">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.options">[docs]</a>
+<span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a :class:`.Session`, call the OPTIONS HTTP method and return the result.</span>
+<span class="sd">        The :func:`.curlify` arguments can also be used here.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Passed to :meth:`.Session.options`</span>
+<span class="sd">            **kwargs: Passed to :meth:`.Session.options`</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The result of performing a request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="patch">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.patch">[docs]</a>
+<span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a :class:`.Session`, call the PATCH HTTP method and return the result.</span>
+<span class="sd">        The :func:`.curlify` arguments can also be used here.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Passed to :meth:`.Session.patch`</span>
+<span class="sd">            **kwargs: Passed to :meth:`.Session.patch`</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The result of performing a request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="post">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.post">[docs]</a>
+<span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a :class:`.Session`, call the POST HTTP method and return the result.</span>
+<span class="sd">        The :func:`.curlify` arguments can also be used here.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Passed to :meth:`.Session.post`</span>
+<span class="sd">            **kwargs: Passed to :meth:`.Session.post`</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The result of performing a request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="put">
+<a class="viewcode-back" href="../../iripau.requests.html#iripau.requests.put">[docs]</a>
+<span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create a :class:`.Session`, call the PUT HTTP method and return the result.</span>
+<span class="sd">        The :func:`.curlify` arguments can also be used here.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: Passed to :meth:`.Session.put`</span>
+<span class="sd">            **kwargs: Passed to :meth:`.Session.put`</span>
+<span class="sd">        Return:</span>
+<span class="sd">            The result of performing a request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.requests</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>

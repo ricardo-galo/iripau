@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iripau.functools &#8212; iripau 1.1.6 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=67a6116b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=5ff89526" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    
+    <script src="../../_static/documentation_options.js?v=937269b5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg">
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu">
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo">
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q">
+                <input type="submit" value="Go">
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.functools</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for iripau.functools</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Function utilities with similar philosophy as the :mod:`functools` module.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">getsource</span><span class="p">,</span> <span class="n">isgeneratorfunction</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span>
+
+
+<div class="viewcode-block" id="wait_for">
+<a class="viewcode-back" href="../../iripau.functools.html#iripau.functools.wait_for">[docs]</a>
+<span class="k">def</span> <span class="nf">wait_for</span><span class="p">(</span>
+    <span class="n">condition</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="n">_timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">_outcome</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">_poll_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">_stop_condition</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Wait for ``condition(*args, **kwargs)`` to be ``_outcome``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            condition: Call this function many times with ``*args`` and</span>
+<span class="sd">                ``**kwargs`` until its return value is ``_outcome``.</span>
+<span class="sd">            *args: Pass these arguments to ``condition``.</span>
+<span class="sd">            **kwargs: Pass these keyword arguments to ``condition``.</span>
+<span class="sd">            _timeout: Max time in seconds to continue on calling ``condition``.</span>
+<span class="sd">            _outcome: The desired outcome to gracefully stop waiting.</span>
+<span class="sd">            _poll_time: Seconds in between ``condition`` calls.</span>
+<span class="sd">            _stop_condition: Stop waiting if the result of calling this function</span>
+<span class="sd">                is ``True``.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TimeoutError: If timeout reached.</span>
+<span class="sd">            InterruptedError: If ``_stop_condition()`` returns ``True``.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Wait for a network interface to have an IP address::</span>
+
+<span class="sd">                import netifaces</span>
+
+
+<span class="sd">                def iface_is_connected(iface):</span>
+<span class="sd">                    \&quot;\&quot;\&quot; ``iface`` has an IP v4 address \&quot;\&quot;\&quot;</span>
+<span class="sd">                    return netifaces.AF_INET in netifaces.ifaddresses(iface)</span>
+
+
+<span class="sd">                wait_for(iface_is_connected, &quot;eth0&quot;, _timeout=10)</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Wait for a process to finish, but stop waiting if there is an error</span>
+<span class="sd">            log::</span>
+
+<span class="sd">                import psutil</span>
+
+
+<span class="sd">                def log_file_contains_error():</span>
+<span class="sd">                    \&quot;\&quot;\&quot; The log informs the process has stalled \&quot;\&quot;\&quot;</span>
+<span class="sd">                    with open(&quot;/tmp/events.log&quot;) as f:</span>
+<span class="sd">                        return &quot;Error: Process stalled&quot; in f.read()</span>
+
+
+<span class="sd">                wait_for(</span>
+<span class="sd">                    psutil.pid_exists, 12345,</span>
+<span class="sd">                    _outcome=False,</span>
+<span class="sd">                    _timeout=3600,</span>
+<span class="sd">                    _poll_time=600,</span>
+<span class="sd">                    _stop_condition=log_file_contains_error</span>
+<span class="sd">                )</span>
+
+<span class="sd">        Tip:</span>
+<span class="sd">            Create ``condition`` and ``_stop_condition`` functions that read</span>
+<span class="sd">            nicely when used in `if` statements, not in questions.</span>
+<span class="sd">            For example, prefer ``host_is_reachable()`` instead of</span>
+<span class="sd">            ``is_host_reachable()``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">_timeout</span> <span class="ow">and</span> <span class="n">last</span> <span class="o">+</span> <span class="n">_timeout</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="n">operator</span><span class="o">.</span><span class="n">not_</span> <span class="k">if</span> <span class="n">_outcome</span> <span class="k">else</span> <span class="n">operator</span><span class="o">.</span><span class="n">truth</span>
+    <span class="k">while</span> <span class="n">operation</span><span class="p">(</span><span class="n">condition</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">_stop_condition</span> <span class="ow">and</span> <span class="n">_stop_condition</span><span class="p">():</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;No reason to keep waiting since the following condition was met:</span><span class="se">\n</span><span class="si">{0}</span><span class="s2">&quot;</span>
+            <span class="k">raise</span> <span class="ne">InterruptedError</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">getsource</span><span class="p">(</span><span class="n">_stop_condition</span><span class="p">)))</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="ow">and</span> <span class="n">now</span> <span class="o">&gt;</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;The following condition was not </span><span class="si">{0}</span><span class="s2"> after </span><span class="si">{1}</span><span class="s2"> seconds: </span><span class="se">\n</span><span class="si">{2}</span><span class="s2">&quot;</span>
+            <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_outcome</span><span class="p">,</span> <span class="n">_timeout</span><span class="p">,</span> <span class="n">getsource</span><span class="p">(</span><span class="n">condition</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="n">sleep_time</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_poll_time</span> <span class="o">-</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">last</span><span class="p">))</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">now</span> <span class="o">+</span> <span class="n">sleep_time</span></div>
+
+
+
+<div class="viewcode-block" id="retry">
+<a class="viewcode-back" href="../../iripau.functools.html#iripau.functools.retry">[docs]</a>
+<span class="k">def</span> <span class="nf">retry</span><span class="p">(</span>
+    <span class="n">tries</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">exceptions</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="ne">Exception</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="ne">Exception</span><span class="p">]]]</span> <span class="o">=</span> <span class="ne">Exception</span><span class="p">,</span>
+    <span class="n">retry_condition</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Type</span><span class="p">[</span><span class="ne">Exception</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">backoff_time</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Callable</span><span class="p">[[</span><span class="o">...</span><span class="p">],</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">...</span><span class="p">],</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Add retry capabilities to the decorated function.</span>
+
+<span class="sd">        Call the decorated function up to ``tries`` times, until it succeeds or</span>
+<span class="sd">        it raises an unexpected exception.</span>
+<span class="sd">        The decorated function Will only be retried if it raises one of the</span>
+<span class="sd">        expected ``exceptions`` **and** ``retry_condition`` is fulfilled.</span>
+<span class="sd">        Any other exception Will be raised immediately without further tries.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tries: The decorated function will be called at most this amount of</span>
+<span class="sd">                times.</span>
+<span class="sd">            exceptions: The expected exceptions to trigger the retry.</span>
+<span class="sd">            retry_condition: Function to call with the caught exception to verify</span>
+<span class="sd">                if the retry process should continue.</span>
+<span class="sd">                If it returns ``False``, the caught exception will be raised.</span>
+<span class="sd">            backoff_time: Seconds to wait before the next try.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The decorator.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Try to get the status of a server through a request to one of its</span>
+<span class="sd">            REST API endpoints. Retry up to five times if Forbidden 403::</span>
+
+<span class="sd">                import requests</span>
+
+<span class="sd">                from urllib.parse import urljoin</span>
+<span class="sd">                from requests.exceptions import HTTPError</span>
+
+
+<span class="sd">                def http_code_is_forbidden(e):</span>
+<span class="sd">                    \&quot;\&quot;\&quot; The status code in the response is 403 \&quot;\&quot;\&quot;</span>
+<span class="sd">                    return 403 == e.response.status_code</span>
+
+
+<span class="sd">                @retry(tries=5, exceptions=HTTPError, retry_condition=http_code_is_forbidden)</span>
+<span class="sd">                def get_server_status(server, headers):</span>
+<span class="sd">                    response = requests.get(urljoin(server, &quot;api/status&quot;), headers=headers)</span>
+<span class="sd">                    response.raise_for_status()  # Maybe HTTPError</span>
+<span class="sd">                    return response.json()</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Find a line with a specific content in a log file. Retry if the file</span>
+<span class="sd">            has not been created yet or if the content could not be found::</span>
+
+<span class="sd">                @retry(tries=3, exceptions=(FileNotFoundError, StopIteration))</span>
+<span class="sd">                def get_log_entry(path, content):</span>
+<span class="sd">                    with open(path) as log:  # Maybe FileNotFoundError</span>
+<span class="sd">                        return next(line for line in log if content in line)  # Maybe StopIteration</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Get information of a book through a REST API endpoint. Retry if the</span>
+<span class="sd">            book does not exist, but fail immediately if the response JSON does</span>
+<span class="sd">            not contain the key ``&quot;book&quot;``::</span>
+
+<span class="sd">                import requests</span>
+
+
+<span class="sd">                @retry(tries=3, exceptions=KeyError)</span>
+<span class="sd">                def get_book_data(book):</span>
+<span class="sd">                    response = requests.get(&quot;https://localhost:8080/api/books&quot;)</span>
+<span class="sd">                    response.raise_for_status()</span>
+<span class="sd">                    books = response.json()[&quot;books&quot;]  # Maybe KeyError</span>
+
+<span class="sd">                    yield  # Only retry if exceptions occur after this line</span>
+
+<span class="sd">                    return books[name]  # Maybe KeyError</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">yield</span>
+            <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="n">function</span> <span class="k">if</span> <span class="n">isgeneratorfunction</span><span class="p">(</span><span class="n">function</span><span class="p">)</span> <span class="k">else</span> <span class="n">helper</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">tries</span>
+            <span class="k">while</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">gen</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="n">value</span>
+                <span class="k">except</span> <span class="n">exceptions</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">retry_condition</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">retry_condition</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">raise</span>
+                        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="mi">1</span>
+                        <span class="n">sleep</span><span class="p">(</span><span class="n">backoff_time</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">decorator</span></div>
+
+
+
+<div class="viewcode-block" id="globalize">
+<a class="viewcode-back" href="../../iripau.functools.html#iripau.functools.globalize">[docs]</a>
+<span class="k">def</span> <span class="nf">globalize</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">...</span><span class="p">],</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">...</span><span class="p">],</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make ``function`` globally available in the module it was defined so it</span>
+<span class="sd">        can be serialized. Useful when calling local functions with</span>
+<span class="sd">        :mod:`multiprocessing`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            function: Function to make global.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The decorated function.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Use a nested function in some processes with :mod:`multiprocessing`::</span>
+
+<span class="sd">                import multiprocessing</span>
+
+
+<span class="sd">                def increase_multiple_processes(values, increment):</span>
+
+<span class="sd">                    @globalize</span>
+<span class="sd">                    def increase(x):</span>
+<span class="sd">                        return x + increment</span>
+
+<span class="sd">                    with multiprocessing.Pool(processes=3) as pool:</span>
+<span class="sd">                        return pool.map(increase, values)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">wrapper</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">wrapper</span><span class="o">.</span><span class="vm">__qualname__</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">function</span><span class="o">.</span><span class="vm">__module__</span><span class="p">],</span> <span class="n">wrapper</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">wrapper</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">iripau 1.1.6 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">iripau.functools</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box">
+          <input type="submit" value="Go">
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2025, Ricardo Galo Quezada Orrantia.
+    <br>
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br>
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br>
+    
+    
+    <br>
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br>
+    <br>
+    
+    <br>
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+
+  </body>
+</html>
